@@ -413,10 +413,6 @@ summary:focus-visible {
   min-width: 0;
 }
 
-.section-head--support {
-  align-items: center;
-}
-
 .support-avatar {
   width: 88px;
   height: 88px;
@@ -428,7 +424,24 @@ summary:focus-visible {
   flex: none;
 }
 
-.section-head--support .kofi-button {
+.support-head {
+  margin-bottom: 16px;
+}
+
+.support-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.support-text {
+  margin: 0;
+  min-width: 0;
+}
+
+.support-row .kofi-button {
   flex: none;
   margin-top: 0;
 }
@@ -650,7 +663,7 @@ summary:focus-visible {
     align-items: flex-start;
   }
 
-  .section-head--support {
+  .support-row {
     flex-direction: column;
     align-items: flex-start;
   }
