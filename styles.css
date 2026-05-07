@@ -191,6 +191,20 @@ summary:focus-visible {
   letter-spacing: -0.01em;
 }
 
+.h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.h4 {
+  margin: 14px 0 8px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
 .lead {
   margin: 0 0 18px;
   font-size: 16.5px;
@@ -233,6 +247,38 @@ summary:focus-visible {
     monospace;
   font-size: 0.95em;
   color: rgba(255, 255, 255, 0.86);
+}
+
+.changelog {
+  max-width: 90ch;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 16px;
+  box-shadow: var(--shadow);
+}
+
+.changelog code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.changelog-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.7;
+}
+
+.changelog-list > li {
+  margin: 10px 0;
+}
+
+.changelog-list ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
 }
 
 .how-diagram {
