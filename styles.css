@@ -425,20 +425,23 @@ summary:focus-visible {
 }
 
 .support-head {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 .support-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  margin-top: 10px;
+  gap: 18px;
+  margin-top: 14px;
 }
 
 .support-text {
   margin: 0;
   min-width: 0;
+  padding: 0 6px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .support-row .kofi-button {
