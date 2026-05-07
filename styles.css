@@ -254,8 +254,10 @@ summary:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.03);
-  padding: 16px 16px;
+  padding: 10px;
   box-shadow: var(--shadow);
+  max-height: 360px;
+  overflow: auto;
 }
 
 .changelog code {
@@ -273,12 +275,62 @@ summary:focus-visible {
 }
 
 .changelog-list > li {
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .changelog-list ul {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   padding-left: 18px;
+}
+
+.changelog-entry {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+}
+
+.changelog-entry + .changelog-entry {
+  margin-top: 10px;
+}
+
+.changelog-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 650;
+}
+.changelog-summary::-webkit-details-marker {
+  display: none;
+}
+
+.changelog-version {
+  letter-spacing: -0.01em;
+}
+
+.changelog-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 12px 12px;
+  display: grid;
+  gap: 14px;
+}
+
+.changelog-section .h4 {
+  margin-top: 0;
+}
+
+.changelog::-webkit-scrollbar {
+  width: 10px;
+}
+.changelog::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
 }
 
 .how-diagram {

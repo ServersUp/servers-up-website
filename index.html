@@ -546,57 +546,57 @@
           </div>
 
           <article class="changelog">
-            <h3 class="h3">v1.0.0 <span class="muted">— 2026-05-07</span></h3>
+            <details class="changelog-entry" open>
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.0.0</span>
+                <span class="muted">2026-05-07</span>
+              </summary>
 
-            <h4 class="h4">Added</h4>
-            <ul class="changelog-list">
-              <li>
-                <strong>Discord subscription workflow</strong>:
-                <ul>
-                  <li>
-                    <code>/subscribe</code> with game/server autocomplete (type-to-search) and optional role mention.
-                  </li>
-                  <li>
-                    <code>/unsubscribe</code> via subscription picker (type-to-search across the guild) using the same
-                    entries shown by <code>/subscriptions</code>.
-                  </li>
-                  <li><code>/subscriptions</code> to list all subscriptions in a guild grouped by channel.</li>
-                  <li><code>/help</code> for usage, tips, and documentation link.</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Human-friendly output</strong>:
-                <ul>
-                  <li>
-                    Unsubscribe responses formatted as “Unsubscribed … from <strong>game-server</strong> server status
-                    updates in #channel”.
-                  </li>
-                  <li>Autocomplete options display game/server/role/channel in a readable form.</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Duplicate subscription protection</strong>:
-                <ul>
-                  <li>
-                    Prevents creating the same channel+server+role subscription twice and returns an “Already
-                    subscribed” message with details.
-                  </li>
-                </ul>
-              </li>
-            </ul>
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong>Discord subscription workflow</strong>:
+                      <ul>
+                        <li><code>/subscribe</code> with game/server autocomplete and optional role mention</li>
+                        <li><code>/unsubscribe</code> via subscription picker (same entries as <code>/subscriptions</code>)</li>
+                        <li><code>/subscriptions</code> lists subscriptions grouped by channel</li>
+                        <li><code>/help</code> for usage, tips, and documentation link</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Human-friendly output</strong>:
+                      <ul>
+                        <li>Unsubscribe replies formatted as “Unsubscribed … from <strong>game-server</strong> … in #channel”</li>
+                        <li>Autocomplete options display game/server/role/channel in a readable form</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Duplicate subscription protection</strong>:
+                      <ul>
+                        <li>Prevents duplicate channel+server+role subscriptions with an “Already subscribed” response</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
 
-            <h4 class="h4">Changed</h4>
-            <ul class="changelog-list">
-              <li>
-                <strong>Discord commands</strong>:
-                <ul>
-                  <li>
-                    <code>/games</code> and <code>/servers</code> are no longer exposed; discovery happens through
-                    <code>/subscribe</code> autocomplete and <code>/subscriptions</code>.
-                  </li>
-                </ul>
-              </li>
-            </ul>
+                <div class="changelog-section">
+                  <h4 class="h4">Changed</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong>Discord commands</strong>:
+                      <ul>
+                        <li>
+                          <code>/games</code> and <code>/servers</code> are no longer exposed; discovery happens via
+                          <code>/subscribe</code> autocomplete and <code>/subscriptions</code>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </article>
         </div>
       </section>
