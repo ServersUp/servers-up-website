@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="ServersUp monitors online game servers and sends up/down notifications to Discord."
+      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
     />
     <meta
       name="google-site-verification"
       content="3O4IgP7ot535317-PgIAuTH9Vs6JbioPY5-s9xnembQ"
     />
-    <title>ServersUp</title>
+    <title>Game Server Alerts - Discord Notifications | ServersUp</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Game Server Alerts - Discord Notifications | ServersUp" />
+    <meta
+      property="og:description"
+      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
+    />
+    <meta property="og:url" content="https://serversup.github.io/" />
+    <meta property="og:image" content="https://serversup.github.io/assets/serversup-logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Game Server Alerts - Discord Notifications | ServersUp" />
+    <meta
+      name="twitter:description"
+      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
+    />
+    <meta name="twitter:image" content="https://serversup.github.io/assets/serversup-logo.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ServersUp",
+        "description": "Discord notifications when online game servers go up or down (status changes only).",
+        "applicationCategory": "CommunicationApplication",
+        "operatingSystem": "Any",
+        "url": "https://serversup.github.io/",
+        "image": "https://serversup.github.io/assets/serversup-logo.png",
+        "author": { "@type": "Person", "name": "Armand" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
     <link rel="icon" href="./assets/serversup-logo.png" type="image/png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -24,7 +53,7 @@
           <img
             class="nav-logo"
             src="./assets/serversup-logo.png"
-            alt=""
+            alt="ServersUp game server alerts for Discord"
             width="28"
             height="28"
             decoding="async"
@@ -58,7 +87,7 @@
     </header>
 
     <main class="main" id="home">
-      <section class="section hero" aria-label="Hero">
+      <section class="section hero" aria-label="Hero" id="home-hero">
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Discord alerts for game server uptime</p>
@@ -89,7 +118,7 @@
             <img
               class="hero-logo"
               src="./assets/serversup-logo.png"
-              alt="ServersUp logo"
+              alt="ServersUp logo for game server status alerts"
               width="512"
               height="512"
               loading="eager"
@@ -118,7 +147,7 @@
       <section class="section" id="how-it-works" aria-label="How It Works">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">How It Works</h2>
+            <h1 class="h2">How It Works</h1>
           </div>
 
           <ul class="steps" aria-label="How it works steps">
@@ -203,7 +232,7 @@
       <section class="section" id="instructions" aria-label="Instructions">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">Instructions</h2>
+            <h1 class="h2">Instructions</h1>
           </div>
 
           <ol class="steps" aria-label="Setup steps">
@@ -242,7 +271,7 @@
       <section class="section" id="video" aria-label="Video">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">Video</h2>
+            <h1 class="h2">Video</h1>
           </div>
 
           <div class="video-shell" role="group" aria-label="Video placeholder">
@@ -254,7 +283,7 @@
       <section class="section" id="games" aria-label="Supported Games">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">Supported Games</h2>
+            <h1 class="h2">Supported Games</h1>
           </div>
 
           <div class="accordion" role="region" aria-label="Supported games list">
@@ -263,7 +292,7 @@
                 <img
                   class="game-logo"
                   src="./assets/wow-logo-small-transparent.png"
-                  alt="World of Warcraft"
+                  alt="World of Warcraft (WoW) server status alerts"
                   width="140"
                   height="64"
                   loading="lazy"
@@ -547,7 +576,7 @@
       <section class="section" id="upcoming" aria-label="Upcoming Changes">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">Upcoming Changes</h2>
+            <h1 class="h2">Upcoming Changes</h1>
           </div>
 
           <ul class="steps" aria-label="Upcoming changes list">
@@ -564,7 +593,7 @@
       <section class="section" id="changelog" aria-label="Changelog">
         <div class="container">
           <div class="section-head">
-            <h2 class="h2">Changelog</h2>
+            <h1 class="h2">Changelog</h1>
           </div>
 
           <article class="changelog">
@@ -626,13 +655,13 @@
       <section class="section" id="support-my-work" aria-label="Support My Work">
         <div class="container">
           <div class="support-head">
-            <h2 class="h2">Support My Work</h2>
+            <h1 class="h2">Support My Work</h1>
 
             <div class="support-row">
               <img
                 class="support-avatar"
                 src="./assets/armand.png"
-                alt="Armand"
+                alt="Armand, creator of ServersUp"
                 width="96"
                 height="96"
                 loading="lazy"
