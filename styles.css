@@ -417,6 +417,17 @@ summary:focus-visible {
   align-items: center;
 }
 
+.support-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow);
+  flex: none;
+}
+
 .section-head--support .kofi-button {
   flex: none;
   margin-top: 0;
