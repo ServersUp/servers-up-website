@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serversup.github.io/sitemap.xml
