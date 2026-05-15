@@ -188,7 +188,7 @@
 
                 <rect x="18" y="24" rx="18" ry="18" width="240" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
                 <text x="38" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">User</text>
-                <text x="38" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Runs /subscribe, /help, etc.</text>
+                <text x="38" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Runs /subscribe, /games, /help, etc.</text>
 
                 <rect x="330" y="24" rx="18" ry="18" width="240" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
                 <text x="350" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">Discord Bot</text>
@@ -252,6 +252,11 @@
             <li>
               Ensure the bot has permissions to <strong>send messages</strong> and <strong>read message history</strong>
               in the channel you’ll use for alerts.
+            </li>
+            <li>
+              Run <code>/games</code> in Discord to list supported games from the configured server mapping (the same source as
+              <code>/subscribe</code> game autocomplete), or browse <a href="#games" data-scroll="true">Supported Games</a> on
+              this page.
             </li>
             <li>
               Use <code>/subscribe</code> with a <code>game</code>, <code>server</code>, and optional <code>role</code> to add a
@@ -608,6 +613,25 @@
 
           <article class="changelog">
             <details class="changelog-entry" open>
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.0.1</span>
+                <span class="muted">2026-05-13</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/games</code></strong> — lists supported games from the configured server mapping (same source
+                      as <code>/subscribe</code> autocomplete).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
               <summary class="changelog-summary">
                 <span class="changelog-version">v1.0.0</span>
                 <span class="muted">2026-05-07</span>
