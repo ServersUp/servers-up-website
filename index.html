@@ -614,6 +614,59 @@
           <article class="changelog">
             <details class="changelog-entry" open>
               <summary class="changelog-summary">
+                <span class="changelog-version">v1.0.3</span>
+                <span class="muted">2026-05-15</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Changed</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/subscribe</code> and <code>/unsubscribe</code></strong> — only members with
+                      <strong>Manage Channels</strong> or <strong>Administrator</strong> can add or remove subscriptions (ephemeral
+                      message if denied).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.0.2</span>
+                <span class="muted">2026-05-15</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/servers</code></strong> — lists servers configured for a game (game autocomplete). Long lists link to the
+                      supported games page; for <code>wow</code>, also shows popular US realm names.
+                    </li>
+                    <li>
+                      <strong><code>/status</code></strong> — shows the current UP/DOWN status for a game + server (same autocomplete as
+                      <code>/subscribe</code>).
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="changelog-section">
+                  <h4 class="h4">Changed</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/status</code></strong> — rate-limited per user and per guild (in-process); repeated checks within a short
+                      window get an ephemeral “slow down” message instead of hitting the database every time.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
+              <summary class="changelog-summary">
                 <span class="changelog-version">v1.0.1</span>
                 <span class="muted">2026-05-13</span>
               </summary>
