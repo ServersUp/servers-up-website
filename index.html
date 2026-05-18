@@ -254,16 +254,25 @@
               in the channel you’ll use for alerts.
             </li>
             <li>
-              Run <code>/games</code> in Discord to list supported games from the configured server mapping (the same source as
-              <code>/subscribe</code> game autocomplete), or browse <a href="#games" data-scroll="true">Supported Games</a> on
-              this page.
+              Run <code>/games</code> to list supported games (same source as <code>/subscribe</code> game autocomplete), or
+              <code>/servers</code> to list the servers configured for a specific game. You can also browse
+              <a href="#games" data-scroll="true">Supported Games</a> on this page.
             </li>
             <li>
               Use <code>/subscribe</code> with a <code>game</code>, <code>server</code>, and optional <code>role</code> to add a
-              subscription. See the supported values in <a href="#games" data-scroll="true">Supported Games</a>.
+              subscription. Only members with <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe
+              or unsubscribe; without those permissions you’ll get an error.
             </li>
             <li>
               When the server goes down or comes back up, an alert message will be sent to that channel.
+            </li>
+            <li>
+              Use <code>/status</code> with a <code>game</code> and <code>server</code> to check the current UP/DOWN status on
+              demand.
+            </li>
+            <li>
+              Use <code>/subscriptions</code> to list current subscriptions grouped by channel, and <code>/unsubscribe</code>
+              to remove one via the same picker.
             </li>
             <li>
               Run <code>/help</code> to see what else ServersUp can do for you.
