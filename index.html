@@ -261,15 +261,14 @@
             <li>
               Use <code>/subscribe</code> with a <code>game</code>, <code>server</code>, and optional <code>role</code> to add a
               subscription. Only members with <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe
-              or unsubscribe; without those permissions you’ll get an ephemeral denial message.
+              or unsubscribe; without those permissions you’ll get an error.
             </li>
             <li>
               When the server goes down or comes back up, an alert message will be sent to that channel.
             </li>
             <li>
               Use <code>/status</code> with a <code>game</code> and <code>server</code> to check the current UP/DOWN status on
-              demand (rate-limited per user and per guild — repeated checks within a short window get an ephemeral “slow down”
-              reply).
+              demand.
             </li>
             <li>
               Use <code>/subscriptions</code> to list current subscriptions grouped by channel, and <code>/unsubscribe</code>
