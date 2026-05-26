@@ -85,6 +85,8 @@ function setupServerSearch() {
   );
 
   for (const input of inputs) {
+    if (input.closest("[data-wow-servers]")) continue;
+
     const key = input.getAttribute("data-server-search") || "";
     const list = document.querySelector(`[data-server-list="${CSS.escape(key)}"]`);
     const count = document.querySelector(`[data-server-count="${CSS.escape(key)}"]`);
@@ -127,9 +129,92 @@ function setupServerSearch() {
   }
 }
 
+const WOW_REGION_LABELS = { us: "US", eu: "EU", kr: "KR", tw: "TW" };
+
+function setupWowRegionServers() {
+  const panel = document.querySelector("[data-wow-servers]");
+  if (!(panel instanceof HTMLElement)) return;
+
+  const lists = Array.from(panel.querySelectorAll("[data-wow-region-list]")).filter(
+    (el) => el instanceof HTMLElement,
+  );
+  const input = panel.querySelector('[data-server-search="wow"]');
+  const count = panel.querySelector('[data-server-count="wow"]');
+  const searchLabel = panel.querySelector("[data-wow-search-label]");
+  const tabs = panel.querySelectorAll("[data-wow-region-tab]");
+
+  let region = panel.getAttribute("data-wow-region") || "us";
+  let rows = [];
+
+  function listFor(r) {
+    return lists.find((el) => el.getAttribute("data-wow-region-list") === r) ?? null;
+  }
+
+  function setActiveTab(next) {
+    region = next;
+    panel.setAttribute("data-wow-region", next);
+    for (const tab of tabs) {
+      if (!(tab instanceof HTMLButtonElement)) continue;
+      const r = tab.getAttribute("data-wow-region-tab") || "";
+      const active = r === next;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+    }
+  }
+
+  function applyFilter() {
+    const q = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : "";
+    let visible = 0;
+    for (const row of rows) {
+      const k = (row.getAttribute("data-server-key") || "").toLowerCase();
+      const show = q.length === 0 || k.includes(q);
+      row.style.display = show ? "" : "none";
+      if (show) visible += 1;
+    }
+    if (count instanceof HTMLElement) count.textContent = `${visible} / ${rows.length}`;
+  }
+
+  function showRegion(next) {
+    setActiveTab(next);
+    const activeList = listFor(next);
+    for (const list of lists) list.hidden = list !== activeList;
+    rows = activeList
+      ? Array.from(activeList.querySelectorAll("[data-server-key]")).filter((el) => el instanceof HTMLElement)
+      : [];
+
+    const label = WOW_REGION_LABELS[next] || next.toUpperCase();
+    if (searchLabel instanceof HTMLLabelElement) {
+      searchLabel.setAttribute("aria-label", `Search World of Warcraft ${label} servers`);
+    }
+    if (input instanceof HTMLInputElement) {
+      const example = rows[0]?.getAttribute("data-server-key") || "illidan";
+      input.placeholder = `Search ${label} realms (e.g. ${example})`;
+      input.value = "";
+    }
+    applyFilter();
+  }
+
+  for (const tab of tabs) {
+    tab.addEventListener("click", () => {
+      if (!(tab instanceof HTMLButtonElement)) return;
+      const next = tab.getAttribute("data-wow-region-tab");
+      if (!next || next === region) return;
+      showRegion(next);
+    });
+  }
+
+  if (input instanceof HTMLInputElement) {
+    input.addEventListener("input", applyFilter);
+    input.addEventListener("search", applyFilter);
+  }
+
+  showRegion(region);
+}
+
 setYear();
 setupMobileNav();
 setupSmoothScroll();
 hardenExternalLinks();
 setupServerSearch();
+setupWowRegionServers();
 
