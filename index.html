@@ -161,7 +161,7 @@
           </div>
 
           <ul class="steps" aria-label="How it works steps">
-            <li>In Discord, subscribe to a specific game + server (optionally with a role mention)</li>
+            <li>In Discord, subscribe to a specific game, region, and server (optionally with a role mention)</li>
             <li>ServersUp polls that server’s status on an interval and watches for transitions</li>
             <li>
               When the status changes (UP ↔ DOWN), ServersUp posts an alert in the subscribed channel (e.g.
@@ -254,21 +254,23 @@
               in the channel you’ll use for alerts.
             </li>
             <li>
-              Run <code>/games</code> to list supported games (same source as <code>/subscribe</code> game autocomplete), or
-              <code>/servers</code> to list the servers configured for a specific game. You can also browse
+              Run <code>/games</code> to list supported games, <code>/regions</code> to see available regions for a game (WoW:
+              <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>), or <code>/servers</code> with a
+              <code>game</code> and <code>region</code> to list servers in that region. You can also browse
               <a href="#games" data-scroll="true">Supported Games</a> on this page.
             </li>
             <li>
-              Use <code>/subscribe</code> with a <code>game</code>, <code>server</code>, and optional <code>role</code> to add a
-              subscription. Only members with <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe
-              or unsubscribe; without those permissions you’ll get an error.
+              Use <code>/subscribe</code> with <code>game</code>, <code>region</code>, <code>server</code>, and optional
+              <code>role</code> to add a subscription (autocomplete order: game → region → server). Only members with
+              <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe or unsubscribe; without those
+              permissions you’ll get an error.
             </li>
             <li>
               When the server goes down or comes back up, an alert message will be sent to that channel.
             </li>
             <li>
-              Use <code>/status</code> with a <code>game</code> and <code>server</code> to check the current UP/DOWN status on
-              demand.
+              Use <code>/status</code> with <code>game</code>, <code>region</code>, and <code>server</code> to check the
+              current UP/DOWN status on demand (same region requirement as <code>/subscribe</code>).
             </li>
             <li>
               Use <code>/subscriptions</code> to list current subscriptions grouped by channel, and <code>/unsubscribe</code>
@@ -325,14 +327,57 @@
                 <span class="game-title">World of Warcraft <span class="muted">(wow)</span></span>
               </summary>
               <div class="accordion-body">
-                <div class="server-panel">
+                <p class="muted small">
+                  WoW realms are available in <strong>US</strong>, <strong>EU</strong>, <strong>KR</strong>, and
+                  <strong>TW</strong>. Browse and search by region below, or use <code>/regions</code> and
+                  <code>/servers</code> in Discord.
+                </p>
+                <div class="server-panel" data-wow-servers data-wow-region="us">
+                  <div class="server-region-tabs" role="tablist" aria-label="WoW region">
+                    <button
+                      type="button"
+                      class="server-region-tab is-active"
+                      role="tab"
+                      aria-selected="true"
+                      data-wow-region-tab="us"
+                    >
+                      US
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-wow-region-tab="eu"
+                    >
+                      EU
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-wow-region-tab="kr"
+                    >
+                      KR
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-wow-region-tab="tw"
+                    >
+                      TW
+                    </button>
+                  </div>
                   <div class="server-panel__head">
-                    <label class="server-search" aria-label="Search World of Warcraft servers">
+                    <label class="server-search" data-wow-search-label aria-label="Search World of Warcraft US servers">
                       <span class="server-search__icon" aria-hidden="true">⌕</span>
                       <input
                         class="server-search__input"
                         type="search"
-                        placeholder="Search servers (e.g. azjolnerub)"
+                        placeholder="Search US realms (e.g. aegwynn)"
                         autocomplete="off"
                         inputmode="search"
                         data-server-search="wow"
@@ -342,257 +387,590 @@
                   </div>
 
                   <div class="server-panel__body">
-                    <ul class="server-list" aria-label="World of Warcraft servers" data-server-list="wow">
-                      <li class="server-row" data-server-key="azjolnerub"><code>azjolnerub</code></li>
-                      <li class="server-row" data-server-key="muradin"><code>muradin</code></li>
-                      <li class="server-row" data-server-key="nordrassil"><code>nordrassil</code></li>
-                      <li class="server-row" data-server-key="blackrock"><code>blackrock</code></li>
-                      <li class="server-row" data-server-key="khaz-modan"><code>khaz-modan</code></li>
-                      <li class="server-row" data-server-key="firetree"><code>firetree</code></li>
-                      <li class="server-row" data-server-key="draktharon"><code>draktharon</code></li>
-                      <li class="server-row" data-server-key="rivendare"><code>rivendare</code></li>
-                      <li class="server-row" data-server-key="vashj"><code>vashj</code></li>
-                      <li class="server-row" data-server-key="spirestone"><code>spirestone</code></li>
-                      <li class="server-row" data-server-key="malorne"><code>malorne</code></li>
-                      <li class="server-row" data-server-key="frostwolf"><code>frostwolf</code></li>
-                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
-                      <li class="server-row" data-server-key="runetotem"><code>runetotem</code></li>
-                      <li class="server-row" data-server-key="uther"><code>uther</code></li>
-                      <li class="server-row" data-server-key="draenor"><code>draenor</code></li>
-                      <li class="server-row" data-server-key="echo-isles"><code>echo-isles</code></li>
-                      <li class="server-row" data-server-key="aggramar"><code>aggramar</code></li>
-                      <li class="server-row" data-server-key="fizzcrank"><code>fizzcrank</code></li>
-                      <li class="server-row" data-server-key="ravencrest"><code>ravencrest</code></li>
-                      <li class="server-row" data-server-key="uldaman"><code>uldaman</code></li>
-                      <li class="server-row" data-server-key="stormreaver"><code>stormreaver</code></li>
-                      <li class="server-row" data-server-key="elune"><code>elune</code></li>
-                      <li class="server-row" data-server-key="laughing-skull"><code>laughing-skull</code></li>
-                      <li class="server-row" data-server-key="auchindoun"><code>auchindoun</code></li>
-                      <li class="server-row" data-server-key="chogall"><code>chogall</code></li>
-                      <li class="server-row" data-server-key="gilneas"><code>gilneas</code></li>
-                      <li class="server-row" data-server-key="bleeding-hollow"><code>bleeding-hollow</code></li>
-                      <li class="server-row" data-server-key="trollbane"><code>trollbane</code></li>
-                      <li class="server-row" data-server-key="grizzly-hills"><code>grizzly-hills</code></li>
-                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
-                      <li class="server-row" data-server-key="lothar"><code>lothar</code></li>
-                      <li class="server-row" data-server-key="kaelthas"><code>kaelthas</code></li>
-                      <li class="server-row" data-server-key="gnomeregan"><code>gnomeregan</code></li>
-                      <li class="server-row" data-server-key="moonrunner"><code>moonrunner</code></li>
-                      <li class="server-row" data-server-key="ghostlands"><code>ghostlands</code></li>
-                      <li class="server-row" data-server-key="veknilash"><code>veknilash</code></li>
-                      <li class="server-row" data-server-key="nazgrel"><code>nazgrel</code></li>
-                      <li class="server-row" data-server-key="nesingwary"><code>nesingwary</code></li>
-                      <li class="server-row" data-server-key="senjin"><code>senjin</code></li>
-                      <li class="server-row" data-server-key="dunemaul"><code>dunemaul</code></li>
-                      <li class="server-row" data-server-key="maiev"><code>maiev</code></li>
-                      <li class="server-row" data-server-key="bloodscalp"><code>bloodscalp</code></li>
-                      <li class="server-row" data-server-key="queldorei"><code>queldorei</code></li>
-                      <li class="server-row" data-server-key="boulderfist"><code>boulderfist</code></li>
-                      <li class="server-row" data-server-key="stonemaul"><code>stonemaul</code></li>
-                      <li class="server-row" data-server-key="argent-dawn"><code>argent-dawn</code></li>
-                      <li class="server-row" data-server-key="the-scryers"><code>the-scryers</code></li>
-                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
-                      <li class="server-row" data-server-key="uldum"><code>uldum</code></li>
-                      <li class="server-row" data-server-key="akama"><code>akama</code></li>
-                      <li class="server-row" data-server-key="korialstrasz"><code>korialstrasz</code></li>
-                      <li class="server-row" data-server-key="eldrethalas"><code>eldrethalas</code></li>
-                      <li class="server-row" data-server-key="mugthol"><code>mugthol</code></li>
-                      <li class="server-row" data-server-key="antonidas"><code>antonidas</code></li>
-                      <li class="server-row" data-server-key="silvermoon"><code>silvermoon</code></li>
-                      <li class="server-row" data-server-key="skywall"><code>skywall</code></li>
-                      <li class="server-row" data-server-key="terenas"><code>terenas</code></li>
-                      <li class="server-row" data-server-key="hydraxis"><code>hydraxis</code></li>
-                      <li class="server-row" data-server-key="drakthul"><code>drakthul</code></li>
-                      <li class="server-row" data-server-key="borean-tundra"><code>borean-tundra</code></li>
-                      <li class="server-row" data-server-key="moknathal"><code>moknathal</code></li>
-                      <li class="server-row" data-server-key="shadowsong"><code>shadowsong</code></li>
-                      <li class="server-row" data-server-key="eonar"><code>eonar</code></li>
-                      <li class="server-row" data-server-key="skullcrusher"><code>skullcrusher</code></li>
-                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
-                      <li class="server-row" data-server-key="zuluhed"><code>zuluhed</code></li>
-                      <li class="server-row" data-server-key="ursin"><code>ursin</code></li>
-                      <li class="server-row" data-server-key="andorhal"><code>andorhal</code></li>
-                      <li class="server-row" data-server-key="black-dragonflight"><code>black-dragonflight</code></li>
-                      <li class="server-row" data-server-key="velen"><code>velen</code></li>
-                      <li class="server-row" data-server-key="scilla"><code>scilla</code></li>
-                      <li class="server-row" data-server-key="llane"><code>llane</code></li>
-                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
-                      <li class="server-row" data-server-key="earthen-ring"><code>earthen-ring</code></li>
-                      <li class="server-row" data-server-key="malygos"><code>malygos</code></li>
-                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
-                      <li class="server-row" data-server-key="lightnings-blade"><code>lightnings-blade</code></li>
-                      <li class="server-row" data-server-key="icecrown"><code>icecrown</code></li>
-                      <li class="server-row" data-server-key="onyxia"><code>onyxia</code></li>
-                      <li class="server-row" data-server-key="burning-blade"><code>burning-blade</code></li>
-                      <li class="server-row" data-server-key="dragonblight"><code>dragonblight</code></li>
-                      <li class="server-row" data-server-key="fenris"><code>fenris</code></li>
-                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
-                      <li class="server-row" data-server-key="gorefiend"><code>gorefiend</code></li>
-                      <li class="server-row" data-server-key="spinebreaker"><code>spinebreaker</code></li>
-                      <li class="server-row" data-server-key="zangarmarsh"><code>zangarmarsh</code></li>
-                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
-                      <li class="server-row" data-server-key="eredar"><code>eredar</code></li>
-                      <li class="server-row" data-server-key="kilrogg"><code>kilrogg</code></li>
-                      <li class="server-row" data-server-key="winterhoof"><code>winterhoof</code></li>
-                      <li class="server-row" data-server-key="eitrigg"><code>eitrigg</code></li>
-                      <li class="server-row" data-server-key="shuhalo"><code>shuhalo</code></li>
-                      <li class="server-row" data-server-key="feathermoon"><code>feathermoon</code></li>
-                      <li class="server-row" data-server-key="scarlet-crusade"><code>scarlet-crusade</code></li>
-                      <li class="server-row" data-server-key="proudmoore"><code>proudmoore</code></li>
-                      <li class="server-row" data-server-key="silver-hand"><code>silver-hand</code></li>
-                      <li class="server-row" data-server-key="thorium-brotherhood"><code>thorium-brotherhood</code></li>
-                      <li class="server-row" data-server-key="farstriders"><code>farstriders</code></li>
-                      <li class="server-row" data-server-key="cairne"><code>cairne</code></li>
-                      <li class="server-row" data-server-key="cenarius"><code>cenarius</code></li>
-                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
-                      <li class="server-row" data-server-key="tortheldrin"><code>tortheldrin</code></li>
-                      <li class="server-row" data-server-key="nerzhul"><code>nerzhul</code></li>
-                      <li class="server-row" data-server-key="korgath"><code>korgath</code></li>
-                      <li class="server-row" data-server-key="perenolde"><code>perenolde</code></li>
-                      <li class="server-row" data-server-key="wyrmrest-accord"><code>wyrmrest-accord</code></li>
+                    <ul
+                      class="server-list"
+                      data-wow-region-list="us"
+                      aria-label="World of Warcraft US servers"
+>
                       <li class="server-row" data-server-key="aegwynn"><code>aegwynn</code></li>
-                      <li class="server-row" data-server-key="gurubashi"><code>gurubashi</code></li>
-                      <li class="server-row" data-server-key="bonechewer"><code>bonechewer</code></li>
-                      <li class="server-row" data-server-key="hakkar"><code>hakkar</code></li>
-                      <li class="server-row" data-server-key="garrosh"><code>garrosh</code></li>
-                      <li class="server-row" data-server-key="daggerspine"><code>daggerspine</code></li>
-                      <li class="server-row" data-server-key="emerald-dream"><code>emerald-dream</code></li>
-                      <li class="server-row" data-server-key="blackhand"><code>blackhand</code></li>
-                      <li class="server-row" data-server-key="galakrond"><code>galakrond</code></li>
-                      <li class="server-row" data-server-key="whisperwind"><code>whisperwind</code></li>
-                      <li class="server-row" data-server-key="dentarg"><code>dentarg</code></li>
-                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
-                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
-                      <li class="server-row" data-server-key="ysera"><code>ysera</code></li>
-                      <li class="server-row" data-server-key="bloodhoof"><code>bloodhoof</code></li>
-                      <li class="server-row" data-server-key="duskwood"><code>duskwood</code></li>
-                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
-                      <li class="server-row" data-server-key="misha"><code>misha</code></li>
-                      <li class="server-row" data-server-key="staghelm"><code>staghelm</code></li>
-                      <li class="server-row" data-server-key="dawnbringer"><code>dawnbringer</code></li>
-                      <li class="server-row" data-server-key="madoran"><code>madoran</code></li>
-                      <li class="server-row" data-server-key="azuremyst"><code>azuremyst</code></li>
-                      <li class="server-row" data-server-key="illidan"><code>illidan</code></li>
-                      <li class="server-row" data-server-key="sargeras"><code>sargeras</code></li>
-                      <li class="server-row" data-server-key="azgalor"><code>azgalor</code></li>
-                      <li class="server-row" data-server-key="thunderlord"><code>thunderlord</code></li>
-                      <li class="server-row" data-server-key="destromath"><code>destromath</code></li>
-                      <li class="server-row" data-server-key="blood-furnace"><code>blood-furnace</code></li>
-                      <li class="server-row" data-server-key="mannoroth"><code>mannoroth</code></li>
-                      <li class="server-row" data-server-key="nazjatar"><code>nazjatar</code></li>
-                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
-                      <li class="server-row" data-server-key="magtheridon"><code>magtheridon</code></li>
-                      <li class="server-row" data-server-key="anetheron"><code>anetheron</code></li>
-                      <li class="server-row" data-server-key="ysondre"><code>ysondre</code></li>
-                      <li class="server-row" data-server-key="altar-of-storms"><code>altar-of-storms</code></li>
-                      <li class="server-row" data-server-key="drakkari"><code>drakkari</code></li>
                       <li class="server-row" data-server-key="aerie-peak"><code>aerie-peak</code></li>
-                      <li class="server-row" data-server-key="ragnaros"><code>ragnaros</code></li>
-                      <li class="server-row" data-server-key="shadow-council"><code>shadow-council</code></li>
-                      <li class="server-row" data-server-key="sisters-of-elune"><code>sisters-of-elune</code></li>
-                      <li class="server-row" data-server-key="cenarion-circle"><code>cenarion-circle</code></li>
-                      <li class="server-row" data-server-key="blackwater-raiders"><code>blackwater-raiders</code></li>
-                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
-                      <li class="server-row" data-server-key="terokkar"><code>terokkar</code></li>
-                      <li class="server-row" data-server-key="kirin-tor"><code>kirin-tor</code></li>
-                      <li class="server-row" data-server-key="steamwheedle-cartel"><code>steamwheedle-cartel</code></li>
-                      <li class="server-row" data-server-key="sentinels"><code>sentinels</code></li>
-                      <li class="server-row" data-server-key="kul-tiras"><code>kul-tiras</code></li>
-                      <li class="server-row" data-server-key="bladefist"><code>bladefist</code></li>
-                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
-                      <li class="server-row" data-server-key="maelstrom"><code>maelstrom</code></li>
-                      <li class="server-row" data-server-key="twisting-nether"><code>twisting-nether</code></li>
-                      <li class="server-row" data-server-key="lightninghoof"><code>lightninghoof</code></li>
-                      <li class="server-row" data-server-key="the-venture-co"><code>the-venture-co</code></li>
-                      <li class="server-row" data-server-key="ravenholdt"><code>ravenholdt</code></li>
-                      <li class="server-row" data-server-key="kalecgos"><code>kalecgos</code></li>
-                      <li class="server-row" data-server-key="shattered-halls"><code>shattered-halls</code></li>
-                      <li class="server-row" data-server-key="executus"><code>executus</code></li>
-                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
-                      <li class="server-row" data-server-key="dark-iron"><code>dark-iron</code></li>
-                      <li class="server-row" data-server-key="shattered-hand"><code>shattered-hand</code></li>
-                      <li class="server-row" data-server-key="coilfang"><code>coilfang</code></li>
-                      <li class="server-row" data-server-key="demon-soul"><code>demon-soul</code></li>
-                      <li class="server-row" data-server-key="dalvengyr"><code>dalvengyr</code></li>
                       <li class="server-row" data-server-key="agamaggan"><code>agamaggan</code></li>
-                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
-                      <li class="server-row" data-server-key="thunderhorn"><code>thunderhorn</code></li>
-                      <li class="server-row" data-server-key="the-underbog"><code>the-underbog</code></li>
-                      <li class="server-row" data-server-key="blades-edge"><code>blades-edge</code></li>
-                      <li class="server-row" data-server-key="archimonde"><code>archimonde</code></li>
-                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
-                      <li class="server-row" data-server-key="jaedenar"><code>jaedenar</code></li>
-                      <li class="server-row" data-server-key="baelgun"><code>baelgun</code></li>
-                      <li class="server-row" data-server-key="doomhammer"><code>doomhammer</code></li>
-                      <li class="server-row" data-server-key="tichondrius"><code>tichondrius</code></li>
-                      <li class="server-row" data-server-key="suramar"><code>suramar</code></li>
-                      <li class="server-row" data-server-key="windrunner"><code>windrunner</code></li>
-                      <li class="server-row" data-server-key="darrowmere"><code>darrowmere</code></li>
-                      <li class="server-row" data-server-key="draka"><code>draka</code></li>
+                      <li class="server-row" data-server-key="aggramar"><code>aggramar</code></li>
+                      <li class="server-row" data-server-key="akama"><code>akama</code></li>
+                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
                       <li class="server-row" data-server-key="alleria"><code>alleria</code></li>
-                      <li class="server-row" data-server-key="exodar"><code>exodar</code></li>
-                      <li class="server-row" data-server-key="medivh"><code>medivh</code></li>
-                      <li class="server-row" data-server-key="khadgar"><code>khadgar</code></li>
-                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
-                      <li class="server-row" data-server-key="detheroc"><code>detheroc</code></li>
-                      <li class="server-row" data-server-key="dethecus"><code>dethecus</code></li>
-                      <li class="server-row" data-server-key="lethon"><code>lethon</code></li>
-                      <li class="server-row" data-server-key="blackwing-lair"><code>blackwing-lair</code></li>
-                      <li class="server-row" data-server-key="shadowmoon"><code>shadowmoon</code></li>
-                      <li class="server-row" data-server-key="haomarush"><code>haomarush</code></li>
-                      <li class="server-row" data-server-key="gallywix"><code>gallywix</code></li>
-                      <li class="server-row" data-server-key="greymane"><code>greymane</code></li>
-                      <li class="server-row" data-server-key="tanaris"><code>tanaris</code></li>
-                      <li class="server-row" data-server-key="kiljaeden"><code>kiljaeden</code></li>
-                      <li class="server-row" data-server-key="darkspear"><code>darkspear</code></li>
-                      <li class="server-row" data-server-key="bronzebeard"><code>bronzebeard</code></li>
-                      <li class="server-row" data-server-key="shandris"><code>shandris</code></li>
-                      <li class="server-row" data-server-key="chromaggus"><code>chromaggus</code></li>
-                      <li class="server-row" data-server-key="nathrezim"><code>nathrezim</code></li>
-                      <li class="server-row" data-server-key="smolderthorn"><code>smolderthorn</code></li>
-                      <li class="server-row" data-server-key="anubarak"><code>anubarak</code></li>
-                      <li class="server-row" data-server-key="arathor"><code>arathor</code></li>
-                      <li class="server-row" data-server-key="garithos"><code>garithos</code></li>
-                      <li class="server-row" data-server-key="drenden"><code>drenden</code></li>
-                      <li class="server-row" data-server-key="crushridge"><code>crushridge</code></li>
-                      <li class="server-row" data-server-key="warsong"><code>warsong</code></li>
-                      <li class="server-row" data-server-key="gorgonnash"><code>gorgonnash</code></li>
-                      <li class="server-row" data-server-key="the-forgotten-coast"><code>the-forgotten-coast</code></li>
-                      <li class="server-row" data-server-key="balnazzar"><code>balnazzar</code></li>
+                      <li class="server-row" data-server-key="altar-of-storms"><code>altar-of-storms</code></li>
                       <li class="server-row" data-server-key="alterac-mountains"><code>alterac-mountains</code></li>
-                      <li class="server-row" data-server-key="undermine"><code>undermine</code></li>
-                      <li class="server-row" data-server-key="anvilmar"><code>anvilmar</code></li>
-                      <li class="server-row" data-server-key="quelthalas"><code>quelthalas</code></li>
-                      <li class="server-row" data-server-key="goldrinn"><code>goldrinn</code></li>
-                      <li class="server-row" data-server-key="nemesis"><code>nemesis</code></li>
-                      <li class="server-row" data-server-key="tol-barad"><code>tol-barad</code></li>
-                      <li class="server-row" data-server-key="azralon"><code>azralon</code></li>
-                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
-                      <li class="server-row" data-server-key="malganis"><code>malganis</code></li>
-                      <li class="server-row" data-server-key="turalyon"><code>turalyon</code></li>
-                      <li class="server-row" data-server-key="moon-guard"><code>moon-guard</code></li>
-                      <li class="server-row" data-server-key="area-52"><code>area-52</code></li>
-                      <li class="server-row" data-server-key="thrall"><code>thrall</code></li>
-                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
-                      <li class="server-row" data-server-key="kelthuzad"><code>kelthuzad</code></li>
-                      <li class="server-row" data-server-key="lightbringer"><code>lightbringer</code></li>
-                      <li class="server-row" data-server-key="caelestrasz"><code>caelestrasz</code></li>
-                      <li class="server-row" data-server-key="nagrand"><code>nagrand</code></li>
-                      <li class="server-row" data-server-key="saurfang"><code>saurfang</code></li>
-                      <li class="server-row" data-server-key="barthilas"><code>barthilas</code></li>
-                      <li class="server-row" data-server-key="frostmourne"><code>frostmourne</code></li>
-                      <li class="server-row" data-server-key="dreadmaul"><code>dreadmaul</code></li>
-                      <li class="server-row" data-server-key="thaurissan"><code>thaurissan</code></li>
-                      <li class="server-row" data-server-key="jubeithos"><code>jubeithos</code></li>
-                      <li class="server-row" data-server-key="gundrak"><code>gundrak</code></li>
-                      <li class="server-row" data-server-key="khazgoroth"><code>khazgoroth</code></li>
                       <li class="server-row" data-server-key="amanthul"><code>amanthul</code></li>
+                      <li class="server-row" data-server-key="andorhal"><code>andorhal</code></li>
+                      <li class="server-row" data-server-key="anetheron"><code>anetheron</code></li>
+                      <li class="server-row" data-server-key="antonidas"><code>antonidas</code></li>
+                      <li class="server-row" data-server-key="anubarak"><code>anubarak</code></li>
+                      <li class="server-row" data-server-key="anvilmar"><code>anvilmar</code></li>
+                      <li class="server-row" data-server-key="arathor"><code>arathor</code></li>
+                      <li class="server-row" data-server-key="archimonde"><code>archimonde</code></li>
+                      <li class="server-row" data-server-key="area-52"><code>area-52</code></li>
+                      <li class="server-row" data-server-key="argent-dawn"><code>argent-dawn</code></li>
+                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
+                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
+                      <li class="server-row" data-server-key="auchindoun"><code>auchindoun</code></li>
+                      <li class="server-row" data-server-key="azgalor"><code>azgalor</code></li>
+                      <li class="server-row" data-server-key="azjolnerub"><code>azjolnerub</code></li>
+                      <li class="server-row" data-server-key="azralon"><code>azralon</code></li>
+                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
+                      <li class="server-row" data-server-key="azuremyst"><code>azuremyst</code></li>
+                      <li class="server-row" data-server-key="baelgun"><code>baelgun</code></li>
+                      <li class="server-row" data-server-key="balnazzar"><code>balnazzar</code></li>
+                      <li class="server-row" data-server-key="barthilas"><code>barthilas</code></li>
+                      <li class="server-row" data-server-key="black-dragonflight"><code>black-dragonflight</code></li>
+                      <li class="server-row" data-server-key="blackhand"><code>blackhand</code></li>
+                      <li class="server-row" data-server-key="blackrock"><code>blackrock</code></li>
+                      <li class="server-row" data-server-key="blackwater-raiders"><code>blackwater-raiders</code></li>
+                      <li class="server-row" data-server-key="blackwing-lair"><code>blackwing-lair</code></li>
+                      <li class="server-row" data-server-key="bladefist"><code>bladefist</code></li>
+                      <li class="server-row" data-server-key="blades-edge"><code>blades-edge</code></li>
+                      <li class="server-row" data-server-key="bleeding-hollow"><code>bleeding-hollow</code></li>
+                      <li class="server-row" data-server-key="blood-furnace"><code>blood-furnace</code></li>
+                      <li class="server-row" data-server-key="bloodhoof"><code>bloodhoof</code></li>
+                      <li class="server-row" data-server-key="bloodscalp"><code>bloodscalp</code></li>
+                      <li class="server-row" data-server-key="bonechewer"><code>bonechewer</code></li>
+                      <li class="server-row" data-server-key="borean-tundra"><code>borean-tundra</code></li>
+                      <li class="server-row" data-server-key="boulderfist"><code>boulderfist</code></li>
+                      <li class="server-row" data-server-key="bronzebeard"><code>bronzebeard</code></li>
+                      <li class="server-row" data-server-key="burning-blade"><code>burning-blade</code></li>
+                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
+                      <li class="server-row" data-server-key="caelestrasz"><code>caelestrasz</code></li>
+                      <li class="server-row" data-server-key="cairne"><code>cairne</code></li>
+                      <li class="server-row" data-server-key="cenarion-circle"><code>cenarion-circle</code></li>
+                      <li class="server-row" data-server-key="cenarius"><code>cenarius</code></li>
+                      <li class="server-row" data-server-key="chogall"><code>chogall</code></li>
+                      <li class="server-row" data-server-key="chromaggus"><code>chromaggus</code></li>
+                      <li class="server-row" data-server-key="coilfang"><code>coilfang</code></li>
+                      <li class="server-row" data-server-key="crushridge"><code>crushridge</code></li>
+                      <li class="server-row" data-server-key="daggerspine"><code>daggerspine</code></li>
+                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
+                      <li class="server-row" data-server-key="dalvengyr"><code>dalvengyr</code></li>
+                      <li class="server-row" data-server-key="dark-iron"><code>dark-iron</code></li>
+                      <li class="server-row" data-server-key="darkspear"><code>darkspear</code></li>
+                      <li class="server-row" data-server-key="darrowmere"><code>darrowmere</code></li>
                       <li class="server-row" data-server-key="dathremar"><code>dathremar</code></li>
+                      <li class="server-row" data-server-key="dawnbringer"><code>dawnbringer</code></li>
+                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
+                      <li class="server-row" data-server-key="demon-soul"><code>demon-soul</code></li>
+                      <li class="server-row" data-server-key="dentarg"><code>dentarg</code></li>
+                      <li class="server-row" data-server-key="destromath"><code>destromath</code></li>
+                      <li class="server-row" data-server-key="dethecus"><code>dethecus</code></li>
+                      <li class="server-row" data-server-key="detheroc"><code>detheroc</code></li>
+                      <li class="server-row" data-server-key="doomhammer"><code>doomhammer</code></li>
+                      <li class="server-row" data-server-key="draenor"><code>draenor</code></li>
+                      <li class="server-row" data-server-key="dragonblight"><code>dragonblight</code></li>
+                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
+                      <li class="server-row" data-server-key="draka"><code>draka</code></li>
+                      <li class="server-row" data-server-key="drakkari"><code>drakkari</code></li>
+                      <li class="server-row" data-server-key="draktharon"><code>draktharon</code></li>
+                      <li class="server-row" data-server-key="drakthul"><code>drakthul</code></li>
+                      <li class="server-row" data-server-key="dreadmaul"><code>dreadmaul</code></li>
+                      <li class="server-row" data-server-key="drenden"><code>drenden</code></li>
+                      <li class="server-row" data-server-key="dunemaul"><code>dunemaul</code></li>
+                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
+                      <li class="server-row" data-server-key="duskwood"><code>duskwood</code></li>
+                      <li class="server-row" data-server-key="earthen-ring"><code>earthen-ring</code></li>
+                      <li class="server-row" data-server-key="echo-isles"><code>echo-isles</code></li>
+                      <li class="server-row" data-server-key="eitrigg"><code>eitrigg</code></li>
+                      <li class="server-row" data-server-key="eldrethalas"><code>eldrethalas</code></li>
+                      <li class="server-row" data-server-key="elune"><code>elune</code></li>
+                      <li class="server-row" data-server-key="emerald-dream"><code>emerald-dream</code></li>
+                      <li class="server-row" data-server-key="eonar"><code>eonar</code></li>
+                      <li class="server-row" data-server-key="eredar"><code>eredar</code></li>
+                      <li class="server-row" data-server-key="executus"><code>executus</code></li>
+                      <li class="server-row" data-server-key="exodar"><code>exodar</code></li>
+                      <li class="server-row" data-server-key="farstriders"><code>farstriders</code></li>
+                      <li class="server-row" data-server-key="feathermoon"><code>feathermoon</code></li>
+                      <li class="server-row" data-server-key="fenris"><code>fenris</code></li>
+                      <li class="server-row" data-server-key="firetree"><code>firetree</code></li>
+                      <li class="server-row" data-server-key="fizzcrank"><code>fizzcrank</code></li>
+                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
+                      <li class="server-row" data-server-key="frostmourne"><code>frostmourne</code></li>
+                      <li class="server-row" data-server-key="frostwolf"><code>frostwolf</code></li>
+                      <li class="server-row" data-server-key="galakrond"><code>galakrond</code></li>
+                      <li class="server-row" data-server-key="gallywix"><code>gallywix</code></li>
+                      <li class="server-row" data-server-key="garithos"><code>garithos</code></li>
+                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
+                      <li class="server-row" data-server-key="garrosh"><code>garrosh</code></li>
+                      <li class="server-row" data-server-key="ghostlands"><code>ghostlands</code></li>
+                      <li class="server-row" data-server-key="gilneas"><code>gilneas</code></li>
+                      <li class="server-row" data-server-key="gnomeregan"><code>gnomeregan</code></li>
+                      <li class="server-row" data-server-key="goldrinn"><code>goldrinn</code></li>
+                      <li class="server-row" data-server-key="gorefiend"><code>gorefiend</code></li>
+                      <li class="server-row" data-server-key="gorgonnash"><code>gorgonnash</code></li>
+                      <li class="server-row" data-server-key="greymane"><code>greymane</code></li>
+                      <li class="server-row" data-server-key="grizzly-hills"><code>grizzly-hills</code></li>
+                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
+                      <li class="server-row" data-server-key="gundrak"><code>gundrak</code></li>
+                      <li class="server-row" data-server-key="gurubashi"><code>gurubashi</code></li>
+                      <li class="server-row" data-server-key="hakkar"><code>hakkar</code></li>
+                      <li class="server-row" data-server-key="haomarush"><code>haomarush</code></li>
+                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
+                      <li class="server-row" data-server-key="hydraxis"><code>hydraxis</code></li>
+                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
+                      <li class="server-row" data-server-key="icecrown"><code>icecrown</code></li>
+                      <li class="server-row" data-server-key="illidan"><code>illidan</code></li>
+                      <li class="server-row" data-server-key="jaedenar"><code>jaedenar</code></li>
+                      <li class="server-row" data-server-key="jubeithos"><code>jubeithos</code></li>
+                      <li class="server-row" data-server-key="kaelthas"><code>kaelthas</code></li>
+                      <li class="server-row" data-server-key="kalecgos"><code>kalecgos</code></li>
+                      <li class="server-row" data-server-key="kargath"><code>kargath</code></li>
+                      <li class="server-row" data-server-key="kelthuzad"><code>kelthuzad</code></li>
+                      <li class="server-row" data-server-key="khadgar"><code>khadgar</code></li>
+                      <li class="server-row" data-server-key="khaz-modan"><code>khaz-modan</code></li>
+                      <li class="server-row" data-server-key="khazgoroth"><code>khazgoroth</code></li>
+                      <li class="server-row" data-server-key="kiljaeden"><code>kiljaeden</code></li>
+                      <li class="server-row" data-server-key="kilrogg"><code>kilrogg</code></li>
+                      <li class="server-row" data-server-key="kirin-tor"><code>kirin-tor</code></li>
+                      <li class="server-row" data-server-key="korgath"><code>korgath</code></li>
+                      <li class="server-row" data-server-key="korialstrasz"><code>korialstrasz</code></li>
+                      <li class="server-row" data-server-key="kul-tiras"><code>kul-tiras</code></li>
+                      <li class="server-row" data-server-key="laughing-skull"><code>laughing-skull</code></li>
+                      <li class="server-row" data-server-key="lethon"><code>lethon</code></li>
+                      <li class="server-row" data-server-key="lightbringer"><code>lightbringer</code></li>
+                      <li class="server-row" data-server-key="lightninghoof"><code>lightninghoof</code></li>
+                      <li class="server-row" data-server-key="lightnings-blade"><code>lightnings-blade</code></li>
+                      <li class="server-row" data-server-key="llane"><code>llane</code></li>
+                      <li class="server-row" data-server-key="lothar"><code>lothar</code></li>
+                      <li class="server-row" data-server-key="madoran"><code>madoran</code></li>
+                      <li class="server-row" data-server-key="maelstrom"><code>maelstrom</code></li>
+                      <li class="server-row" data-server-key="magtheridon"><code>magtheridon</code></li>
+                      <li class="server-row" data-server-key="maiev"><code>maiev</code></li>
+                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
+                      <li class="server-row" data-server-key="malganis"><code>malganis</code></li>
+                      <li class="server-row" data-server-key="malorne"><code>malorne</code></li>
+                      <li class="server-row" data-server-key="malygos"><code>malygos</code></li>
+                      <li class="server-row" data-server-key="mannoroth"><code>mannoroth</code></li>
+                      <li class="server-row" data-server-key="medivh"><code>medivh</code></li>
+                      <li class="server-row" data-server-key="misha"><code>misha</code></li>
+                      <li class="server-row" data-server-key="moknathal"><code>moknathal</code></li>
+                      <li class="server-row" data-server-key="moon-guard"><code>moon-guard</code></li>
+                      <li class="server-row" data-server-key="moonrunner"><code>moonrunner</code></li>
+                      <li class="server-row" data-server-key="mugthol"><code>mugthol</code></li>
+                      <li class="server-row" data-server-key="muradin"><code>muradin</code></li>
+                      <li class="server-row" data-server-key="nagrand"><code>nagrand</code></li>
+                      <li class="server-row" data-server-key="nathrezim"><code>nathrezim</code></li>
+                      <li class="server-row" data-server-key="nazgrel"><code>nazgrel</code></li>
+                      <li class="server-row" data-server-key="nazjatar"><code>nazjatar</code></li>
+                      <li class="server-row" data-server-key="nemesis"><code>nemesis</code></li>
+                      <li class="server-row" data-server-key="nerzhul"><code>nerzhul</code></li>
+                      <li class="server-row" data-server-key="nesingwary"><code>nesingwary</code></li>
+                      <li class="server-row" data-server-key="nordrassil"><code>nordrassil</code></li>
+                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
+                      <li class="server-row" data-server-key="onyxia"><code>onyxia</code></li>
+                      <li class="server-row" data-server-key="perenolde"><code>perenolde</code></li>
+                      <li class="server-row" data-server-key="proudmoore"><code>proudmoore</code></li>
+                      <li class="server-row" data-server-key="queldorei"><code>queldorei</code></li>
+                      <li class="server-row" data-server-key="quelthalas"><code>quelthalas</code></li>
+                      <li class="server-row" data-server-key="ragnaros"><code>ragnaros</code></li>
+                      <li class="server-row" data-server-key="ravencrest"><code>ravencrest</code></li>
+                      <li class="server-row" data-server-key="ravenholdt"><code>ravenholdt</code></li>
+                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
+                      <li class="server-row" data-server-key="rivendare"><code>rivendare</code></li>
+                      <li class="server-row" data-server-key="runetotem"><code>runetotem</code></li>
+                      <li class="server-row" data-server-key="sargeras"><code>sargeras</code></li>
+                      <li class="server-row" data-server-key="saurfang"><code>saurfang</code></li>
+                      <li class="server-row" data-server-key="scarlet-crusade"><code>scarlet-crusade</code></li>
+                      <li class="server-row" data-server-key="scilla"><code>scilla</code></li>
+                      <li class="server-row" data-server-key="senjin"><code>senjin</code></li>
+                      <li class="server-row" data-server-key="sentinels"><code>sentinels</code></li>
+                      <li class="server-row" data-server-key="shadow-council"><code>shadow-council</code></li>
+                      <li class="server-row" data-server-key="shadowmoon"><code>shadowmoon</code></li>
+                      <li class="server-row" data-server-key="shadowsong"><code>shadowsong</code></li>
+                      <li class="server-row" data-server-key="shandris"><code>shandris</code></li>
+                      <li class="server-row" data-server-key="shattered-halls"><code>shattered-halls</code></li>
+                      <li class="server-row" data-server-key="shattered-hand"><code>shattered-hand</code></li>
+                      <li class="server-row" data-server-key="shuhalo"><code>shuhalo</code></li>
+                      <li class="server-row" data-server-key="silver-hand"><code>silver-hand</code></li>
+                      <li class="server-row" data-server-key="silvermoon"><code>silvermoon</code></li>
+                      <li class="server-row" data-server-key="sisters-of-elune"><code>sisters-of-elune</code></li>
+                      <li class="server-row" data-server-key="skullcrusher"><code>skullcrusher</code></li>
+                      <li class="server-row" data-server-key="skywall"><code>skywall</code></li>
+                      <li class="server-row" data-server-key="smolderthorn"><code>smolderthorn</code></li>
+                      <li class="server-row" data-server-key="spinebreaker"><code>spinebreaker</code></li>
+                      <li class="server-row" data-server-key="spirestone"><code>spirestone</code></li>
+                      <li class="server-row" data-server-key="staghelm"><code>staghelm</code></li>
+                      <li class="server-row" data-server-key="steamwheedle-cartel"><code>steamwheedle-cartel</code></li>
+                      <li class="server-row" data-server-key="stonemaul"><code>stonemaul</code></li>
+                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
+                      <li class="server-row" data-server-key="stormreaver"><code>stormreaver</code></li>
+                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
+                      <li class="server-row" data-server-key="suramar"><code>suramar</code></li>
+                      <li class="server-row" data-server-key="tanaris"><code>tanaris</code></li>
+                      <li class="server-row" data-server-key="terenas"><code>terenas</code></li>
+                      <li class="server-row" data-server-key="terokkar"><code>terokkar</code></li>
+                      <li class="server-row" data-server-key="thaurissan"><code>thaurissan</code></li>
+                      <li class="server-row" data-server-key="the-forgotten-coast"><code>the-forgotten-coast</code></li>
+                      <li class="server-row" data-server-key="the-scryers"><code>the-scryers</code></li>
+                      <li class="server-row" data-server-key="the-underbog"><code>the-underbog</code></li>
+                      <li class="server-row" data-server-key="the-venture-co"><code>the-venture-co</code></li>
+                      <li class="server-row" data-server-key="thorium-brotherhood"><code>thorium-brotherhood</code></li>
+                      <li class="server-row" data-server-key="thrall"><code>thrall</code></li>
+                      <li class="server-row" data-server-key="thunderhorn"><code>thunderhorn</code></li>
+                      <li class="server-row" data-server-key="thunderlord"><code>thunderlord</code></li>
+                      <li class="server-row" data-server-key="tichondrius"><code>tichondrius</code></li>
+                      <li class="server-row" data-server-key="tol-barad"><code>tol-barad</code></li>
+                      <li class="server-row" data-server-key="tortheldrin"><code>tortheldrin</code></li>
+                      <li class="server-row" data-server-key="trollbane"><code>trollbane</code></li>
+                      <li class="server-row" data-server-key="turalyon"><code>turalyon</code></li>
+                      <li class="server-row" data-server-key="twisting-nether"><code>twisting-nether</code></li>
+                      <li class="server-row" data-server-key="uldaman"><code>uldaman</code></li>
+                      <li class="server-row" data-server-key="uldum"><code>uldum</code></li>
+                      <li class="server-row" data-server-key="undermine"><code>undermine</code></li>
+                      <li class="server-row" data-server-key="ursin"><code>ursin</code></li>
+                      <li class="server-row" data-server-key="uther"><code>uther</code></li>
+                      <li class="server-row" data-server-key="vashj"><code>vashj</code></li>
+                      <li class="server-row" data-server-key="veknilash"><code>veknilash</code></li>
+                      <li class="server-row" data-server-key="velen"><code>velen</code></li>
+                      <li class="server-row" data-server-key="warsong"><code>warsong</code></li>
+                      <li class="server-row" data-server-key="whisperwind"><code>whisperwind</code></li>
+                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
+                      <li class="server-row" data-server-key="windrunner"><code>windrunner</code></li>
+                      <li class="server-row" data-server-key="winterhoof"><code>winterhoof</code></li>
+                      <li class="server-row" data-server-key="wyrmrest-accord"><code>wyrmrest-accord</code></li>
+                      <li class="server-row" data-server-key="ysera"><code>ysera</code></li>
+                      <li class="server-row" data-server-key="ysondre"><code>ysondre</code></li>
+                      <li class="server-row" data-server-key="zangarmarsh"><code>zangarmarsh</code></li>
+                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
+                      <li class="server-row" data-server-key="zuluhed"><code>zuluhed</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-wow-region-list="eu"
+                      aria-label="World of Warcraft EU servers"
+ hidden>
+                      <li class="server-row" data-server-key="aegwynn"><code>aegwynn</code></li>
+                      <li class="server-row" data-server-key="aerie-peak"><code>aerie-peak</code></li>
+                      <li class="server-row" data-server-key="agamaggan"><code>agamaggan</code></li>
+                      <li class="server-row" data-server-key="aggra-português"><code>aggra-português</code></li>
+                      <li class="server-row" data-server-key="aggramar"><code>aggramar</code></li>
+                      <li class="server-row" data-server-key="ahnqiraj"><code>ahnqiraj</code></li>
+                      <li class="server-row" data-server-key="alakir"><code>alakir</code></li>
+                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
+                      <li class="server-row" data-server-key="alleria"><code>alleria</code></li>
+                      <li class="server-row" data-server-key="alonsus"><code>alonsus</code></li>
+                      <li class="server-row" data-server-key="amanthul"><code>amanthul</code></li>
+                      <li class="server-row" data-server-key="ambossar"><code>ambossar</code></li>
+                      <li class="server-row" data-server-key="anachronos"><code>anachronos</code></li>
+                      <li class="server-row" data-server-key="anetheron"><code>anetheron</code></li>
+                      <li class="server-row" data-server-key="antonidas"><code>antonidas</code></li>
+                      <li class="server-row" data-server-key="anubarak"><code>anubarak</code></li>
+                      <li class="server-row" data-server-key="arakarahm"><code>arakarahm</code></li>
+                      <li class="server-row" data-server-key="arathi"><code>arathi</code></li>
+                      <li class="server-row" data-server-key="arathor"><code>arathor</code></li>
+                      <li class="server-row" data-server-key="archimonde"><code>archimonde</code></li>
+                      <li class="server-row" data-server-key="area-52"><code>area-52</code></li>
+                      <li class="server-row" data-server-key="argent-dawn"><code>argent-dawn</code></li>
+                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
+                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
+                      <li class="server-row" data-server-key="ashenvale"><code>ashenvale</code></li>
+                      <li class="server-row" data-server-key="aszune"><code>aszune</code></li>
+                      <li class="server-row" data-server-key="auchindoun"><code>auchindoun</code></li>
+                      <li class="server-row" data-server-key="azjolnerub"><code>azjolnerub</code></li>
+                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
+                      <li class="server-row" data-server-key="azuregos"><code>azuregos</code></li>
+                      <li class="server-row" data-server-key="azuremyst"><code>azuremyst</code></li>
+                      <li class="server-row" data-server-key="baelgun"><code>baelgun</code></li>
+                      <li class="server-row" data-server-key="balnazzar"><code>balnazzar</code></li>
+                      <li class="server-row" data-server-key="blackhand"><code>blackhand</code></li>
+                      <li class="server-row" data-server-key="blackmoore"><code>blackmoore</code></li>
+                      <li class="server-row" data-server-key="blackrock"><code>blackrock</code></li>
+                      <li class="server-row" data-server-key="blackscar"><code>blackscar</code></li>
+                      <li class="server-row" data-server-key="bladefist"><code>bladefist</code></li>
+                      <li class="server-row" data-server-key="blades-edge"><code>blades-edge</code></li>
+                      <li class="server-row" data-server-key="bloodfeather"><code>bloodfeather</code></li>
+                      <li class="server-row" data-server-key="bloodhoof"><code>bloodhoof</code></li>
+                      <li class="server-row" data-server-key="bloodscalp"><code>bloodscalp</code></li>
+                      <li class="server-row" data-server-key="blutkessel"><code>blutkessel</code></li>
+                      <li class="server-row" data-server-key="booty-bay"><code>booty-bay</code></li>
+                      <li class="server-row" data-server-key="borean-tundra"><code>borean-tundra</code></li>
+                      <li class="server-row" data-server-key="boulderfist"><code>boulderfist</code></li>
+                      <li class="server-row" data-server-key="bronze-dragonflight"><code>bronze-dragonflight</code></li>
+                      <li class="server-row" data-server-key="bronzebeard"><code>bronzebeard</code></li>
+                      <li class="server-row" data-server-key="burning-blade"><code>burning-blade</code></li>
+                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
+                      <li class="server-row" data-server-key="burning-steppes"><code>burning-steppes</code></li>
+                      <li class="server-row" data-server-key="chamber-of-aspects"><code>chamber-of-aspects</code></li>
+                      <li class="server-row" data-server-key="chants-éternels"><code>chants-éternels</code></li>
+                      <li class="server-row" data-server-key="chogall"><code>chogall</code></li>
+                      <li class="server-row" data-server-key="chromaggus"><code>chromaggus</code></li>
+                      <li class="server-row" data-server-key="colinas-pardas"><code>colinas-pardas</code></li>
+                      <li class="server-row" data-server-key="confrérie-du-thorium"><code>confrérie-du-thorium</code></li>
+                      <li class="server-row" data-server-key="conseil-des-ombres"><code>conseil-des-ombres</code></li>
+                      <li class="server-row" data-server-key="crushridge"><code>crushridge</code></li>
+                      <li class="server-row" data-server-key="cthun"><code>cthun</code></li>
+                      <li class="server-row" data-server-key="culte-de-la-rive-noire"><code>culte-de-la-rive-noire</code></li>
+                      <li class="server-row" data-server-key="daggerspine"><code>daggerspine</code></li>
+                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
+                      <li class="server-row" data-server-key="dalvengyr"><code>dalvengyr</code></li>
+                      <li class="server-row" data-server-key="darkmoon-faire"><code>darkmoon-faire</code></li>
+                      <li class="server-row" data-server-key="darksorrow"><code>darksorrow</code></li>
+                      <li class="server-row" data-server-key="darkspear"><code>darkspear</code></li>
+                      <li class="server-row" data-server-key="das-konsortium"><code>das-konsortium</code></li>
+                      <li class="server-row" data-server-key="das-syndikat"><code>das-syndikat</code></li>
+                      <li class="server-row" data-server-key="deathguard"><code>deathguard</code></li>
+                      <li class="server-row" data-server-key="deathweaver"><code>deathweaver</code></li>
+                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
+                      <li class="server-row" data-server-key="deepholm"><code>deepholm</code></li>
+                      <li class="server-row" data-server-key="defias-brotherhood"><code>defias-brotherhood</code></li>
+                      <li class="server-row" data-server-key="dentarg"><code>dentarg</code></li>
+                      <li class="server-row" data-server-key="der-abyssische-rat"><code>der-abyssische-rat</code></li>
+                      <li class="server-row" data-server-key="der-mithrilorden"><code>der-mithrilorden</code></li>
+                      <li class="server-row" data-server-key="der-rat-von-dalaran"><code>der-rat-von-dalaran</code></li>
+                      <li class="server-row" data-server-key="destromath"><code>destromath</code></li>
+                      <li class="server-row" data-server-key="dethecus"><code>dethecus</code></li>
+                      <li class="server-row" data-server-key="die-aldor"><code>die-aldor</code></li>
+                      <li class="server-row" data-server-key="die-arguswacht"><code>die-arguswacht</code></li>
+                      <li class="server-row" data-server-key="die-ewige-wacht"><code>die-ewige-wacht</code></li>
+                      <li class="server-row" data-server-key="die-nachtwache"><code>die-nachtwache</code></li>
+                      <li class="server-row" data-server-key="die-silberne-hand"><code>die-silberne-hand</code></li>
+                      <li class="server-row" data-server-key="die-todeskrallen"><code>die-todeskrallen</code></li>
+                      <li class="server-row" data-server-key="doomhammer"><code>doomhammer</code></li>
+                      <li class="server-row" data-server-key="draenor"><code>draenor</code></li>
+                      <li class="server-row" data-server-key="dragonblight"><code>dragonblight</code></li>
+                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
+                      <li class="server-row" data-server-key="drakthul"><code>drakthul</code></li>
+                      <li class="server-row" data-server-key="drekthar"><code>drekthar</code></li>
+                      <li class="server-row" data-server-key="dun-modr"><code>dun-modr</code></li>
+                      <li class="server-row" data-server-key="dun-morogh"><code>dun-morogh</code></li>
+                      <li class="server-row" data-server-key="dunemaul"><code>dunemaul</code></li>
+                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
+                      <li class="server-row" data-server-key="earthen-ring"><code>earthen-ring</code></li>
+                      <li class="server-row" data-server-key="echsenkessel"><code>echsenkessel</code></li>
+                      <li class="server-row" data-server-key="eitrigg"><code>eitrigg</code></li>
+                      <li class="server-row" data-server-key="eldrethalas"><code>eldrethalas</code></li>
+                      <li class="server-row" data-server-key="elune"><code>elune</code></li>
+                      <li class="server-row" data-server-key="emerald-dream"><code>emerald-dream</code></li>
+                      <li class="server-row" data-server-key="emeriss"><code>emeriss</code></li>
+                      <li class="server-row" data-server-key="eonar"><code>eonar</code></li>
+                      <li class="server-row" data-server-key="eredar"><code>eredar</code></li>
+                      <li class="server-row" data-server-key="eversong"><code>eversong</code></li>
+                      <li class="server-row" data-server-key="executus"><code>executus</code></li>
+                      <li class="server-row" data-server-key="exodar"><code>exodar</code></li>
+                      <li class="server-row" data-server-key="festung-der-stürme"><code>festung-der-stürme</code></li>
+                      <li class="server-row" data-server-key="fordragon"><code>fordragon</code></li>
+                      <li class="server-row" data-server-key="forscherliga"><code>forscherliga</code></li>
+                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
+                      <li class="server-row" data-server-key="frostmourne"><code>frostmourne</code></li>
+                      <li class="server-row" data-server-key="frostwhisper"><code>frostwhisper</code></li>
+                      <li class="server-row" data-server-key="frostwolf"><code>frostwolf</code></li>
+                      <li class="server-row" data-server-key="galakrond"><code>galakrond</code></li>
+                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
+                      <li class="server-row" data-server-key="garrosh"><code>garrosh</code></li>
+                      <li class="server-row" data-server-key="genjuros"><code>genjuros</code></li>
+                      <li class="server-row" data-server-key="ghostlands"><code>ghostlands</code></li>
+                      <li class="server-row" data-server-key="gilneas"><code>gilneas</code></li>
+                      <li class="server-row" data-server-key="goldrinn"><code>goldrinn</code></li>
+                      <li class="server-row" data-server-key="gordunni"><code>gordunni</code></li>
+                      <li class="server-row" data-server-key="gorgonnash"><code>gorgonnash</code></li>
+                      <li class="server-row" data-server-key="greymane"><code>greymane</code></li>
+                      <li class="server-row" data-server-key="grim-batol"><code>grim-batol</code></li>
+                      <li class="server-row" data-server-key="grom"><code>grom</code></li>
+                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
+                      <li class="server-row" data-server-key="hakkar"><code>hakkar</code></li>
+                      <li class="server-row" data-server-key="haomarush"><code>haomarush</code></li>
+                      <li class="server-row" data-server-key="hellfire"><code>hellfire</code></li>
+                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
+                      <li class="server-row" data-server-key="howling-fjord"><code>howling-fjord</code></li>
+                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
+                      <li class="server-row" data-server-key="illidan"><code>illidan</code></li>
+                      <li class="server-row" data-server-key="jaedenar"><code>jaedenar</code></li>
+                      <li class="server-row" data-server-key="kaelthas"><code>kaelthas</code></li>
+                      <li class="server-row" data-server-key="karazhan"><code>karazhan</code></li>
+                      <li class="server-row" data-server-key="kargath"><code>kargath</code></li>
+                      <li class="server-row" data-server-key="kazzak"><code>kazzak</code></li>
+                      <li class="server-row" data-server-key="kelthuzad"><code>kelthuzad</code></li>
+                      <li class="server-row" data-server-key="khadgar"><code>khadgar</code></li>
+                      <li class="server-row" data-server-key="khaz-modan"><code>khaz-modan</code></li>
+                      <li class="server-row" data-server-key="khazgoroth"><code>khazgoroth</code></li>
+                      <li class="server-row" data-server-key="kiljaeden"><code>kiljaeden</code></li>
+                      <li class="server-row" data-server-key="kilrogg"><code>kilrogg</code></li>
+                      <li class="server-row" data-server-key="kirin-tor"><code>kirin-tor</code></li>
+                      <li class="server-row" data-server-key="korgall"><code>korgall</code></li>
+                      <li class="server-row" data-server-key="kragjin"><code>kragjin</code></li>
+                      <li class="server-row" data-server-key="krasus"><code>krasus</code></li>
+                      <li class="server-row" data-server-key="kul-tiras"><code>kul-tiras</code></li>
+                      <li class="server-row" data-server-key="kult-der-verdammten"><code>kult-der-verdammten</code></li>
+                      <li class="server-row" data-server-key="la-croisade-écarlate"><code>la-croisade-écarlate</code></li>
+                      <li class="server-row" data-server-key="laughing-skull"><code>laughing-skull</code></li>
+                      <li class="server-row" data-server-key="les-clairvoyants"><code>les-clairvoyants</code></li>
+                      <li class="server-row" data-server-key="les-sentinelles"><code>les-sentinelles</code></li>
+                      <li class="server-row" data-server-key="lich-king"><code>lich-king</code></li>
+                      <li class="server-row" data-server-key="lightbringer"><code>lightbringer</code></li>
+                      <li class="server-row" data-server-key="lightnings-blade"><code>lightnings-blade</code></li>
+                      <li class="server-row" data-server-key="lordaeron"><code>lordaeron</code></li>
+                      <li class="server-row" data-server-key="los-errantes"><code>los-errantes</code></li>
+                      <li class="server-row" data-server-key="lothar"><code>lothar</code></li>
+                      <li class="server-row" data-server-key="madmortem"><code>madmortem</code></li>
+                      <li class="server-row" data-server-key="magtheridon"><code>magtheridon</code></li>
+                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
+                      <li class="server-row" data-server-key="malganis"><code>malganis</code></li>
+                      <li class="server-row" data-server-key="malorne"><code>malorne</code></li>
+                      <li class="server-row" data-server-key="malygos"><code>malygos</code></li>
+                      <li class="server-row" data-server-key="mannoroth"><code>mannoroth</code></li>
+                      <li class="server-row" data-server-key="marécage-de-zangar"><code>marécage-de-zangar</code></li>
+                      <li class="server-row" data-server-key="mazrigos"><code>mazrigos</code></li>
+                      <li class="server-row" data-server-key="medivh"><code>medivh</code></li>
+                      <li class="server-row" data-server-key="minahonda"><code>minahonda</code></li>
+                      <li class="server-row" data-server-key="moonglade"><code>moonglade</code></li>
+                      <li class="server-row" data-server-key="mugthol"><code>mugthol</code></li>
+                      <li class="server-row" data-server-key="nagrand"><code>nagrand</code></li>
+                      <li class="server-row" data-server-key="nathrezim"><code>nathrezim</code></li>
+                      <li class="server-row" data-server-key="naxxramas"><code>naxxramas</code></li>
+                      <li class="server-row" data-server-key="nazjatar"><code>nazjatar</code></li>
+                      <li class="server-row" data-server-key="nefarian"><code>nefarian</code></li>
+                      <li class="server-row" data-server-key="nemesis"><code>nemesis</code></li>
+                      <li class="server-row" data-server-key="neptulon"><code>neptulon</code></li>
+                      <li class="server-row" data-server-key="nerathor"><code>nerathor</code></li>
+                      <li class="server-row" data-server-key="nerzhul"><code>nerzhul</code></li>
+                      <li class="server-row" data-server-key="nethersturm"><code>nethersturm</code></li>
+                      <li class="server-row" data-server-key="nordrassil"><code>nordrassil</code></li>
+                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
+                      <li class="server-row" data-server-key="nozdormu"><code>nozdormu</code></li>
+                      <li class="server-row" data-server-key="onyxia"><code>onyxia</code></li>
+                      <li class="server-row" data-server-key="outland"><code>outland</code></li>
+                      <li class="server-row" data-server-key="perenolde"><code>perenolde</code></li>
+                      <li class="server-row" data-server-key="pozzo-delleternità"><code>pozzo-delleternità</code></li>
+                      <li class="server-row" data-server-key="proudmoore"><code>proudmoore</code></li>
+                      <li class="server-row" data-server-key="quelthalas"><code>quelthalas</code></li>
+                      <li class="server-row" data-server-key="ragnaros"><code>ragnaros</code></li>
+                      <li class="server-row" data-server-key="rajaxx"><code>rajaxx</code></li>
+                      <li class="server-row" data-server-key="rashgarroth"><code>rashgarroth</code></li>
+                      <li class="server-row" data-server-key="ravencrest"><code>ravencrest</code></li>
+                      <li class="server-row" data-server-key="ravenholdt"><code>ravenholdt</code></li>
+                      <li class="server-row" data-server-key="razuvious"><code>razuvious</code></li>
+                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
+                      <li class="server-row" data-server-key="runetotem"><code>runetotem</code></li>
+                      <li class="server-row" data-server-key="sanguino"><code>sanguino</code></li>
+                      <li class="server-row" data-server-key="sargeras"><code>sargeras</code></li>
+                      <li class="server-row" data-server-key="saurfang"><code>saurfang</code></li>
+                      <li class="server-row" data-server-key="scarshield-legion"><code>scarshield-legion</code></li>
+                      <li class="server-row" data-server-key="senjin"><code>senjin</code></li>
+                      <li class="server-row" data-server-key="shadowsong"><code>shadowsong</code></li>
+                      <li class="server-row" data-server-key="shattered-halls"><code>shattered-halls</code></li>
+                      <li class="server-row" data-server-key="shattered-hand"><code>shattered-hand</code></li>
+                      <li class="server-row" data-server-key="shattrath"><code>shattrath</code></li>
+                      <li class="server-row" data-server-key="shendralar"><code>shendralar</code></li>
+                      <li class="server-row" data-server-key="silvermoon"><code>silvermoon</code></li>
+                      <li class="server-row" data-server-key="sinstralis"><code>sinstralis</code></li>
+                      <li class="server-row" data-server-key="skullcrusher"><code>skullcrusher</code></li>
+                      <li class="server-row" data-server-key="soulflayer"><code>soulflayer</code></li>
+                      <li class="server-row" data-server-key="spinebreaker"><code>spinebreaker</code></li>
+                      <li class="server-row" data-server-key="sporeggar"><code>sporeggar</code></li>
+                      <li class="server-row" data-server-key="steamwheedle-cartel"><code>steamwheedle-cartel</code></li>
+                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
+                      <li class="server-row" data-server-key="stormreaver"><code>stormreaver</code></li>
+                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
+                      <li class="server-row" data-server-key="sunstrider"><code>sunstrider</code></li>
+                      <li class="server-row" data-server-key="suramar"><code>suramar</code></li>
+                      <li class="server-row" data-server-key="sylvanas"><code>sylvanas</code></li>
+                      <li class="server-row" data-server-key="taerar"><code>taerar</code></li>
+                      <li class="server-row" data-server-key="talnivarr"><code>talnivarr</code></li>
+                      <li class="server-row" data-server-key="tarren-mill"><code>tarren-mill</code></li>
+                      <li class="server-row" data-server-key="teldrassil"><code>teldrassil</code></li>
+                      <li class="server-row" data-server-key="temple-noir"><code>temple-noir</code></li>
+                      <li class="server-row" data-server-key="terenas"><code>terenas</code></li>
+                      <li class="server-row" data-server-key="terokkar"><code>terokkar</code></li>
+                      <li class="server-row" data-server-key="terrordar"><code>terrordar</code></li>
+                      <li class="server-row" data-server-key="the-maelstrom"><code>the-maelstrom</code></li>
+                      <li class="server-row" data-server-key="the-shatar"><code>the-shatar</code></li>
+                      <li class="server-row" data-server-key="the-venture-co"><code>the-venture-co</code></li>
+                      <li class="server-row" data-server-key="theradras"><code>theradras</code></li>
+                      <li class="server-row" data-server-key="thermaplugg"><code>thermaplugg</code></li>
+                      <li class="server-row" data-server-key="thrall"><code>thrall</code></li>
+                      <li class="server-row" data-server-key="throkferoth"><code>throkferoth</code></li>
+                      <li class="server-row" data-server-key="thunderhorn"><code>thunderhorn</code></li>
+                      <li class="server-row" data-server-key="tichondrius"><code>tichondrius</code></li>
+                      <li class="server-row" data-server-key="tirion"><code>tirion</code></li>
+                      <li class="server-row" data-server-key="todeswache"><code>todeswache</code></li>
+                      <li class="server-row" data-server-key="trollbane"><code>trollbane</code></li>
+                      <li class="server-row" data-server-key="turalyon"><code>turalyon</code></li>
+                      <li class="server-row" data-server-key="twilights-hammer"><code>twilights-hammer</code></li>
+                      <li class="server-row" data-server-key="twisting-nether"><code>twisting-nether</code></li>
+                      <li class="server-row" data-server-key="tyrande"><code>tyrande</code></li>
+                      <li class="server-row" data-server-key="uldaman"><code>uldaman</code></li>
+                      <li class="server-row" data-server-key="ulduar"><code>ulduar</code></li>
+                      <li class="server-row" data-server-key="uldum"><code>uldum</code></li>
+                      <li class="server-row" data-server-key="ungoro"><code>ungoro</code></li>
+                      <li class="server-row" data-server-key="varimathras"><code>varimathras</code></li>
+                      <li class="server-row" data-server-key="vashj"><code>vashj</code></li>
+                      <li class="server-row" data-server-key="veklor"><code>veklor</code></li>
+                      <li class="server-row" data-server-key="veknilash"><code>veknilash</code></li>
+                      <li class="server-row" data-server-key="voljin"><code>voljin</code></li>
+                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
+                      <li class="server-row" data-server-key="wrathbringer"><code>wrathbringer</code></li>
+                      <li class="server-row" data-server-key="xavius"><code>xavius</code></li>
+                      <li class="server-row" data-server-key="ysera"><code>ysera</code></li>
+                      <li class="server-row" data-server-key="ysondre"><code>ysondre</code></li>
+                      <li class="server-row" data-server-key="zenedar"><code>zenedar</code></li>
+                      <li class="server-row" data-server-key="zirkel-des-cenarius"><code>zirkel-des-cenarius</code></li>
+                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
+                      <li class="server-row" data-server-key="zuluhed"><code>zuluhed</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-wow-region-list="kr"
+                      aria-label="World of Warcraft KR servers"
+ hidden>
+                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
+                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
+                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
+                      <li class="server-row" data-server-key="cenarius"><code>cenarius</code></li>
+                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
+                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
+                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
+                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
+                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
+                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
+                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
+                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
+                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
+                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
+                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
+                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
+                      <li class="server-row" data-server-key="windrunner"><code>windrunner</code></li>
+                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-wow-region-list="tw"
+                      aria-label="World of Warcraft TW servers"
+ hidden>
+                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
+                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
+                      <li class="server-row" data-server-key="bleeding-hollow"><code>bleeding-hollow</code></li>
+                      <li class="server-row" data-server-key="chillwind-point"><code>chillwind-point</code></li>
+                      <li class="server-row" data-server-key="crystalpine-stinger"><code>crystalpine-stinger</code></li>
+                      <li class="server-row" data-server-key="demon-fall-canyon"><code>demon-fall-canyon</code></li>
+                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
+                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
+                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
+                      <li class="server-row" data-server-key="icecrown"><code>icecrown</code></li>
+                      <li class="server-row" data-server-key="krol-blade"><code>krol-blade</code></li>
+                      <li class="server-row" data-server-key="lights-hope"><code>lights-hope</code></li>
+                      <li class="server-row" data-server-key="menethil"><code>menethil</code></li>
+                      <li class="server-row" data-server-key="nightsong"><code>nightsong</code></li>
+                      <li class="server-row" data-server-key="old-blanchy"><code>old-blanchy</code></li>
+                      <li class="server-row" data-server-key="order-of-the-cloud-serpent"><code>order-of-the-cloud-serpent</code></li>
+                      <li class="server-row" data-server-key="queldorei"><code>queldorei</code></li>
+                      <li class="server-row" data-server-key="shadowmoon"><code>shadowmoon</code></li>
+                      <li class="server-row" data-server-key="silverwing-hold"><code>silverwing-hold</code></li>
+                      <li class="server-row" data-server-key="skywall"><code>skywall</code></li>
+                      <li class="server-row" data-server-key="spirestone"><code>spirestone</code></li>
+                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
+                      <li class="server-row" data-server-key="sundown-marsh"><code>sundown-marsh</code></li>
+                      <li class="server-row" data-server-key="whisperwind"><code>whisperwind</code></li>
+                      <li class="server-row" data-server-key="world-tree"><code>world-tree</code></li>
+                      <li class="server-row" data-server-key="wrathbringer"><code>wrathbringer</code></li>
+                      <li class="server-row" data-server-key="zealot-blade"><code>zealot-blade</code></li>
                     </ul>
                   </div>
                 </div>
-              </div>
-            </details>
           </div>
         </div>
       </section>
@@ -604,7 +982,12 @@
           </div>
 
           <ul class="steps" aria-label="Upcoming changes list">
-            <li><strong>EU region support</strong> for supported games</li>
+            <li class="upcoming-shipped">
+              <span class="upcoming-badge">Added!</span>
+              <span class="upcoming-shipped__text"
+                ><strong>Multi-region support</strong> for supported games</span
+              >
+            </li>
             <li><strong>Direct message (DM) alerts</strong>, not limited to server channels</li>
             <li>
               <strong>More games</strong>, including <strong>Final Fantasy XIV Online</strong> and <strong>Old School RuneScape</strong>
@@ -622,6 +1005,56 @@
 
           <article class="changelog">
             <details class="changelog-entry" open>
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.1</span>
+                <span class="muted">2026-05-26</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong>Multi-region World of Warcraft</strong> — the bot supports realms in
+                      <strong>US, EU, Korea (KR), and Taiwan (TW)</strong>, not only US. You pick a region when subscribing or
+                      checking status so the same realm name in different regions is handled correctly.
+                    </li>
+                    <li>
+                      <strong><code>/regions</code></strong> — list which regions are available for a game (for WoW:
+                      <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>).
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="changelog-section">
+                  <h4 class="h4">Changed</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/subscribe</code></strong> — adds a required <strong><code>region</code></strong> option.
+                      Autocomplete order is <strong>game → region → server</strong> (type to search at each step). New
+                      subscriptions are labeled <strong><code>game-region-server</code></strong> (e.g.
+                      <code>wow-eu-kazzak</code>).
+                    </li>
+                    <li>
+                      <strong><code>/unsubscribe</code></strong> — subscription picker and confirmation text use the region-aware
+                      label; autocomplete shows <strong>game</strong>, <strong>region</strong>, and <strong>server</strong> when the
+                      subscription includes a region.
+                    </li>
+                    <li>
+                      <strong><code>/subscriptions</code></strong> — guild list shows region-aware labels (e.g.
+                      <code>wow-us-illidan</code>, <code>wow-eu-kazzak</code>) so you can tell US and EU (and other) realms apart
+                      in the same channel.
+                    </li>
+                    <li>
+                      <strong><code>/status</code> and <code>/servers</code></strong> — require <strong><code>region</code></strong>
+                      like <code>/subscribe</code>; use them to look up or list servers in a specific region.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
               <summary class="changelog-summary">
                 <span class="changelog-version">v1.0.3</span>
                 <span class="muted">2026-05-15</span>

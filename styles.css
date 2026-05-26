@@ -243,6 +243,37 @@ summary:focus-visible {
   margin: 10px 0;
 }
 
+.upcoming-shipped {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: -18px;
+  padding-left: 0;
+}
+
+.upcoming-shipped__text {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.upcoming-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(52, 211, 153, 0.16);
+  color: rgb(110, 231, 183);
+  border: 1px solid rgba(52, 211, 153, 0.38);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.12);
+}
+
 .steps code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
@@ -570,6 +601,44 @@ summary:focus-visible {
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.03);
   overflow: hidden;
+}
+
+.server-region-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.server-region-tab {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.server-region-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.server-region-tab.is-active {
+  background: rgba(120, 170, 255, 0.18);
+  border-color: rgba(120, 170, 255, 0.45);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.server-region-tab:focus-visible {
+  outline: 2px solid rgba(120, 170, 255, 0.65);
+  outline-offset: 2px;
 }
 
 .server-panel__head {
