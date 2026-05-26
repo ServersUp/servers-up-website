@@ -161,7 +161,7 @@
           </div>
 
           <ul class="steps" aria-label="How it works steps">
-            <li>In Discord, subscribe to a specific game + server (optionally with a role mention)</li>
+            <li>In Discord, subscribe to a specific game, region, and server (optionally with a role mention)</li>
             <li>ServersUp polls that server’s status on an interval and watches for transitions</li>
             <li>
               When the status changes (UP ↔ DOWN), ServersUp posts an alert in the subscribed channel (e.g.
@@ -254,21 +254,23 @@
               in the channel you’ll use for alerts.
             </li>
             <li>
-              Run <code>/games</code> to list supported games (same source as <code>/subscribe</code> game autocomplete), or
-              <code>/servers</code> to list the servers configured for a specific game. You can also browse
+              Run <code>/games</code> to list supported games, <code>/regions</code> to see available regions for a game (WoW:
+              <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>), or <code>/servers</code> with a
+              <code>game</code> and <code>region</code> to list servers in that region. You can also browse
               <a href="#games" data-scroll="true">Supported Games</a> on this page.
             </li>
             <li>
-              Use <code>/subscribe</code> with a <code>game</code>, <code>server</code>, and optional <code>role</code> to add a
-              subscription. Only members with <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe
-              or unsubscribe; without those permissions you’ll get an error.
+              Use <code>/subscribe</code> with <code>game</code>, <code>region</code>, <code>server</code>, and optional
+              <code>role</code> to add a subscription (autocomplete order: game → region → server). Only members with
+              <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe or unsubscribe; without those
+              permissions you’ll get an error.
             </li>
             <li>
               When the server goes down or comes back up, an alert message will be sent to that channel.
             </li>
             <li>
-              Use <code>/status</code> with a <code>game</code> and <code>server</code> to check the current UP/DOWN status on
-              demand.
+              Use <code>/status</code> with <code>game</code>, <code>region</code>, and <code>server</code> to check the
+              current UP/DOWN status on demand (same region requirement as <code>/subscribe</code>).
             </li>
             <li>
               Use <code>/subscriptions</code> to list current subscriptions grouped by channel, and <code>/unsubscribe</code>
@@ -325,9 +327,14 @@
                 <span class="game-title">World of Warcraft <span class="muted">(wow)</span></span>
               </summary>
               <div class="accordion-body">
+                <p class="muted small">
+                  WoW realms are available in <strong>US</strong>, <strong>EU</strong>, <strong>KR</strong>, and
+                  <strong>TW</strong>. Use <code>/regions</code> and <code>/servers</code> in Discord to browse by region; the
+                  list below is a searchable sample of US realm names.
+                </p>
                 <div class="server-panel">
                   <div class="server-panel__head">
-                    <label class="server-search" aria-label="Search World of Warcraft servers">
+                    <label class="server-search" aria-label="Search World of Warcraft US servers">
                       <span class="server-search__icon" aria-hidden="true">⌕</span>
                       <input
                         class="server-search__input"
@@ -604,7 +611,6 @@
           </div>
 
           <ul class="steps" aria-label="Upcoming changes list">
-            <li><strong>EU region support</strong> for supported games</li>
             <li><strong>Direct message (DM) alerts</strong>, not limited to server channels</li>
             <li>
               <strong>More games</strong>, including <strong>Final Fantasy XIV Online</strong> and <strong>Old School RuneScape</strong>
@@ -622,6 +628,56 @@
 
           <article class="changelog">
             <details class="changelog-entry" open>
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.1</span>
+                <span class="muted">2026-05-26</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong>Multi-region World of Warcraft</strong> — the bot supports realms in
+                      <strong>US, EU, Korea (KR), and Taiwan (TW)</strong>, not only US. You pick a region when subscribing or
+                      checking status so the same realm name in different regions is handled correctly.
+                    </li>
+                    <li>
+                      <strong><code>/regions</code></strong> — list which regions are available for a game (for WoW:
+                      <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>).
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="changelog-section">
+                  <h4 class="h4">Changed</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong><code>/subscribe</code></strong> — adds a required <strong><code>region</code></strong> option.
+                      Autocomplete order is <strong>game → region → server</strong> (type to search at each step). New
+                      subscriptions are labeled <strong><code>game-region-server</code></strong> (e.g.
+                      <code>wow-eu-kazzak</code>).
+                    </li>
+                    <li>
+                      <strong><code>/unsubscribe</code></strong> — subscription picker and confirmation text use the region-aware
+                      label; autocomplete shows <strong>game</strong>, <strong>region</strong>, and <strong>server</strong> when the
+                      subscription includes a region.
+                    </li>
+                    <li>
+                      <strong><code>/subscriptions</code></strong> — guild list shows region-aware labels (e.g.
+                      <code>wow-us-illidan</code>, <code>wow-eu-kazzak</code>) so you can tell US and EU (and other) realms apart
+                      in the same channel.
+                    </li>
+                    <li>
+                      <strong><code>/status</code> and <code>/servers</code></strong> — require <strong><code>region</code></strong>
+                      like <code>/subscribe</code>; use them to look up or list servers in a specific region.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
               <summary class="changelog-summary">
                 <span class="changelog-version">v1.0.3</span>
                 <span class="muted">2026-05-15</span>
