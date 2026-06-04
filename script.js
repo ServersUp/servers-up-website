@@ -85,14 +85,13 @@ function setupServerSearch() {
   );
 
   for (const input of inputs) {
-    if (input.closest("[data-wow-servers]")) continue;
+    if (input.closest("[data-game-region-panel]")) continue;
 
     const key = input.getAttribute("data-server-search") || "";
     const list = document.querySelector(`[data-server-list="${CSS.escape(key)}"]`);
     const count = document.querySelector(`[data-server-count="${CSS.escape(key)}"]`);
     if (!(list instanceof HTMLElement)) continue;
 
-    // Sort server rows alphabetically by their key.
     const rows = Array.from(list.querySelectorAll("[data-server-key]")).filter(
       (el) => el instanceof HTMLElement,
     );
@@ -129,33 +128,37 @@ function setupServerSearch() {
   }
 }
 
-const WOW_REGION_LABELS = { us: "US", eu: "EU", kr: "KR", tw: "TW" };
-
-function setupWowRegionServers() {
-  const panel = document.querySelector("[data-wow-servers]");
+/**
+ * Region tabs + search for a game panel (WoW, FFXIV, etc.).
+ * Panel root uses data-game-region-panel; lists/tabs use the attrs passed in config.
+ */
+function setupGameRegionPanel(config) {
+  const panel = document.querySelector(config.panelSelector);
   if (!(panel instanceof HTMLElement)) return;
 
-  const lists = Array.from(panel.querySelectorAll("[data-wow-region-list]")).filter(
+  panel.setAttribute("data-game-region-panel", "");
+
+  const lists = Array.from(panel.querySelectorAll(`[${config.regionListAttr}]`)).filter(
     (el) => el instanceof HTMLElement,
   );
-  const input = panel.querySelector('[data-server-search="wow"]');
-  const count = panel.querySelector('[data-server-count="wow"]');
-  const searchLabel = panel.querySelector("[data-wow-search-label]");
-  const tabs = panel.querySelectorAll("[data-wow-region-tab]");
+  const input = panel.querySelector(`[data-server-search="${CSS.escape(config.searchKey)}"]`);
+  const count = panel.querySelector(`[data-server-count="${CSS.escape(config.countKey)}"]`);
+  const searchLabel = panel.querySelector(config.searchLabelSelector);
+  const tabs = panel.querySelectorAll(`[${config.regionTabAttr}]`);
 
-  let region = panel.getAttribute("data-wow-region") || "us";
+  let region = panel.getAttribute(config.regionAttr) || config.defaultRegion;
   let rows = [];
 
   function listFor(r) {
-    return lists.find((el) => el.getAttribute("data-wow-region-list") === r) ?? null;
+    return lists.find((el) => el.getAttribute(config.regionListAttr) === r) ?? null;
   }
 
   function setActiveTab(next) {
     region = next;
-    panel.setAttribute("data-wow-region", next);
+    panel.setAttribute(config.regionAttr, next);
     for (const tab of tabs) {
       if (!(tab instanceof HTMLButtonElement)) continue;
-      const r = tab.getAttribute("data-wow-region-tab") || "";
+      const r = tab.getAttribute(config.regionTabAttr) || "";
       const active = r === next;
       tab.classList.toggle("is-active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
@@ -182,13 +185,14 @@ function setupWowRegionServers() {
       ? Array.from(activeList.querySelectorAll("[data-server-key]")).filter((el) => el instanceof HTMLElement)
       : [];
 
-    const label = WOW_REGION_LABELS[next] || next.toUpperCase();
+    const label = config.regionLabels[next] || next.toUpperCase();
+    const unit = config.serverUnit || "servers";
     if (searchLabel instanceof HTMLLabelElement) {
-      searchLabel.setAttribute("aria-label", `Search World of Warcraft ${label} servers`);
+      searchLabel.setAttribute("aria-label", `Search ${config.gameName} ${label} ${unit}`);
     }
     if (input instanceof HTMLInputElement) {
-      const example = rows[0]?.getAttribute("data-server-key") || "illidan";
-      input.placeholder = `Search ${label} realms (e.g. ${example})`;
+      const example = rows[0]?.getAttribute("data-server-key") || config.placeholderExample;
+      input.placeholder = `Search ${label} ${unit} (e.g. ${example})`;
       input.value = "";
     }
     applyFilter();
@@ -197,7 +201,7 @@ function setupWowRegionServers() {
   for (const tab of tabs) {
     tab.addEventListener("click", () => {
       if (!(tab instanceof HTMLButtonElement)) return;
-      const next = tab.getAttribute("data-wow-region-tab");
+      const next = tab.getAttribute(config.regionTabAttr);
       if (!next || next === region) return;
       showRegion(next);
     });
@@ -211,10 +215,40 @@ function setupWowRegionServers() {
   showRegion(region);
 }
 
+const GAME_REGION_PANELS = [
+  {
+    panelSelector: "[data-wow-servers]",
+    regionListAttr: "data-wow-region-list",
+    regionTabAttr: "data-wow-region-tab",
+    regionAttr: "data-wow-region",
+    searchLabelSelector: "[data-wow-search-label]",
+    searchKey: "wow",
+    countKey: "wow",
+    regionLabels: { us: "US", eu: "EU", kr: "KR", tw: "TW" },
+    gameName: "World of Warcraft",
+    serverUnit: "realms",
+    defaultRegion: "us",
+    placeholderExample: "illidan",
+  },
+  {
+    panelSelector: "[data-ffxiv-servers]",
+    regionListAttr: "data-ffxiv-region-list",
+    regionTabAttr: "data-ffxiv-region-tab",
+    regionAttr: "data-ffxiv-region",
+    searchLabelSelector: "[data-ffxiv-search-label]",
+    searchKey: "ffxiv",
+    countKey: "ffxiv",
+    regionLabels: { na: "NA", eu: "EU", jp: "JP", oce: "OCE" },
+    gameName: "Final Fantasy XIV",
+    serverUnit: "worlds",
+    defaultRegion: "na",
+    placeholderExample: "gilgamesh",
+  },
+];
+
 setYear();
 setupMobileNav();
 setupSmoothScroll();
 hardenExternalLinks();
 setupServerSearch();
-setupWowRegionServers();
-
+for (const config of GAME_REGION_PANELS) setupGameRegionPanel(config);
