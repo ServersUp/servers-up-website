@@ -9,7 +9,8 @@ Minimal one-page marketing site for **ServersUp** (GitHub Pages).
 - How It Works (two mini diagrams)
 - Instructions section for Discord setup + `/subscribe` (game → region → server)
 - Supported Games section:
-  - World of Warcraft **(wow)** with US/EU/KR/TW region tabs and searchable realm list (realms in `index.html`; `data/wow-servers.json` is the canonical name list when updating)
+  - World of Warcraft **(wow)** — US/EU/KR/TW region tabs and searchable realm list (`data/wow-servers.json`)
+  - Final Fantasy XIV **(ffxiv)** — NA/EU/JP/OCE region tabs and searchable world list (`data/ffxiv-servers.json`)
 
 ### `script.js`
 
@@ -19,11 +20,14 @@ Small client-side helpers for the static site (no build step):
 - **Mobile nav** — open/close menu, Escape and outside-click to dismiss
 - **Smooth scroll** — in-page anchor links offset for the fixed header
 - **External links** — ensures `rel="noreferrer"` on `target="_blank"` links
-- **WoW realm browser** — US/EU/KR/TW tab switching, search filter, and visible/total count over the lists already in `index.html`
+- **Game realm/world browsers** — region tab switching, search filter, and visible/total count over the lists in `index.html` (WoW and FFXIV)
 
-### `data/wow-servers.json`
+### `data/*.json`
 
-Sorted realm slugs per region (`us`, `eu`, `kr`, `tw`). Use this when adding or checking realms; the Supported Games section renders the same names inline in HTML for fast load (no fetch).
+- **`wow-servers.json`** — realm slugs per region (`us`, `eu`, `kr`, `tw`)
+- **`ffxiv-servers.json`** — world slugs per region (`na`, `eu`, `jp`, `oce`)
+
+Use these when adding or checking servers; Supported Games renders the same names inline in HTML for fast load (no fetch).
 - Ko-fi support section
   - Link: `https://ko-fi.com/R6R71Z1SRN`
 

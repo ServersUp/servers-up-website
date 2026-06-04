@@ -254,8 +254,9 @@
               in the channel you’ll use for alerts.
             </li>
             <li>
-              Run <code>/games</code> to list supported games, <code>/regions</code> to see available regions for a game (WoW:
-              <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>), or <code>/servers</code> with a
+              Run <code>/games</code> to list supported games, <code>/regions</code> to see available regions (WoW:
+              <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>; FFXIV: <code>na</code>, <code>eu</code>,
+              <code>jp</code>, <code>oce</code>), or <code>/servers</code> with a
               <code>game</code> and <code>region</code> to list servers in that region. You can also browse
               <a href="#games" data-scroll="true">Supported Games</a> on this page.
             </li>
@@ -971,6 +972,196 @@
                     </ul>
                   </div>
                 </div>
+              </div>
+            </details>
+            <details class="accordion-item">
+              <summary class="game-summary">
+                <img
+                  class="game-logo"
+                  src="./assets/ffxiv-logo-small-transparent.png"
+                  alt="Final Fantasy XIV (FFXIV) world status alerts"
+                  width="140"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="game-title">Final Fantasy XIV <span class="muted">(ffxiv)</span></span>
+              </summary>
+              <div class="accordion-body">
+                <p class="muted small">
+                  FFXIV uses data-center regions <strong>NA</strong>, <strong>EU</strong>, <strong>JP</strong>, and
+                  <strong>OCE</strong> (not WoW’s <code>us</code> / <code>kr</code> / <code>tw</code>). Subscribe with labels like
+                  <code>ffxiv-na-gilgamesh</code>. Browse worlds below or use <code>/regions</code> and <code>/servers</code> in Discord.
+                </p>
+                <div class="server-panel" data-ffxiv-servers data-ffxiv-region="na">
+                  <div class="server-region-tabs" role="tablist" aria-label="FFXIV region">
+                    <button
+                      type="button"
+                      class="server-region-tab is-active"
+                      role="tab"
+                      aria-selected="true"
+                      data-ffxiv-region-tab="na"
+                    >
+                      NA
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-ffxiv-region-tab="eu"
+                    >
+                      EU
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-ffxiv-region-tab="jp"
+                    >
+                      JP
+                    </button>
+                    <button
+                      type="button"
+                      class="server-region-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-ffxiv-region-tab="oce"
+                    >
+                      OCE
+                    </button>
+                  </div>
+                  <div class="server-panel__head">
+                    <label class="server-search" data-ffxiv-search-label aria-label="Search Final Fantasy XIV NA worlds">
+                      <span class="server-search__icon" aria-hidden="true">⌕</span>
+                      <input
+                        class="server-search__input"
+                        type="search"
+                        placeholder="Search NA worlds (e.g. gilgamesh)"
+                        autocomplete="off"
+                        inputmode="search"
+                        data-server-search="ffxiv"
+                      />
+                    </label>
+                    <div class="server-count muted small" data-server-count="ffxiv"></div>
+                  </div>
+
+                  <div class="server-panel__body">
+                    <ul
+                      class="server-list"
+                      data-ffxiv-region-list="na"
+                      aria-label="Final Fantasy XIV NA worlds"
+>
+                      <li class="server-row" data-server-key="adamantoise"><code>adamantoise</code></li>
+                      <li class="server-row" data-server-key="balmung"><code>balmung</code></li>
+                      <li class="server-row" data-server-key="behemoth"><code>behemoth</code></li>
+                      <li class="server-row" data-server-key="brynhildr"><code>brynhildr</code></li>
+                      <li class="server-row" data-server-key="cactuar"><code>cactuar</code></li>
+                      <li class="server-row" data-server-key="coeurl"><code>coeurl</code></li>
+                      <li class="server-row" data-server-key="cuchulainn"><code>cuchulainn</code></li>
+                      <li class="server-row" data-server-key="diabolos"><code>diabolos</code></li>
+                      <li class="server-row" data-server-key="excalibur"><code>excalibur</code></li>
+                      <li class="server-row" data-server-key="exodus"><code>exodus</code></li>
+                      <li class="server-row" data-server-key="faerie"><code>faerie</code></li>
+                      <li class="server-row" data-server-key="famfrit"><code>famfrit</code></li>
+                      <li class="server-row" data-server-key="gilgamesh"><code>gilgamesh</code></li>
+                      <li class="server-row" data-server-key="goblin"><code>goblin</code></li>
+                      <li class="server-row" data-server-key="golem"><code>golem</code></li>
+                      <li class="server-row" data-server-key="halicarnassus"><code>halicarnassus</code></li>
+                      <li class="server-row" data-server-key="hyperion"><code>hyperion</code></li>
+                      <li class="server-row" data-server-key="jenova"><code>jenova</code></li>
+                      <li class="server-row" data-server-key="kraken"><code>kraken</code></li>
+                      <li class="server-row" data-server-key="lamia"><code>lamia</code></li>
+                      <li class="server-row" data-server-key="leviathan"><code>leviathan</code></li>
+                      <li class="server-row" data-server-key="maduin"><code>maduin</code></li>
+                      <li class="server-row" data-server-key="malboro"><code>malboro</code></li>
+                      <li class="server-row" data-server-key="marilith"><code>marilith</code></li>
+                      <li class="server-row" data-server-key="mateus"><code>mateus</code></li>
+                      <li class="server-row" data-server-key="midgardsormr"><code>midgardsormr</code></li>
+                      <li class="server-row" data-server-key="rafflesia"><code>rafflesia</code></li>
+                      <li class="server-row" data-server-key="sargatanas"><code>sargatanas</code></li>
+                      <li class="server-row" data-server-key="seraph"><code>seraph</code></li>
+                      <li class="server-row" data-server-key="siren"><code>siren</code></li>
+                      <li class="server-row" data-server-key="ultros"><code>ultros</code></li>
+                      <li class="server-row" data-server-key="zalera"><code>zalera</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-ffxiv-region-list="eu"
+                      aria-label="Final Fantasy XIV EU worlds"
+ hidden>
+                      <li class="server-row" data-server-key="alpha"><code>alpha</code></li>
+                      <li class="server-row" data-server-key="cerberus"><code>cerberus</code></li>
+                      <li class="server-row" data-server-key="lich"><code>lich</code></li>
+                      <li class="server-row" data-server-key="louisoix"><code>louisoix</code></li>
+                      <li class="server-row" data-server-key="moogle"><code>moogle</code></li>
+                      <li class="server-row" data-server-key="odin"><code>odin</code></li>
+                      <li class="server-row" data-server-key="omega"><code>omega</code></li>
+                      <li class="server-row" data-server-key="phantom"><code>phantom</code></li>
+                      <li class="server-row" data-server-key="phoenix"><code>phoenix</code></li>
+                      <li class="server-row" data-server-key="ragnarok"><code>ragnarok</code></li>
+                      <li class="server-row" data-server-key="raiden"><code>raiden</code></li>
+                      <li class="server-row" data-server-key="sagittarius"><code>sagittarius</code></li>
+                      <li class="server-row" data-server-key="shiva"><code>shiva</code></li>
+                      <li class="server-row" data-server-key="spriggan"><code>spriggan</code></li>
+                      <li class="server-row" data-server-key="twintania"><code>twintania</code></li>
+                      <li class="server-row" data-server-key="zodiark"><code>zodiark</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-ffxiv-region-list="jp"
+                      aria-label="Final Fantasy XIV JP worlds"
+ hidden>
+                      <li class="server-row" data-server-key="aegis"><code>aegis</code></li>
+                      <li class="server-row" data-server-key="alexander"><code>alexander</code></li>
+                      <li class="server-row" data-server-key="anima"><code>anima</code></li>
+                      <li class="server-row" data-server-key="asura"><code>asura</code></li>
+                      <li class="server-row" data-server-key="atomos"><code>atomos</code></li>
+                      <li class="server-row" data-server-key="bahamut"><code>bahamut</code></li>
+                      <li class="server-row" data-server-key="belias"><code>belias</code></li>
+                      <li class="server-row" data-server-key="carbuncle"><code>carbuncle</code></li>
+                      <li class="server-row" data-server-key="chocobo"><code>chocobo</code></li>
+                      <li class="server-row" data-server-key="durandal"><code>durandal</code></li>
+                      <li class="server-row" data-server-key="fenrir"><code>fenrir</code></li>
+                      <li class="server-row" data-server-key="garuda"><code>garuda</code></li>
+                      <li class="server-row" data-server-key="gungnir"><code>gungnir</code></li>
+                      <li class="server-row" data-server-key="hades"><code>hades</code></li>
+                      <li class="server-row" data-server-key="ifrit"><code>ifrit</code></li>
+                      <li class="server-row" data-server-key="ixion"><code>ixion</code></li>
+                      <li class="server-row" data-server-key="kujata"><code>kujata</code></li>
+                      <li class="server-row" data-server-key="mandragora"><code>mandragora</code></li>
+                      <li class="server-row" data-server-key="masamune"><code>masamune</code></li>
+                      <li class="server-row" data-server-key="pandaemonium"><code>pandaemonium</code></li>
+                      <li class="server-row" data-server-key="ramuh"><code>ramuh</code></li>
+                      <li class="server-row" data-server-key="ridill"><code>ridill</code></li>
+                      <li class="server-row" data-server-key="shinryu"><code>shinryu</code></li>
+                      <li class="server-row" data-server-key="tiamat"><code>tiamat</code></li>
+                      <li class="server-row" data-server-key="titan"><code>titan</code></li>
+                      <li class="server-row" data-server-key="tonberry"><code>tonberry</code></li>
+                      <li class="server-row" data-server-key="typhon"><code>typhon</code></li>
+                      <li class="server-row" data-server-key="ultima"><code>ultima</code></li>
+                      <li class="server-row" data-server-key="unicorn"><code>unicorn</code></li>
+                      <li class="server-row" data-server-key="valefor"><code>valefor</code></li>
+                      <li class="server-row" data-server-key="yojimbo"><code>yojimbo</code></li>
+                      <li class="server-row" data-server-key="zeromus"><code>zeromus</code></li>
+                    </ul>
+                    <ul
+                      class="server-list"
+                      data-ffxiv-region-list="oce"
+                      aria-label="Final Fantasy XIV OCE worlds"
+ hidden>
+                      <li class="server-row" data-server-key="bismarck"><code>bismarck</code></li>
+                      <li class="server-row" data-server-key="ravana"><code>ravana</code></li>
+                      <li class="server-row" data-server-key="sephirot"><code>sephirot</code></li>
+                      <li class="server-row" data-server-key="sophia"><code>sophia</code></li>
+                      <li class="server-row" data-server-key="zurvan"><code>zurvan</code></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
@@ -989,9 +1180,14 @@
               >
             </li>
             <li><strong>Direct message (DM) alerts</strong>, not limited to server channels</li>
+            <li class="upcoming-shipped">
+              <span class="upcoming-badge">Added!</span>
+              <span class="upcoming-shipped__text"
+                ><strong>Final Fantasy XIV Online</strong> world status alerts</span
+              >
+            </li>
             <li>
-              <strong>More games</strong>, including <strong>Final Fantasy XIV Online</strong> and <strong>Old School RuneScape</strong>
-              (plus other popular MMOs)
+              <strong>More games</strong>, including <strong>Old School RuneScape</strong> (plus other popular MMOs)
             </li>
           </ul>
         </div>
@@ -1005,6 +1201,35 @@
 
           <article class="changelog">
             <details class="changelog-entry" open>
+              <summary class="changelog-summary">
+                <span class="changelog-version">v1.2</span>
+                <span class="muted">2026-06-04</span>
+              </summary>
+
+              <div class="changelog-body">
+                <div class="changelog-section">
+                  <h4 class="h4">Added</h4>
+                  <ul class="changelog-list">
+                    <li>
+                      <strong>Final Fantasy XIV (FFXIV)</strong> — subscribe to world status and check UP/DOWN with the same
+                      slash commands as WoW when FFXIV is in your server catalog (<code>/subscribe</code>,
+                      <code>/status</code>, and the rest).
+                    </li>
+                    <li>
+                      <strong>FFXIV regions</strong> — pick <code>na</code>, <code>eu</code>, <code>jp</code>, or
+                      <code>oce</code> (not WoW’s <code>us</code> / <code>kr</code> / <code>tw</code>). Subscriptions show up as
+                      <code>ffxiv-na-gilgamesh</code>, <code>ffxiv-eu-lich</code>, and so on.
+                    </li>
+                    <li>
+                      <strong><code>/regions</code></strong> — for FFXIV, lists <code>na</code>, <code>eu</code>,
+                      <code>jp</code>, and <code>oce</code> when that game is configured.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+
+            <details class="changelog-entry">
               <summary class="changelog-summary">
                 <span class="changelog-version">v1.1</span>
                 <span class="muted">2026-05-26</span>
