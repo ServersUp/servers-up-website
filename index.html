@@ -3,38 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQGB78C9LT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-ZQGB78C9LT');
+      gtag("js", new Date());
+      gtag("config", "G-ZQGB78C9LT");
     </script>
     <meta
       name="description"
-      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
-    <meta
-      name="google-site-verification"
-      content="3O4IgP7ot535317-PgIAuTH9Vs6JbioPY5-s9xnembQ"
-    />
+    <meta name="google-site-verification" content="3O4IgP7ot535317-PgIAuTH9Vs6JbioPY5-s9xnembQ" />
     <link rel="canonical" href="https://serversup.github.io/" />
     <title>ServersUp | Game Server Alerts - Discord Notifications</title>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Game Server Alerts - Discord Notifications | ServersUp" />
+    <meta property="og:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
     <meta
       property="og:description"
-      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
     <meta property="og:url" content="https://serversup.github.io/" />
     <meta property="og:image" content="https://serversup.github.io/assets/serversup-logo.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Game Server Alerts - Discord Notifications | ServersUp" />
+    <meta name="twitter:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
     <meta
       name="twitter:description"
-      content="Get Discord alerts when game servers go UP or DOWN. Subscribe by game/server, optionally ping roles, and see subscriptions by channel—low noise, just status changes."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
     <meta name="twitter:image" content="https://serversup.github.io/assets/serversup-logo.png" />
     <script type="application/ld+json">
@@ -42,7 +37,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "ServersUp",
-        "description": "Discord notifications when online game servers go up or down (status changes only).",
+        "description": "Discord alerts when game servers go up or down. Polls server status and notifies subscribed channels on change.",
         "applicationCategory": "CommunicationApplication",
         "operatingSystem": "Any",
         "url": "https://serversup.github.io/",
@@ -57,1435 +52,229 @@
   <body>
     <a class="skip-link" href="#home">Skip to content</a>
 
-    <header class="site-header" role="banner">
+    <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#home" data-scroll="true" aria-label="ServersUp home">
-          <img
-            class="nav-logo"
-            src="./assets/serversup-logo.png"
-            alt="ServersUp game server alerts for Discord"
-            width="28"
-            height="28"
-            decoding="async"
-          />
-          <span class="brand-text">ServersUp</span>
+        <a class="brand" href="#home" data-scroll="true">
+          <img src="./assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
+          <span>ServersUp</span>
         </a>
-
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="nav-links"
-        >
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
-          <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          Menu
         </button>
-
         <div class="nav-links" id="nav-links">
-          <a class="nav-link" href="#home" data-scroll="true">Home</a>
-          <a class="nav-link" href="#how-it-works" data-scroll="true">How It Works</a>
-          <a class="nav-link" href="#instructions" data-scroll="true">Instructions</a>
-          <a class="nav-link" href="#video" data-scroll="true">Video</a>
-          <a class="nav-link" href="#games" data-scroll="true">Supported Games</a>
-          <a class="nav-link" href="#upcoming" data-scroll="true">Upcoming</a>
+          <a class="nav-link" href="#install" data-scroll="true">Install</a>
+          <a class="nav-link" href="#games" data-scroll="true">Games</a>
           <a class="nav-link" href="#changelog" data-scroll="true">Changelog</a>
-          <a class="nav-link" href="#support-my-work" data-scroll="true">Support My Work</a>
+          <a class="nav-link" href="#support" data-scroll="true">Support</a>
+          <a
+            class="nav-link btn-discord btn-discord--sm"
+            href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Add to Discord
+          </a>
         </div>
       </nav>
     </header>
 
-    <main class="main" id="home">
-      <section class="section hero" aria-label="Hero" id="home-hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Discord alerts for game server uptime</p>
-            <h1 class="h1">
-              Get notified when your community’s favorite game servers go up or down.
-            </h1>
-            <p class="lead">
-              ServersUp monitors the availability of online game servers and delivers up/down notifications to Discord
-              communities.
-            </p>
+    <main class="doc" id="home">
+      <header class="hero">
+        <img
+          class="hero-logo"
+          src="./assets/serversup-logo.png"
+          alt=""
+          width="80"
+          height="80"
+          decoding="async"
+        />
+        <div class="hero-copy">
+          <h1>ServersUp</h1>
+          <p class="hero-tagline">Get notified when your community's favorite game servers go up or down.</p>
+        </div>
+      </header>
+      <p class="lead">
+        ServersUp alerts your Discord community when subscribed game servers go up or down. The bot polls in the
+        background and posts in the channel you configured only when status changes.
+      </p>
+      <p>
+        No refreshing official status pages or waiting on maintenance posts that often arrive late. When status
+        changes, the alert shows up in the channel your community already watches.
+      </p>
 
-            <div class="hero-supported" aria-label="Supported games">
-              <span class="hero-supported__label">Supported games</span>
-              <div class="hero-supported__games">
-                <a class="hero-game-link" href="#games" data-scroll="true" title="World of Warcraft (wow)">
-                  <img
-                    class="hero-game-icon"
-                    src="./assets/wow-logo-small-transparent.png"
-                    alt="World of Warcraft"
-                    width="64"
-                    height="64"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-                <a class="hero-game-link" href="#games" data-scroll="true" title="Final Fantasy XIV (ffxiv)">
-                  <img
-                    class="hero-game-icon hero-game-icon--wide"
-                    src="./assets/ffxiv-logo-small-transparent.png"
-                    alt="Final Fantasy XIV"
-                    width="140"
-                    height="39"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-              </div>
-            </div>
+      <p>
+        <a
+          class="btn-discord"
+          href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Add to Discord
+        </a>
+      </p>
 
-            <div class="cta-row">
-              <a
-                class="button button-primary"
-                href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Add to Discord
-              </a>
-              <a class="button button-ghost" href="#instructions" data-scroll="true">
-                Setup steps
-              </a>
-            </div>
-          </div>
+      <h2 id="install">How to install</h2>
+      <ol>
+        <li>Add the bot to your server.</li>
+        <li>
+          Pick or create a channel for updates. Make sure the bot can send messages and read message history in that
+          channel.
+        </li>
+        <li>
+          Run <code>/subscribe</code> in that channel and pick game, region, and server. Autocomplete helps you fill
+          each field with valid values. Updates are sent to the channel where you run the command.
+        </li>
+      </ol>
 
-          <div class="hero-card" aria-label="At a glance">
+      <h2>Commands</h2>
+      <ul>
+        <li><code>/subscribe</code>: add a subscription (Manage Channels or Administrator required)</li>
+        <li><code>/unsubscribe</code>: remove one (Manage Channels or Administrator required)</li>
+        <li><code>/subscriptions</code>: list by channel</li>
+        <li><code>/status</code>: check UP/DOWN now</li>
+        <li><code>/regions</code>, <code>/servers</code>, and <code>/games</code>: browse the catalog</li>
+        <li><code>/help</code>: explain each command and common pitfalls</li>
+      </ul>
+
+      <h2 id="games">Supported games</h2>
+      <p class="muted">Select a game and region, then search. WoW uses <code>us</code>/<code>eu</code>/<code>kr</code>/<code>tw</code>; FFXIV uses <code>na</code>/<code>eu</code>/<code>jp</code>/<code>oce</code>.</p>
+      <p class="games-status" data-realm-status></p>
+
+      <div class="game-browser" id="game-browser">
+        <div class="game-tabs" role="tablist" aria-label="Game">
+          <button
+            type="button"
+            class="game-tab is-active"
+            data-game-tab="wow"
+            role="tab"
+            aria-selected="true"
+            aria-label="World of Warcraft"
+          >
             <img
-              class="hero-logo"
-              src="./assets/serversup-logo.png"
-              alt="ServersUp logo for game server status alerts"
-              width="512"
-              height="512"
-              loading="eager"
+              class="game-tab__logo"
+              src="./assets/wow-logo-small-transparent.png"
+              alt="World of Warcraft"
+              width="96"
+              height="40"
               decoding="async"
             />
-            <div class="stat">
-              <div class="stat__label">Signal</div>
-              <div class="stat__value">Status changes</div>
-            </div>
-            <div class="stat">
-              <div class="stat__label">Delivery</div>
-              <div class="stat__value">Discord channels</div>
-            </div>
-            <div class="stat">
-              <div class="stat__label">Setup</div>
-              <div class="stat__value">Slash commands</div>
-            </div>
-            <div class="divider" role="presentation"></div>
-            <p class="small muted">
-              Set up subscriptions once, then get alerts only when status changes.
+          </button>
+          <button
+            type="button"
+            class="game-tab"
+            data-game-tab="ffxiv"
+            role="tab"
+            aria-selected="false"
+            aria-label="Final Fantasy XIV"
+          >
+            <img
+              class="game-tab__logo game-tab__logo--wide"
+              src="./assets/ffxiv-logo-small-transparent.png"
+              alt="Final Fantasy XIV"
+              width="112"
+              height="40"
+              decoding="async"
+            />
+          </button>
+        </div>
+        <div class="region-row" data-region-row role="tablist" aria-label="Region"></div>
+        <div class="search-row">
+          <label class="search-field">
+            <span class="sr-only">Search your realm</span>
+            <input type="search" placeholder="Search your realm…" data-realm-search autocomplete="off" />
+          </label>
+          <span class="realm-count" data-realm-count>—</span>
+        </div>
+        <ul class="realm-list" data-realm-list aria-live="polite"></ul>
+      </div>
+
+      <h2 id="changelog">Changelog</h2>
+      <div class="changelog-list">
+        <details class="changelog-entry" open>
+          <summary>
+            <span>v1.2</span>
+            <span class="changelog-date">2026-06-04</span>
+          </summary>
+          <div class="changelog-body">
+            <p>FFXIV support. Regions: <code>na</code>, <code>eu</code>, <code>jp</code>, <code>oce</code>. Example label: <code>ffxiv-na-gilgamesh</code>.</p>
+          </div>
+        </details>
+        <details class="changelog-entry">
+          <summary>
+            <span>v1.1</span>
+            <span class="changelog-date">2026-05-26</span>
+          </summary>
+          <div class="changelog-body">
+            <p>Multi-region WoW. Required <code>region</code> on subscribe, status, and servers.</p>
+          </div>
+        </details>
+        <details class="changelog-entry">
+          <summary>
+            <span>v1.0.3</span>
+            <span class="changelog-date">2026-05-15</span>
+          </summary>
+          <div class="changelog-body">
+            <p>
+              <code>/subscribe</code> and <code>/unsubscribe</code> now require you to have Manage Channels or
+              Administrator in the server.
             </p>
           </div>
-        </div>
+        </details>
+        <details class="changelog-entry">
+          <summary>
+            <span>v1.0.2</span>
+            <span class="changelog-date">2026-05-15</span>
+          </summary>
+          <div class="changelog-body">
+            <p><code>/servers</code> and <code>/status</code>. Rate limits on status.</p>
+          </div>
+        </details>
+        <details class="changelog-entry">
+          <summary>
+            <span>v1.0.1</span>
+            <span class="changelog-date">2026-05-13</span>
+          </summary>
+          <div class="changelog-body">
+            <p><code>/games</code> command.</p>
+          </div>
+        </details>
+        <details class="changelog-entry">
+          <summary>
+            <span>v1.0.0</span>
+            <span class="changelog-date">2026-05-07</span>
+          </summary>
+          <div class="changelog-body">
+            <p>Initial release.</p>
+          </div>
+        </details>
+      </div>
+
+      <section class="support" id="support" aria-label="Support">
+        <h2>Support my work</h2>
+        <p>
+          Thanks for checking out ServersUp. I'm Armand. I build and host this in my spare time. Donations are never
+          required, but they're genuinely appreciated and go toward infrastructure costs to keep the bot and this site
+          running.
+        </p>
+        <p class="support-kofi">
+          <a href="https://ko-fi.com/R6R71Z1SRN" target="_blank" rel="noreferrer">
+            <img
+              src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_blue.png"
+              alt="Support me on Ko-fi"
+              height="36"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </p>
       </section>
-
-      <section class="section" id="how-it-works" aria-label="How It Works">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">How It Works</h1>
-          </div>
-
-          <ul class="steps" aria-label="How it works steps">
-            <li>In Discord, subscribe to a specific game, region, and server (optionally with a role mention)</li>
-            <li>ServersUp polls that server’s status on an interval and watches for transitions</li>
-            <li>
-              When the status changes (UP ↔ DOWN), ServersUp posts an alert in the subscribed channel (e.g.
-              <code>game server is DOWN</code>)
-            </li>
-          </ul>
-
-          <div class="how-diagram-stack">
-            <div class="how-diagram" role="img" aria-label="User and Bot Workflow">
-              <svg viewBox="0 0 900 140" width="100%" height="140" aria-hidden="true" focusable="false">
-                <defs>
-                  <marker
-                    id="arrowA"
-                    viewBox="0 0 10 10"
-                    refX="9"
-                    refY="5"
-                    markerWidth="8"
-                    markerHeight="8"
-                    orient="auto"
-                  >
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.55)" />
-                  </marker>
-                </defs>
-
-                <rect x="18" y="24" rx="18" ry="18" width="240" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="38" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">User</text>
-                <text x="38" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Runs /subscribe, /games, /help, etc.</text>
-
-                <rect x="330" y="24" rx="18" ry="18" width="240" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="350" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">Discord Bot</text>
-                <text x="350" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Processes Commands</text>
-
-                <rect x="642" y="24" rx="18" ry="18" width="240" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="662" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">ServersUp</text>
-                <text x="662" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Stores Subscriptions</text>
-
-                <line x1="258" y1="70" x2="330" y2="70" stroke="rgba(255,255,255,0.55)" stroke-width="2" marker-end="url(#arrowA)" />
-                <line x1="570" y1="70" x2="642" y2="70" stroke="rgba(255,255,255,0.55)" stroke-width="2" marker-end="url(#arrowA)" />
-              </svg>
-            </div>
-
-            <div class="how-diagram" role="img" aria-label="Polling and Notification Workflow">
-              <svg viewBox="0 0 900 140" width="100%" height="140" aria-hidden="true" focusable="false">
-                <defs>
-                  <marker
-                    id="arrowB"
-                    viewBox="0 0 10 10"
-                    refX="9"
-                    refY="5"
-                    markerWidth="8"
-                    markerHeight="8"
-                    orient="auto"
-                  >
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.55)" />
-                  </marker>
-                </defs>
-
-                <rect x="18" y="24" rx="18" ry="18" width="280" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="38" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">ServersUp</text>
-                <text x="38" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Polls server status + detects changes</text>
-
-                <rect x="342" y="24" rx="18" ry="18" width="250" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="362" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">Game Server</text>
-                <text x="362" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Up / Down</text>
-
-                <rect x="636" y="24" rx="18" ry="18" width="246" height="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
-                <text x="656" y="60" fill="rgba(255,255,255,0.9)" font-size="14" font-family="ui-sans-serif, system-ui">Discord</text>
-                <text x="656" y="86" fill="rgba(255,255,255,0.65)" font-size="13" font-family="ui-sans-serif, system-ui">Alerts In Channel</text>
-
-                <line x1="298" y1="70" x2="342" y2="70" stroke="rgba(255,255,255,0.55)" stroke-width="2" marker-end="url(#arrowB)" />
-                <line x1="592" y1="70" x2="636" y2="70" stroke="rgba(255,255,255,0.55)" stroke-width="2" marker-end="url(#arrowB)" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="instructions" aria-label="Instructions">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">Instructions</h1>
-          </div>
-
-          <ol class="steps" aria-label="Setup steps">
-            <li>
-              Add the Discord bot to your server using the button below.
-            </li>
-            <li>
-              Ensure the bot has permissions to <strong>send messages</strong> and <strong>read message history</strong>
-              in the channel you’ll use for alerts.
-            </li>
-            <li>
-              Run <code>/games</code> to list supported games, <code>/regions</code> to see available regions (WoW:
-              <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>; FFXIV: <code>na</code>, <code>eu</code>,
-              <code>jp</code>, <code>oce</code>), or <code>/servers</code> with a
-              <code>game</code> and <code>region</code> to list servers in that region. You can also browse
-              <a href="#games" data-scroll="true">Supported Games</a> on this page.
-            </li>
-            <li>
-              Use <code>/subscribe</code> with <code>game</code>, <code>region</code>, <code>server</code>, and optional
-              <code>role</code> to add a subscription (autocomplete order: game → region → server). Only members with
-              <strong>Manage Channels</strong> or <strong>Administrator</strong> can subscribe or unsubscribe; without those
-              permissions you’ll get an error.
-            </li>
-            <li>
-              When the server goes down or comes back up, an alert message will be sent to that channel.
-            </li>
-            <li>
-              Use <code>/status</code> with <code>game</code>, <code>region</code>, and <code>server</code> to check the
-              current UP/DOWN status on demand (same region requirement as <code>/subscribe</code>).
-            </li>
-            <li>
-              Use <code>/subscriptions</code> to list current subscriptions grouped by channel, and <code>/unsubscribe</code>
-              to remove one via the same picker.
-            </li>
-            <li>
-              Run <code>/help</code> to see what else ServersUp can do for you.
-            </li>
-          </ol>
-
-          <div class="cta-row">
-            <a
-              class="button button-primary"
-              href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Add to Discord
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="video" aria-label="Video">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">Video</h1>
-          </div>
-
-          <div class="video-shell" role="group" aria-label="Coming soon">
-            <div class="video-placeholder">Coming soon</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="games" aria-label="Supported Games">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">Supported Games</h1>
-          </div>
-
-          <div class="accordion" role="region" aria-label="Supported games list">
-            <details class="accordion-item">
-              <summary class="game-summary">
-                <img
-                  class="game-logo"
-                  src="./assets/wow-logo-small-transparent.png"
-                  alt="World of Warcraft (WoW) server status alerts"
-                  width="140"
-                  height="64"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span class="game-title">World of Warcraft <span class="muted">(wow)</span></span>
-              </summary>
-              <div class="accordion-body">
-                <p class="muted small">
-                  WoW realms are available in <strong>US</strong>, <strong>EU</strong>, <strong>KR</strong>, and
-                  <strong>TW</strong>. Browse and search by region below, or use <code>/regions</code> and
-                  <code>/servers</code> in Discord.
-                </p>
-                <div class="server-panel" data-wow-servers data-wow-region="us">
-                  <div class="server-region-tabs" role="tablist" aria-label="WoW region">
-                    <button
-                      type="button"
-                      class="server-region-tab is-active"
-                      role="tab"
-                      aria-selected="true"
-                      data-wow-region-tab="us"
-                    >
-                      US
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-wow-region-tab="eu"
-                    >
-                      EU
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-wow-region-tab="kr"
-                    >
-                      KR
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-wow-region-tab="tw"
-                    >
-                      TW
-                    </button>
-                  </div>
-                  <div class="server-panel__head">
-                    <label class="server-search" data-wow-search-label aria-label="Search World of Warcraft US servers">
-                      <span class="server-search__icon" aria-hidden="true">⌕</span>
-                      <input
-                        class="server-search__input"
-                        type="search"
-                        placeholder="Search US realms (e.g. aegwynn)"
-                        autocomplete="off"
-                        inputmode="search"
-                        data-server-search="wow"
-                      />
-                    </label>
-                    <div class="server-count muted small" data-server-count="wow"></div>
-                  </div>
-
-                  <div class="server-panel__body">
-                    <ul
-                      class="server-list"
-                      data-wow-region-list="us"
-                      aria-label="World of Warcraft US servers"
->
-                      <li class="server-row" data-server-key="aegwynn"><code>aegwynn</code></li>
-                      <li class="server-row" data-server-key="aerie-peak"><code>aerie-peak</code></li>
-                      <li class="server-row" data-server-key="agamaggan"><code>agamaggan</code></li>
-                      <li class="server-row" data-server-key="aggramar"><code>aggramar</code></li>
-                      <li class="server-row" data-server-key="akama"><code>akama</code></li>
-                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
-                      <li class="server-row" data-server-key="alleria"><code>alleria</code></li>
-                      <li class="server-row" data-server-key="altar-of-storms"><code>altar-of-storms</code></li>
-                      <li class="server-row" data-server-key="alterac-mountains"><code>alterac-mountains</code></li>
-                      <li class="server-row" data-server-key="amanthul"><code>amanthul</code></li>
-                      <li class="server-row" data-server-key="andorhal"><code>andorhal</code></li>
-                      <li class="server-row" data-server-key="anetheron"><code>anetheron</code></li>
-                      <li class="server-row" data-server-key="antonidas"><code>antonidas</code></li>
-                      <li class="server-row" data-server-key="anubarak"><code>anubarak</code></li>
-                      <li class="server-row" data-server-key="anvilmar"><code>anvilmar</code></li>
-                      <li class="server-row" data-server-key="arathor"><code>arathor</code></li>
-                      <li class="server-row" data-server-key="archimonde"><code>archimonde</code></li>
-                      <li class="server-row" data-server-key="area-52"><code>area-52</code></li>
-                      <li class="server-row" data-server-key="argent-dawn"><code>argent-dawn</code></li>
-                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
-                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
-                      <li class="server-row" data-server-key="auchindoun"><code>auchindoun</code></li>
-                      <li class="server-row" data-server-key="azgalor"><code>azgalor</code></li>
-                      <li class="server-row" data-server-key="azjolnerub"><code>azjolnerub</code></li>
-                      <li class="server-row" data-server-key="azralon"><code>azralon</code></li>
-                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
-                      <li class="server-row" data-server-key="azuremyst"><code>azuremyst</code></li>
-                      <li class="server-row" data-server-key="baelgun"><code>baelgun</code></li>
-                      <li class="server-row" data-server-key="balnazzar"><code>balnazzar</code></li>
-                      <li class="server-row" data-server-key="barthilas"><code>barthilas</code></li>
-                      <li class="server-row" data-server-key="black-dragonflight"><code>black-dragonflight</code></li>
-                      <li class="server-row" data-server-key="blackhand"><code>blackhand</code></li>
-                      <li class="server-row" data-server-key="blackrock"><code>blackrock</code></li>
-                      <li class="server-row" data-server-key="blackwater-raiders"><code>blackwater-raiders</code></li>
-                      <li class="server-row" data-server-key="blackwing-lair"><code>blackwing-lair</code></li>
-                      <li class="server-row" data-server-key="bladefist"><code>bladefist</code></li>
-                      <li class="server-row" data-server-key="blades-edge"><code>blades-edge</code></li>
-                      <li class="server-row" data-server-key="bleeding-hollow"><code>bleeding-hollow</code></li>
-                      <li class="server-row" data-server-key="blood-furnace"><code>blood-furnace</code></li>
-                      <li class="server-row" data-server-key="bloodhoof"><code>bloodhoof</code></li>
-                      <li class="server-row" data-server-key="bloodscalp"><code>bloodscalp</code></li>
-                      <li class="server-row" data-server-key="bonechewer"><code>bonechewer</code></li>
-                      <li class="server-row" data-server-key="borean-tundra"><code>borean-tundra</code></li>
-                      <li class="server-row" data-server-key="boulderfist"><code>boulderfist</code></li>
-                      <li class="server-row" data-server-key="bronzebeard"><code>bronzebeard</code></li>
-                      <li class="server-row" data-server-key="burning-blade"><code>burning-blade</code></li>
-                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
-                      <li class="server-row" data-server-key="caelestrasz"><code>caelestrasz</code></li>
-                      <li class="server-row" data-server-key="cairne"><code>cairne</code></li>
-                      <li class="server-row" data-server-key="cenarion-circle"><code>cenarion-circle</code></li>
-                      <li class="server-row" data-server-key="cenarius"><code>cenarius</code></li>
-                      <li class="server-row" data-server-key="chogall"><code>chogall</code></li>
-                      <li class="server-row" data-server-key="chromaggus"><code>chromaggus</code></li>
-                      <li class="server-row" data-server-key="coilfang"><code>coilfang</code></li>
-                      <li class="server-row" data-server-key="crushridge"><code>crushridge</code></li>
-                      <li class="server-row" data-server-key="daggerspine"><code>daggerspine</code></li>
-                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
-                      <li class="server-row" data-server-key="dalvengyr"><code>dalvengyr</code></li>
-                      <li class="server-row" data-server-key="dark-iron"><code>dark-iron</code></li>
-                      <li class="server-row" data-server-key="darkspear"><code>darkspear</code></li>
-                      <li class="server-row" data-server-key="darrowmere"><code>darrowmere</code></li>
-                      <li class="server-row" data-server-key="dathremar"><code>dathremar</code></li>
-                      <li class="server-row" data-server-key="dawnbringer"><code>dawnbringer</code></li>
-                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
-                      <li class="server-row" data-server-key="demon-soul"><code>demon-soul</code></li>
-                      <li class="server-row" data-server-key="dentarg"><code>dentarg</code></li>
-                      <li class="server-row" data-server-key="destromath"><code>destromath</code></li>
-                      <li class="server-row" data-server-key="dethecus"><code>dethecus</code></li>
-                      <li class="server-row" data-server-key="detheroc"><code>detheroc</code></li>
-                      <li class="server-row" data-server-key="doomhammer"><code>doomhammer</code></li>
-                      <li class="server-row" data-server-key="draenor"><code>draenor</code></li>
-                      <li class="server-row" data-server-key="dragonblight"><code>dragonblight</code></li>
-                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
-                      <li class="server-row" data-server-key="draka"><code>draka</code></li>
-                      <li class="server-row" data-server-key="drakkari"><code>drakkari</code></li>
-                      <li class="server-row" data-server-key="draktharon"><code>draktharon</code></li>
-                      <li class="server-row" data-server-key="drakthul"><code>drakthul</code></li>
-                      <li class="server-row" data-server-key="dreadmaul"><code>dreadmaul</code></li>
-                      <li class="server-row" data-server-key="drenden"><code>drenden</code></li>
-                      <li class="server-row" data-server-key="dunemaul"><code>dunemaul</code></li>
-                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
-                      <li class="server-row" data-server-key="duskwood"><code>duskwood</code></li>
-                      <li class="server-row" data-server-key="earthen-ring"><code>earthen-ring</code></li>
-                      <li class="server-row" data-server-key="echo-isles"><code>echo-isles</code></li>
-                      <li class="server-row" data-server-key="eitrigg"><code>eitrigg</code></li>
-                      <li class="server-row" data-server-key="eldrethalas"><code>eldrethalas</code></li>
-                      <li class="server-row" data-server-key="elune"><code>elune</code></li>
-                      <li class="server-row" data-server-key="emerald-dream"><code>emerald-dream</code></li>
-                      <li class="server-row" data-server-key="eonar"><code>eonar</code></li>
-                      <li class="server-row" data-server-key="eredar"><code>eredar</code></li>
-                      <li class="server-row" data-server-key="executus"><code>executus</code></li>
-                      <li class="server-row" data-server-key="exodar"><code>exodar</code></li>
-                      <li class="server-row" data-server-key="farstriders"><code>farstriders</code></li>
-                      <li class="server-row" data-server-key="feathermoon"><code>feathermoon</code></li>
-                      <li class="server-row" data-server-key="fenris"><code>fenris</code></li>
-                      <li class="server-row" data-server-key="firetree"><code>firetree</code></li>
-                      <li class="server-row" data-server-key="fizzcrank"><code>fizzcrank</code></li>
-                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
-                      <li class="server-row" data-server-key="frostmourne"><code>frostmourne</code></li>
-                      <li class="server-row" data-server-key="frostwolf"><code>frostwolf</code></li>
-                      <li class="server-row" data-server-key="galakrond"><code>galakrond</code></li>
-                      <li class="server-row" data-server-key="gallywix"><code>gallywix</code></li>
-                      <li class="server-row" data-server-key="garithos"><code>garithos</code></li>
-                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
-                      <li class="server-row" data-server-key="garrosh"><code>garrosh</code></li>
-                      <li class="server-row" data-server-key="ghostlands"><code>ghostlands</code></li>
-                      <li class="server-row" data-server-key="gilneas"><code>gilneas</code></li>
-                      <li class="server-row" data-server-key="gnomeregan"><code>gnomeregan</code></li>
-                      <li class="server-row" data-server-key="goldrinn"><code>goldrinn</code></li>
-                      <li class="server-row" data-server-key="gorefiend"><code>gorefiend</code></li>
-                      <li class="server-row" data-server-key="gorgonnash"><code>gorgonnash</code></li>
-                      <li class="server-row" data-server-key="greymane"><code>greymane</code></li>
-                      <li class="server-row" data-server-key="grizzly-hills"><code>grizzly-hills</code></li>
-                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
-                      <li class="server-row" data-server-key="gundrak"><code>gundrak</code></li>
-                      <li class="server-row" data-server-key="gurubashi"><code>gurubashi</code></li>
-                      <li class="server-row" data-server-key="hakkar"><code>hakkar</code></li>
-                      <li class="server-row" data-server-key="haomarush"><code>haomarush</code></li>
-                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
-                      <li class="server-row" data-server-key="hydraxis"><code>hydraxis</code></li>
-                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
-                      <li class="server-row" data-server-key="icecrown"><code>icecrown</code></li>
-                      <li class="server-row" data-server-key="illidan"><code>illidan</code></li>
-                      <li class="server-row" data-server-key="jaedenar"><code>jaedenar</code></li>
-                      <li class="server-row" data-server-key="jubeithos"><code>jubeithos</code></li>
-                      <li class="server-row" data-server-key="kaelthas"><code>kaelthas</code></li>
-                      <li class="server-row" data-server-key="kalecgos"><code>kalecgos</code></li>
-                      <li class="server-row" data-server-key="kargath"><code>kargath</code></li>
-                      <li class="server-row" data-server-key="kelthuzad"><code>kelthuzad</code></li>
-                      <li class="server-row" data-server-key="khadgar"><code>khadgar</code></li>
-                      <li class="server-row" data-server-key="khaz-modan"><code>khaz-modan</code></li>
-                      <li class="server-row" data-server-key="khazgoroth"><code>khazgoroth</code></li>
-                      <li class="server-row" data-server-key="kiljaeden"><code>kiljaeden</code></li>
-                      <li class="server-row" data-server-key="kilrogg"><code>kilrogg</code></li>
-                      <li class="server-row" data-server-key="kirin-tor"><code>kirin-tor</code></li>
-                      <li class="server-row" data-server-key="korgath"><code>korgath</code></li>
-                      <li class="server-row" data-server-key="korialstrasz"><code>korialstrasz</code></li>
-                      <li class="server-row" data-server-key="kul-tiras"><code>kul-tiras</code></li>
-                      <li class="server-row" data-server-key="laughing-skull"><code>laughing-skull</code></li>
-                      <li class="server-row" data-server-key="lethon"><code>lethon</code></li>
-                      <li class="server-row" data-server-key="lightbringer"><code>lightbringer</code></li>
-                      <li class="server-row" data-server-key="lightninghoof"><code>lightninghoof</code></li>
-                      <li class="server-row" data-server-key="lightnings-blade"><code>lightnings-blade</code></li>
-                      <li class="server-row" data-server-key="llane"><code>llane</code></li>
-                      <li class="server-row" data-server-key="lothar"><code>lothar</code></li>
-                      <li class="server-row" data-server-key="madoran"><code>madoran</code></li>
-                      <li class="server-row" data-server-key="maelstrom"><code>maelstrom</code></li>
-                      <li class="server-row" data-server-key="magtheridon"><code>magtheridon</code></li>
-                      <li class="server-row" data-server-key="maiev"><code>maiev</code></li>
-                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
-                      <li class="server-row" data-server-key="malganis"><code>malganis</code></li>
-                      <li class="server-row" data-server-key="malorne"><code>malorne</code></li>
-                      <li class="server-row" data-server-key="malygos"><code>malygos</code></li>
-                      <li class="server-row" data-server-key="mannoroth"><code>mannoroth</code></li>
-                      <li class="server-row" data-server-key="medivh"><code>medivh</code></li>
-                      <li class="server-row" data-server-key="misha"><code>misha</code></li>
-                      <li class="server-row" data-server-key="moknathal"><code>moknathal</code></li>
-                      <li class="server-row" data-server-key="moon-guard"><code>moon-guard</code></li>
-                      <li class="server-row" data-server-key="moonrunner"><code>moonrunner</code></li>
-                      <li class="server-row" data-server-key="mugthol"><code>mugthol</code></li>
-                      <li class="server-row" data-server-key="muradin"><code>muradin</code></li>
-                      <li class="server-row" data-server-key="nagrand"><code>nagrand</code></li>
-                      <li class="server-row" data-server-key="nathrezim"><code>nathrezim</code></li>
-                      <li class="server-row" data-server-key="nazgrel"><code>nazgrel</code></li>
-                      <li class="server-row" data-server-key="nazjatar"><code>nazjatar</code></li>
-                      <li class="server-row" data-server-key="nemesis"><code>nemesis</code></li>
-                      <li class="server-row" data-server-key="nerzhul"><code>nerzhul</code></li>
-                      <li class="server-row" data-server-key="nesingwary"><code>nesingwary</code></li>
-                      <li class="server-row" data-server-key="nordrassil"><code>nordrassil</code></li>
-                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
-                      <li class="server-row" data-server-key="onyxia"><code>onyxia</code></li>
-                      <li class="server-row" data-server-key="perenolde"><code>perenolde</code></li>
-                      <li class="server-row" data-server-key="proudmoore"><code>proudmoore</code></li>
-                      <li class="server-row" data-server-key="queldorei"><code>queldorei</code></li>
-                      <li class="server-row" data-server-key="quelthalas"><code>quelthalas</code></li>
-                      <li class="server-row" data-server-key="ragnaros"><code>ragnaros</code></li>
-                      <li class="server-row" data-server-key="ravencrest"><code>ravencrest</code></li>
-                      <li class="server-row" data-server-key="ravenholdt"><code>ravenholdt</code></li>
-                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
-                      <li class="server-row" data-server-key="rivendare"><code>rivendare</code></li>
-                      <li class="server-row" data-server-key="runetotem"><code>runetotem</code></li>
-                      <li class="server-row" data-server-key="sargeras"><code>sargeras</code></li>
-                      <li class="server-row" data-server-key="saurfang"><code>saurfang</code></li>
-                      <li class="server-row" data-server-key="scarlet-crusade"><code>scarlet-crusade</code></li>
-                      <li class="server-row" data-server-key="scilla"><code>scilla</code></li>
-                      <li class="server-row" data-server-key="senjin"><code>senjin</code></li>
-                      <li class="server-row" data-server-key="sentinels"><code>sentinels</code></li>
-                      <li class="server-row" data-server-key="shadow-council"><code>shadow-council</code></li>
-                      <li class="server-row" data-server-key="shadowmoon"><code>shadowmoon</code></li>
-                      <li class="server-row" data-server-key="shadowsong"><code>shadowsong</code></li>
-                      <li class="server-row" data-server-key="shandris"><code>shandris</code></li>
-                      <li class="server-row" data-server-key="shattered-halls"><code>shattered-halls</code></li>
-                      <li class="server-row" data-server-key="shattered-hand"><code>shattered-hand</code></li>
-                      <li class="server-row" data-server-key="shuhalo"><code>shuhalo</code></li>
-                      <li class="server-row" data-server-key="silver-hand"><code>silver-hand</code></li>
-                      <li class="server-row" data-server-key="silvermoon"><code>silvermoon</code></li>
-                      <li class="server-row" data-server-key="sisters-of-elune"><code>sisters-of-elune</code></li>
-                      <li class="server-row" data-server-key="skullcrusher"><code>skullcrusher</code></li>
-                      <li class="server-row" data-server-key="skywall"><code>skywall</code></li>
-                      <li class="server-row" data-server-key="smolderthorn"><code>smolderthorn</code></li>
-                      <li class="server-row" data-server-key="spinebreaker"><code>spinebreaker</code></li>
-                      <li class="server-row" data-server-key="spirestone"><code>spirestone</code></li>
-                      <li class="server-row" data-server-key="staghelm"><code>staghelm</code></li>
-                      <li class="server-row" data-server-key="steamwheedle-cartel"><code>steamwheedle-cartel</code></li>
-                      <li class="server-row" data-server-key="stonemaul"><code>stonemaul</code></li>
-                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
-                      <li class="server-row" data-server-key="stormreaver"><code>stormreaver</code></li>
-                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
-                      <li class="server-row" data-server-key="suramar"><code>suramar</code></li>
-                      <li class="server-row" data-server-key="tanaris"><code>tanaris</code></li>
-                      <li class="server-row" data-server-key="terenas"><code>terenas</code></li>
-                      <li class="server-row" data-server-key="terokkar"><code>terokkar</code></li>
-                      <li class="server-row" data-server-key="thaurissan"><code>thaurissan</code></li>
-                      <li class="server-row" data-server-key="the-forgotten-coast"><code>the-forgotten-coast</code></li>
-                      <li class="server-row" data-server-key="the-scryers"><code>the-scryers</code></li>
-                      <li class="server-row" data-server-key="the-underbog"><code>the-underbog</code></li>
-                      <li class="server-row" data-server-key="the-venture-co"><code>the-venture-co</code></li>
-                      <li class="server-row" data-server-key="thorium-brotherhood"><code>thorium-brotherhood</code></li>
-                      <li class="server-row" data-server-key="thrall"><code>thrall</code></li>
-                      <li class="server-row" data-server-key="thunderhorn"><code>thunderhorn</code></li>
-                      <li class="server-row" data-server-key="thunderlord"><code>thunderlord</code></li>
-                      <li class="server-row" data-server-key="tichondrius"><code>tichondrius</code></li>
-                      <li class="server-row" data-server-key="tol-barad"><code>tol-barad</code></li>
-                      <li class="server-row" data-server-key="tortheldrin"><code>tortheldrin</code></li>
-                      <li class="server-row" data-server-key="trollbane"><code>trollbane</code></li>
-                      <li class="server-row" data-server-key="turalyon"><code>turalyon</code></li>
-                      <li class="server-row" data-server-key="twisting-nether"><code>twisting-nether</code></li>
-                      <li class="server-row" data-server-key="uldaman"><code>uldaman</code></li>
-                      <li class="server-row" data-server-key="uldum"><code>uldum</code></li>
-                      <li class="server-row" data-server-key="undermine"><code>undermine</code></li>
-                      <li class="server-row" data-server-key="ursin"><code>ursin</code></li>
-                      <li class="server-row" data-server-key="uther"><code>uther</code></li>
-                      <li class="server-row" data-server-key="vashj"><code>vashj</code></li>
-                      <li class="server-row" data-server-key="veknilash"><code>veknilash</code></li>
-                      <li class="server-row" data-server-key="velen"><code>velen</code></li>
-                      <li class="server-row" data-server-key="warsong"><code>warsong</code></li>
-                      <li class="server-row" data-server-key="whisperwind"><code>whisperwind</code></li>
-                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
-                      <li class="server-row" data-server-key="windrunner"><code>windrunner</code></li>
-                      <li class="server-row" data-server-key="winterhoof"><code>winterhoof</code></li>
-                      <li class="server-row" data-server-key="wyrmrest-accord"><code>wyrmrest-accord</code></li>
-                      <li class="server-row" data-server-key="ysera"><code>ysera</code></li>
-                      <li class="server-row" data-server-key="ysondre"><code>ysondre</code></li>
-                      <li class="server-row" data-server-key="zangarmarsh"><code>zangarmarsh</code></li>
-                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
-                      <li class="server-row" data-server-key="zuluhed"><code>zuluhed</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-wow-region-list="eu"
-                      aria-label="World of Warcraft EU servers"
- hidden>
-                      <li class="server-row" data-server-key="aegwynn"><code>aegwynn</code></li>
-                      <li class="server-row" data-server-key="aerie-peak"><code>aerie-peak</code></li>
-                      <li class="server-row" data-server-key="agamaggan"><code>agamaggan</code></li>
-                      <li class="server-row" data-server-key="aggra-português"><code>aggra-português</code></li>
-                      <li class="server-row" data-server-key="aggramar"><code>aggramar</code></li>
-                      <li class="server-row" data-server-key="ahnqiraj"><code>ahnqiraj</code></li>
-                      <li class="server-row" data-server-key="alakir"><code>alakir</code></li>
-                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
-                      <li class="server-row" data-server-key="alleria"><code>alleria</code></li>
-                      <li class="server-row" data-server-key="alonsus"><code>alonsus</code></li>
-                      <li class="server-row" data-server-key="amanthul"><code>amanthul</code></li>
-                      <li class="server-row" data-server-key="ambossar"><code>ambossar</code></li>
-                      <li class="server-row" data-server-key="anachronos"><code>anachronos</code></li>
-                      <li class="server-row" data-server-key="anetheron"><code>anetheron</code></li>
-                      <li class="server-row" data-server-key="antonidas"><code>antonidas</code></li>
-                      <li class="server-row" data-server-key="anubarak"><code>anubarak</code></li>
-                      <li class="server-row" data-server-key="arakarahm"><code>arakarahm</code></li>
-                      <li class="server-row" data-server-key="arathi"><code>arathi</code></li>
-                      <li class="server-row" data-server-key="arathor"><code>arathor</code></li>
-                      <li class="server-row" data-server-key="archimonde"><code>archimonde</code></li>
-                      <li class="server-row" data-server-key="area-52"><code>area-52</code></li>
-                      <li class="server-row" data-server-key="argent-dawn"><code>argent-dawn</code></li>
-                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
-                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
-                      <li class="server-row" data-server-key="ashenvale"><code>ashenvale</code></li>
-                      <li class="server-row" data-server-key="aszune"><code>aszune</code></li>
-                      <li class="server-row" data-server-key="auchindoun"><code>auchindoun</code></li>
-                      <li class="server-row" data-server-key="azjolnerub"><code>azjolnerub</code></li>
-                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
-                      <li class="server-row" data-server-key="azuregos"><code>azuregos</code></li>
-                      <li class="server-row" data-server-key="azuremyst"><code>azuremyst</code></li>
-                      <li class="server-row" data-server-key="baelgun"><code>baelgun</code></li>
-                      <li class="server-row" data-server-key="balnazzar"><code>balnazzar</code></li>
-                      <li class="server-row" data-server-key="blackhand"><code>blackhand</code></li>
-                      <li class="server-row" data-server-key="blackmoore"><code>blackmoore</code></li>
-                      <li class="server-row" data-server-key="blackrock"><code>blackrock</code></li>
-                      <li class="server-row" data-server-key="blackscar"><code>blackscar</code></li>
-                      <li class="server-row" data-server-key="bladefist"><code>bladefist</code></li>
-                      <li class="server-row" data-server-key="blades-edge"><code>blades-edge</code></li>
-                      <li class="server-row" data-server-key="bloodfeather"><code>bloodfeather</code></li>
-                      <li class="server-row" data-server-key="bloodhoof"><code>bloodhoof</code></li>
-                      <li class="server-row" data-server-key="bloodscalp"><code>bloodscalp</code></li>
-                      <li class="server-row" data-server-key="blutkessel"><code>blutkessel</code></li>
-                      <li class="server-row" data-server-key="booty-bay"><code>booty-bay</code></li>
-                      <li class="server-row" data-server-key="borean-tundra"><code>borean-tundra</code></li>
-                      <li class="server-row" data-server-key="boulderfist"><code>boulderfist</code></li>
-                      <li class="server-row" data-server-key="bronze-dragonflight"><code>bronze-dragonflight</code></li>
-                      <li class="server-row" data-server-key="bronzebeard"><code>bronzebeard</code></li>
-                      <li class="server-row" data-server-key="burning-blade"><code>burning-blade</code></li>
-                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
-                      <li class="server-row" data-server-key="burning-steppes"><code>burning-steppes</code></li>
-                      <li class="server-row" data-server-key="chamber-of-aspects"><code>chamber-of-aspects</code></li>
-                      <li class="server-row" data-server-key="chants-éternels"><code>chants-éternels</code></li>
-                      <li class="server-row" data-server-key="chogall"><code>chogall</code></li>
-                      <li class="server-row" data-server-key="chromaggus"><code>chromaggus</code></li>
-                      <li class="server-row" data-server-key="colinas-pardas"><code>colinas-pardas</code></li>
-                      <li class="server-row" data-server-key="confrérie-du-thorium"><code>confrérie-du-thorium</code></li>
-                      <li class="server-row" data-server-key="conseil-des-ombres"><code>conseil-des-ombres</code></li>
-                      <li class="server-row" data-server-key="crushridge"><code>crushridge</code></li>
-                      <li class="server-row" data-server-key="cthun"><code>cthun</code></li>
-                      <li class="server-row" data-server-key="culte-de-la-rive-noire"><code>culte-de-la-rive-noire</code></li>
-                      <li class="server-row" data-server-key="daggerspine"><code>daggerspine</code></li>
-                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
-                      <li class="server-row" data-server-key="dalvengyr"><code>dalvengyr</code></li>
-                      <li class="server-row" data-server-key="darkmoon-faire"><code>darkmoon-faire</code></li>
-                      <li class="server-row" data-server-key="darksorrow"><code>darksorrow</code></li>
-                      <li class="server-row" data-server-key="darkspear"><code>darkspear</code></li>
-                      <li class="server-row" data-server-key="das-konsortium"><code>das-konsortium</code></li>
-                      <li class="server-row" data-server-key="das-syndikat"><code>das-syndikat</code></li>
-                      <li class="server-row" data-server-key="deathguard"><code>deathguard</code></li>
-                      <li class="server-row" data-server-key="deathweaver"><code>deathweaver</code></li>
-                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
-                      <li class="server-row" data-server-key="deepholm"><code>deepholm</code></li>
-                      <li class="server-row" data-server-key="defias-brotherhood"><code>defias-brotherhood</code></li>
-                      <li class="server-row" data-server-key="dentarg"><code>dentarg</code></li>
-                      <li class="server-row" data-server-key="der-abyssische-rat"><code>der-abyssische-rat</code></li>
-                      <li class="server-row" data-server-key="der-mithrilorden"><code>der-mithrilorden</code></li>
-                      <li class="server-row" data-server-key="der-rat-von-dalaran"><code>der-rat-von-dalaran</code></li>
-                      <li class="server-row" data-server-key="destromath"><code>destromath</code></li>
-                      <li class="server-row" data-server-key="dethecus"><code>dethecus</code></li>
-                      <li class="server-row" data-server-key="die-aldor"><code>die-aldor</code></li>
-                      <li class="server-row" data-server-key="die-arguswacht"><code>die-arguswacht</code></li>
-                      <li class="server-row" data-server-key="die-ewige-wacht"><code>die-ewige-wacht</code></li>
-                      <li class="server-row" data-server-key="die-nachtwache"><code>die-nachtwache</code></li>
-                      <li class="server-row" data-server-key="die-silberne-hand"><code>die-silberne-hand</code></li>
-                      <li class="server-row" data-server-key="die-todeskrallen"><code>die-todeskrallen</code></li>
-                      <li class="server-row" data-server-key="doomhammer"><code>doomhammer</code></li>
-                      <li class="server-row" data-server-key="draenor"><code>draenor</code></li>
-                      <li class="server-row" data-server-key="dragonblight"><code>dragonblight</code></li>
-                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
-                      <li class="server-row" data-server-key="drakthul"><code>drakthul</code></li>
-                      <li class="server-row" data-server-key="drekthar"><code>drekthar</code></li>
-                      <li class="server-row" data-server-key="dun-modr"><code>dun-modr</code></li>
-                      <li class="server-row" data-server-key="dun-morogh"><code>dun-morogh</code></li>
-                      <li class="server-row" data-server-key="dunemaul"><code>dunemaul</code></li>
-                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
-                      <li class="server-row" data-server-key="earthen-ring"><code>earthen-ring</code></li>
-                      <li class="server-row" data-server-key="echsenkessel"><code>echsenkessel</code></li>
-                      <li class="server-row" data-server-key="eitrigg"><code>eitrigg</code></li>
-                      <li class="server-row" data-server-key="eldrethalas"><code>eldrethalas</code></li>
-                      <li class="server-row" data-server-key="elune"><code>elune</code></li>
-                      <li class="server-row" data-server-key="emerald-dream"><code>emerald-dream</code></li>
-                      <li class="server-row" data-server-key="emeriss"><code>emeriss</code></li>
-                      <li class="server-row" data-server-key="eonar"><code>eonar</code></li>
-                      <li class="server-row" data-server-key="eredar"><code>eredar</code></li>
-                      <li class="server-row" data-server-key="eversong"><code>eversong</code></li>
-                      <li class="server-row" data-server-key="executus"><code>executus</code></li>
-                      <li class="server-row" data-server-key="exodar"><code>exodar</code></li>
-                      <li class="server-row" data-server-key="festung-der-stürme"><code>festung-der-stürme</code></li>
-                      <li class="server-row" data-server-key="fordragon"><code>fordragon</code></li>
-                      <li class="server-row" data-server-key="forscherliga"><code>forscherliga</code></li>
-                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
-                      <li class="server-row" data-server-key="frostmourne"><code>frostmourne</code></li>
-                      <li class="server-row" data-server-key="frostwhisper"><code>frostwhisper</code></li>
-                      <li class="server-row" data-server-key="frostwolf"><code>frostwolf</code></li>
-                      <li class="server-row" data-server-key="galakrond"><code>galakrond</code></li>
-                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
-                      <li class="server-row" data-server-key="garrosh"><code>garrosh</code></li>
-                      <li class="server-row" data-server-key="genjuros"><code>genjuros</code></li>
-                      <li class="server-row" data-server-key="ghostlands"><code>ghostlands</code></li>
-                      <li class="server-row" data-server-key="gilneas"><code>gilneas</code></li>
-                      <li class="server-row" data-server-key="goldrinn"><code>goldrinn</code></li>
-                      <li class="server-row" data-server-key="gordunni"><code>gordunni</code></li>
-                      <li class="server-row" data-server-key="gorgonnash"><code>gorgonnash</code></li>
-                      <li class="server-row" data-server-key="greymane"><code>greymane</code></li>
-                      <li class="server-row" data-server-key="grim-batol"><code>grim-batol</code></li>
-                      <li class="server-row" data-server-key="grom"><code>grom</code></li>
-                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
-                      <li class="server-row" data-server-key="hakkar"><code>hakkar</code></li>
-                      <li class="server-row" data-server-key="haomarush"><code>haomarush</code></li>
-                      <li class="server-row" data-server-key="hellfire"><code>hellfire</code></li>
-                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
-                      <li class="server-row" data-server-key="howling-fjord"><code>howling-fjord</code></li>
-                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
-                      <li class="server-row" data-server-key="illidan"><code>illidan</code></li>
-                      <li class="server-row" data-server-key="jaedenar"><code>jaedenar</code></li>
-                      <li class="server-row" data-server-key="kaelthas"><code>kaelthas</code></li>
-                      <li class="server-row" data-server-key="karazhan"><code>karazhan</code></li>
-                      <li class="server-row" data-server-key="kargath"><code>kargath</code></li>
-                      <li class="server-row" data-server-key="kazzak"><code>kazzak</code></li>
-                      <li class="server-row" data-server-key="kelthuzad"><code>kelthuzad</code></li>
-                      <li class="server-row" data-server-key="khadgar"><code>khadgar</code></li>
-                      <li class="server-row" data-server-key="khaz-modan"><code>khaz-modan</code></li>
-                      <li class="server-row" data-server-key="khazgoroth"><code>khazgoroth</code></li>
-                      <li class="server-row" data-server-key="kiljaeden"><code>kiljaeden</code></li>
-                      <li class="server-row" data-server-key="kilrogg"><code>kilrogg</code></li>
-                      <li class="server-row" data-server-key="kirin-tor"><code>kirin-tor</code></li>
-                      <li class="server-row" data-server-key="korgall"><code>korgall</code></li>
-                      <li class="server-row" data-server-key="kragjin"><code>kragjin</code></li>
-                      <li class="server-row" data-server-key="krasus"><code>krasus</code></li>
-                      <li class="server-row" data-server-key="kul-tiras"><code>kul-tiras</code></li>
-                      <li class="server-row" data-server-key="kult-der-verdammten"><code>kult-der-verdammten</code></li>
-                      <li class="server-row" data-server-key="la-croisade-écarlate"><code>la-croisade-écarlate</code></li>
-                      <li class="server-row" data-server-key="laughing-skull"><code>laughing-skull</code></li>
-                      <li class="server-row" data-server-key="les-clairvoyants"><code>les-clairvoyants</code></li>
-                      <li class="server-row" data-server-key="les-sentinelles"><code>les-sentinelles</code></li>
-                      <li class="server-row" data-server-key="lich-king"><code>lich-king</code></li>
-                      <li class="server-row" data-server-key="lightbringer"><code>lightbringer</code></li>
-                      <li class="server-row" data-server-key="lightnings-blade"><code>lightnings-blade</code></li>
-                      <li class="server-row" data-server-key="lordaeron"><code>lordaeron</code></li>
-                      <li class="server-row" data-server-key="los-errantes"><code>los-errantes</code></li>
-                      <li class="server-row" data-server-key="lothar"><code>lothar</code></li>
-                      <li class="server-row" data-server-key="madmortem"><code>madmortem</code></li>
-                      <li class="server-row" data-server-key="magtheridon"><code>magtheridon</code></li>
-                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
-                      <li class="server-row" data-server-key="malganis"><code>malganis</code></li>
-                      <li class="server-row" data-server-key="malorne"><code>malorne</code></li>
-                      <li class="server-row" data-server-key="malygos"><code>malygos</code></li>
-                      <li class="server-row" data-server-key="mannoroth"><code>mannoroth</code></li>
-                      <li class="server-row" data-server-key="marécage-de-zangar"><code>marécage-de-zangar</code></li>
-                      <li class="server-row" data-server-key="mazrigos"><code>mazrigos</code></li>
-                      <li class="server-row" data-server-key="medivh"><code>medivh</code></li>
-                      <li class="server-row" data-server-key="minahonda"><code>minahonda</code></li>
-                      <li class="server-row" data-server-key="moonglade"><code>moonglade</code></li>
-                      <li class="server-row" data-server-key="mugthol"><code>mugthol</code></li>
-                      <li class="server-row" data-server-key="nagrand"><code>nagrand</code></li>
-                      <li class="server-row" data-server-key="nathrezim"><code>nathrezim</code></li>
-                      <li class="server-row" data-server-key="naxxramas"><code>naxxramas</code></li>
-                      <li class="server-row" data-server-key="nazjatar"><code>nazjatar</code></li>
-                      <li class="server-row" data-server-key="nefarian"><code>nefarian</code></li>
-                      <li class="server-row" data-server-key="nemesis"><code>nemesis</code></li>
-                      <li class="server-row" data-server-key="neptulon"><code>neptulon</code></li>
-                      <li class="server-row" data-server-key="nerathor"><code>nerathor</code></li>
-                      <li class="server-row" data-server-key="nerzhul"><code>nerzhul</code></li>
-                      <li class="server-row" data-server-key="nethersturm"><code>nethersturm</code></li>
-                      <li class="server-row" data-server-key="nordrassil"><code>nordrassil</code></li>
-                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
-                      <li class="server-row" data-server-key="nozdormu"><code>nozdormu</code></li>
-                      <li class="server-row" data-server-key="onyxia"><code>onyxia</code></li>
-                      <li class="server-row" data-server-key="outland"><code>outland</code></li>
-                      <li class="server-row" data-server-key="perenolde"><code>perenolde</code></li>
-                      <li class="server-row" data-server-key="pozzo-delleternità"><code>pozzo-delleternità</code></li>
-                      <li class="server-row" data-server-key="proudmoore"><code>proudmoore</code></li>
-                      <li class="server-row" data-server-key="quelthalas"><code>quelthalas</code></li>
-                      <li class="server-row" data-server-key="ragnaros"><code>ragnaros</code></li>
-                      <li class="server-row" data-server-key="rajaxx"><code>rajaxx</code></li>
-                      <li class="server-row" data-server-key="rashgarroth"><code>rashgarroth</code></li>
-                      <li class="server-row" data-server-key="ravencrest"><code>ravencrest</code></li>
-                      <li class="server-row" data-server-key="ravenholdt"><code>ravenholdt</code></li>
-                      <li class="server-row" data-server-key="razuvious"><code>razuvious</code></li>
-                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
-                      <li class="server-row" data-server-key="runetotem"><code>runetotem</code></li>
-                      <li class="server-row" data-server-key="sanguino"><code>sanguino</code></li>
-                      <li class="server-row" data-server-key="sargeras"><code>sargeras</code></li>
-                      <li class="server-row" data-server-key="saurfang"><code>saurfang</code></li>
-                      <li class="server-row" data-server-key="scarshield-legion"><code>scarshield-legion</code></li>
-                      <li class="server-row" data-server-key="senjin"><code>senjin</code></li>
-                      <li class="server-row" data-server-key="shadowsong"><code>shadowsong</code></li>
-                      <li class="server-row" data-server-key="shattered-halls"><code>shattered-halls</code></li>
-                      <li class="server-row" data-server-key="shattered-hand"><code>shattered-hand</code></li>
-                      <li class="server-row" data-server-key="shattrath"><code>shattrath</code></li>
-                      <li class="server-row" data-server-key="shendralar"><code>shendralar</code></li>
-                      <li class="server-row" data-server-key="silvermoon"><code>silvermoon</code></li>
-                      <li class="server-row" data-server-key="sinstralis"><code>sinstralis</code></li>
-                      <li class="server-row" data-server-key="skullcrusher"><code>skullcrusher</code></li>
-                      <li class="server-row" data-server-key="soulflayer"><code>soulflayer</code></li>
-                      <li class="server-row" data-server-key="spinebreaker"><code>spinebreaker</code></li>
-                      <li class="server-row" data-server-key="sporeggar"><code>sporeggar</code></li>
-                      <li class="server-row" data-server-key="steamwheedle-cartel"><code>steamwheedle-cartel</code></li>
-                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
-                      <li class="server-row" data-server-key="stormreaver"><code>stormreaver</code></li>
-                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
-                      <li class="server-row" data-server-key="sunstrider"><code>sunstrider</code></li>
-                      <li class="server-row" data-server-key="suramar"><code>suramar</code></li>
-                      <li class="server-row" data-server-key="sylvanas"><code>sylvanas</code></li>
-                      <li class="server-row" data-server-key="taerar"><code>taerar</code></li>
-                      <li class="server-row" data-server-key="talnivarr"><code>talnivarr</code></li>
-                      <li class="server-row" data-server-key="tarren-mill"><code>tarren-mill</code></li>
-                      <li class="server-row" data-server-key="teldrassil"><code>teldrassil</code></li>
-                      <li class="server-row" data-server-key="temple-noir"><code>temple-noir</code></li>
-                      <li class="server-row" data-server-key="terenas"><code>terenas</code></li>
-                      <li class="server-row" data-server-key="terokkar"><code>terokkar</code></li>
-                      <li class="server-row" data-server-key="terrordar"><code>terrordar</code></li>
-                      <li class="server-row" data-server-key="the-maelstrom"><code>the-maelstrom</code></li>
-                      <li class="server-row" data-server-key="the-shatar"><code>the-shatar</code></li>
-                      <li class="server-row" data-server-key="the-venture-co"><code>the-venture-co</code></li>
-                      <li class="server-row" data-server-key="theradras"><code>theradras</code></li>
-                      <li class="server-row" data-server-key="thermaplugg"><code>thermaplugg</code></li>
-                      <li class="server-row" data-server-key="thrall"><code>thrall</code></li>
-                      <li class="server-row" data-server-key="throkferoth"><code>throkferoth</code></li>
-                      <li class="server-row" data-server-key="thunderhorn"><code>thunderhorn</code></li>
-                      <li class="server-row" data-server-key="tichondrius"><code>tichondrius</code></li>
-                      <li class="server-row" data-server-key="tirion"><code>tirion</code></li>
-                      <li class="server-row" data-server-key="todeswache"><code>todeswache</code></li>
-                      <li class="server-row" data-server-key="trollbane"><code>trollbane</code></li>
-                      <li class="server-row" data-server-key="turalyon"><code>turalyon</code></li>
-                      <li class="server-row" data-server-key="twilights-hammer"><code>twilights-hammer</code></li>
-                      <li class="server-row" data-server-key="twisting-nether"><code>twisting-nether</code></li>
-                      <li class="server-row" data-server-key="tyrande"><code>tyrande</code></li>
-                      <li class="server-row" data-server-key="uldaman"><code>uldaman</code></li>
-                      <li class="server-row" data-server-key="ulduar"><code>ulduar</code></li>
-                      <li class="server-row" data-server-key="uldum"><code>uldum</code></li>
-                      <li class="server-row" data-server-key="ungoro"><code>ungoro</code></li>
-                      <li class="server-row" data-server-key="varimathras"><code>varimathras</code></li>
-                      <li class="server-row" data-server-key="vashj"><code>vashj</code></li>
-                      <li class="server-row" data-server-key="veklor"><code>veklor</code></li>
-                      <li class="server-row" data-server-key="veknilash"><code>veknilash</code></li>
-                      <li class="server-row" data-server-key="voljin"><code>voljin</code></li>
-                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
-                      <li class="server-row" data-server-key="wrathbringer"><code>wrathbringer</code></li>
-                      <li class="server-row" data-server-key="xavius"><code>xavius</code></li>
-                      <li class="server-row" data-server-key="ysera"><code>ysera</code></li>
-                      <li class="server-row" data-server-key="ysondre"><code>ysondre</code></li>
-                      <li class="server-row" data-server-key="zenedar"><code>zenedar</code></li>
-                      <li class="server-row" data-server-key="zirkel-des-cenarius"><code>zirkel-des-cenarius</code></li>
-                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
-                      <li class="server-row" data-server-key="zuluhed"><code>zuluhed</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-wow-region-list="kr"
-                      aria-label="World of Warcraft KR servers"
- hidden>
-                      <li class="server-row" data-server-key="alexstrasza"><code>alexstrasza</code></li>
-                      <li class="server-row" data-server-key="azshara"><code>azshara</code></li>
-                      <li class="server-row" data-server-key="burning-legion"><code>burning-legion</code></li>
-                      <li class="server-row" data-server-key="cenarius"><code>cenarius</code></li>
-                      <li class="server-row" data-server-key="dalaran"><code>dalaran</code></li>
-                      <li class="server-row" data-server-key="deathwing"><code>deathwing</code></li>
-                      <li class="server-row" data-server-key="durotan"><code>durotan</code></li>
-                      <li class="server-row" data-server-key="garona"><code>garona</code></li>
-                      <li class="server-row" data-server-key="guldan"><code>guldan</code></li>
-                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
-                      <li class="server-row" data-server-key="hyjal"><code>hyjal</code></li>
-                      <li class="server-row" data-server-key="malfurion"><code>malfurion</code></li>
-                      <li class="server-row" data-server-key="norgannon"><code>norgannon</code></li>
-                      <li class="server-row" data-server-key="rexxar"><code>rexxar</code></li>
-                      <li class="server-row" data-server-key="stormrage"><code>stormrage</code></li>
-                      <li class="server-row" data-server-key="wildhammer"><code>wildhammer</code></li>
-                      <li class="server-row" data-server-key="windrunner"><code>windrunner</code></li>
-                      <li class="server-row" data-server-key="zuljin"><code>zuljin</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-wow-region-list="tw"
-                      aria-label="World of Warcraft TW servers"
- hidden>
-                      <li class="server-row" data-server-key="arthas"><code>arthas</code></li>
-                      <li class="server-row" data-server-key="arygos"><code>arygos</code></li>
-                      <li class="server-row" data-server-key="bleeding-hollow"><code>bleeding-hollow</code></li>
-                      <li class="server-row" data-server-key="chillwind-point"><code>chillwind-point</code></li>
-                      <li class="server-row" data-server-key="crystalpine-stinger"><code>crystalpine-stinger</code></li>
-                      <li class="server-row" data-server-key="demon-fall-canyon"><code>demon-fall-canyon</code></li>
-                      <li class="server-row" data-server-key="dragonmaw"><code>dragonmaw</code></li>
-                      <li class="server-row" data-server-key="frostmane"><code>frostmane</code></li>
-                      <li class="server-row" data-server-key="hellscream"><code>hellscream</code></li>
-                      <li class="server-row" data-server-key="icecrown"><code>icecrown</code></li>
-                      <li class="server-row" data-server-key="krol-blade"><code>krol-blade</code></li>
-                      <li class="server-row" data-server-key="lights-hope"><code>lights-hope</code></li>
-                      <li class="server-row" data-server-key="menethil"><code>menethil</code></li>
-                      <li class="server-row" data-server-key="nightsong"><code>nightsong</code></li>
-                      <li class="server-row" data-server-key="old-blanchy"><code>old-blanchy</code></li>
-                      <li class="server-row" data-server-key="order-of-the-cloud-serpent"><code>order-of-the-cloud-serpent</code></li>
-                      <li class="server-row" data-server-key="queldorei"><code>queldorei</code></li>
-                      <li class="server-row" data-server-key="shadowmoon"><code>shadowmoon</code></li>
-                      <li class="server-row" data-server-key="silverwing-hold"><code>silverwing-hold</code></li>
-                      <li class="server-row" data-server-key="skywall"><code>skywall</code></li>
-                      <li class="server-row" data-server-key="spirestone"><code>spirestone</code></li>
-                      <li class="server-row" data-server-key="stormscale"><code>stormscale</code></li>
-                      <li class="server-row" data-server-key="sundown-marsh"><code>sundown-marsh</code></li>
-                      <li class="server-row" data-server-key="whisperwind"><code>whisperwind</code></li>
-                      <li class="server-row" data-server-key="world-tree"><code>world-tree</code></li>
-                      <li class="server-row" data-server-key="wrathbringer"><code>wrathbringer</code></li>
-                      <li class="server-row" data-server-key="zealot-blade"><code>zealot-blade</code></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </details>
-            <details class="accordion-item">
-              <summary class="game-summary">
-                <img
-                  class="game-logo game-logo--wide"
-                  src="./assets/ffxiv-logo-small-transparent.png"
-                  alt="Final Fantasy XIV (FFXIV) world status alerts"
-                  width="140"
-                  height="39"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span class="game-title">Final Fantasy XIV <span class="muted">(ffxiv)</span></span>
-              </summary>
-              <div class="accordion-body">
-                <p class="muted small">
-                  Worlds are grouped by data center: <strong>NA</strong>, <strong>EU</strong>, <strong>JP</strong>, and
-                  <strong>OCE</strong> (<code>na</code>, <code>eu</code>, <code>jp</code>, <code>oce</code>). Subscribe with labels like
-                  <code>ffxiv-na-gilgamesh</code>. Browse worlds below or use <code>/regions</code> and <code>/servers</code> in Discord.
-                </p>
-                <div class="server-panel" data-ffxiv-servers data-ffxiv-region="na">
-                  <div class="server-region-tabs" role="tablist" aria-label="FFXIV region">
-                    <button
-                      type="button"
-                      class="server-region-tab is-active"
-                      role="tab"
-                      aria-selected="true"
-                      data-ffxiv-region-tab="na"
-                    >
-                      NA
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-ffxiv-region-tab="eu"
-                    >
-                      EU
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-ffxiv-region-tab="jp"
-                    >
-                      JP
-                    </button>
-                    <button
-                      type="button"
-                      class="server-region-tab"
-                      role="tab"
-                      aria-selected="false"
-                      data-ffxiv-region-tab="oce"
-                    >
-                      OCE
-                    </button>
-                  </div>
-                  <div class="server-panel__head">
-                    <label class="server-search" data-ffxiv-search-label aria-label="Search Final Fantasy XIV NA worlds">
-                      <span class="server-search__icon" aria-hidden="true">⌕</span>
-                      <input
-                        class="server-search__input"
-                        type="search"
-                        placeholder="Search NA worlds (e.g. gilgamesh)"
-                        autocomplete="off"
-                        inputmode="search"
-                        data-server-search="ffxiv"
-                      />
-                    </label>
-                    <div class="server-count muted small" data-server-count="ffxiv"></div>
-                  </div>
-
-                  <div class="server-panel__body">
-                    <ul
-                      class="server-list"
-                      data-ffxiv-region-list="na"
-                      aria-label="Final Fantasy XIV NA worlds"
->
-                      <li class="server-row" data-server-key="adamantoise"><code>adamantoise</code></li>
-                      <li class="server-row" data-server-key="balmung"><code>balmung</code></li>
-                      <li class="server-row" data-server-key="behemoth"><code>behemoth</code></li>
-                      <li class="server-row" data-server-key="brynhildr"><code>brynhildr</code></li>
-                      <li class="server-row" data-server-key="cactuar"><code>cactuar</code></li>
-                      <li class="server-row" data-server-key="coeurl"><code>coeurl</code></li>
-                      <li class="server-row" data-server-key="cuchulainn"><code>cuchulainn</code></li>
-                      <li class="server-row" data-server-key="diabolos"><code>diabolos</code></li>
-                      <li class="server-row" data-server-key="excalibur"><code>excalibur</code></li>
-                      <li class="server-row" data-server-key="exodus"><code>exodus</code></li>
-                      <li class="server-row" data-server-key="faerie"><code>faerie</code></li>
-                      <li class="server-row" data-server-key="famfrit"><code>famfrit</code></li>
-                      <li class="server-row" data-server-key="gilgamesh"><code>gilgamesh</code></li>
-                      <li class="server-row" data-server-key="goblin"><code>goblin</code></li>
-                      <li class="server-row" data-server-key="golem"><code>golem</code></li>
-                      <li class="server-row" data-server-key="halicarnassus"><code>halicarnassus</code></li>
-                      <li class="server-row" data-server-key="hyperion"><code>hyperion</code></li>
-                      <li class="server-row" data-server-key="jenova"><code>jenova</code></li>
-                      <li class="server-row" data-server-key="kraken"><code>kraken</code></li>
-                      <li class="server-row" data-server-key="lamia"><code>lamia</code></li>
-                      <li class="server-row" data-server-key="leviathan"><code>leviathan</code></li>
-                      <li class="server-row" data-server-key="maduin"><code>maduin</code></li>
-                      <li class="server-row" data-server-key="malboro"><code>malboro</code></li>
-                      <li class="server-row" data-server-key="marilith"><code>marilith</code></li>
-                      <li class="server-row" data-server-key="mateus"><code>mateus</code></li>
-                      <li class="server-row" data-server-key="midgardsormr"><code>midgardsormr</code></li>
-                      <li class="server-row" data-server-key="rafflesia"><code>rafflesia</code></li>
-                      <li class="server-row" data-server-key="sargatanas"><code>sargatanas</code></li>
-                      <li class="server-row" data-server-key="seraph"><code>seraph</code></li>
-                      <li class="server-row" data-server-key="siren"><code>siren</code></li>
-                      <li class="server-row" data-server-key="ultros"><code>ultros</code></li>
-                      <li class="server-row" data-server-key="zalera"><code>zalera</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-ffxiv-region-list="eu"
-                      aria-label="Final Fantasy XIV EU worlds"
- hidden>
-                      <li class="server-row" data-server-key="alpha"><code>alpha</code></li>
-                      <li class="server-row" data-server-key="cerberus"><code>cerberus</code></li>
-                      <li class="server-row" data-server-key="lich"><code>lich</code></li>
-                      <li class="server-row" data-server-key="louisoix"><code>louisoix</code></li>
-                      <li class="server-row" data-server-key="moogle"><code>moogle</code></li>
-                      <li class="server-row" data-server-key="odin"><code>odin</code></li>
-                      <li class="server-row" data-server-key="omega"><code>omega</code></li>
-                      <li class="server-row" data-server-key="phantom"><code>phantom</code></li>
-                      <li class="server-row" data-server-key="phoenix"><code>phoenix</code></li>
-                      <li class="server-row" data-server-key="ragnarok"><code>ragnarok</code></li>
-                      <li class="server-row" data-server-key="raiden"><code>raiden</code></li>
-                      <li class="server-row" data-server-key="sagittarius"><code>sagittarius</code></li>
-                      <li class="server-row" data-server-key="shiva"><code>shiva</code></li>
-                      <li class="server-row" data-server-key="spriggan"><code>spriggan</code></li>
-                      <li class="server-row" data-server-key="twintania"><code>twintania</code></li>
-                      <li class="server-row" data-server-key="zodiark"><code>zodiark</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-ffxiv-region-list="jp"
-                      aria-label="Final Fantasy XIV JP worlds"
- hidden>
-                      <li class="server-row" data-server-key="aegis"><code>aegis</code></li>
-                      <li class="server-row" data-server-key="alexander"><code>alexander</code></li>
-                      <li class="server-row" data-server-key="anima"><code>anima</code></li>
-                      <li class="server-row" data-server-key="asura"><code>asura</code></li>
-                      <li class="server-row" data-server-key="atomos"><code>atomos</code></li>
-                      <li class="server-row" data-server-key="bahamut"><code>bahamut</code></li>
-                      <li class="server-row" data-server-key="belias"><code>belias</code></li>
-                      <li class="server-row" data-server-key="carbuncle"><code>carbuncle</code></li>
-                      <li class="server-row" data-server-key="chocobo"><code>chocobo</code></li>
-                      <li class="server-row" data-server-key="durandal"><code>durandal</code></li>
-                      <li class="server-row" data-server-key="fenrir"><code>fenrir</code></li>
-                      <li class="server-row" data-server-key="garuda"><code>garuda</code></li>
-                      <li class="server-row" data-server-key="gungnir"><code>gungnir</code></li>
-                      <li class="server-row" data-server-key="hades"><code>hades</code></li>
-                      <li class="server-row" data-server-key="ifrit"><code>ifrit</code></li>
-                      <li class="server-row" data-server-key="ixion"><code>ixion</code></li>
-                      <li class="server-row" data-server-key="kujata"><code>kujata</code></li>
-                      <li class="server-row" data-server-key="mandragora"><code>mandragora</code></li>
-                      <li class="server-row" data-server-key="masamune"><code>masamune</code></li>
-                      <li class="server-row" data-server-key="pandaemonium"><code>pandaemonium</code></li>
-                      <li class="server-row" data-server-key="ramuh"><code>ramuh</code></li>
-                      <li class="server-row" data-server-key="ridill"><code>ridill</code></li>
-                      <li class="server-row" data-server-key="shinryu"><code>shinryu</code></li>
-                      <li class="server-row" data-server-key="tiamat"><code>tiamat</code></li>
-                      <li class="server-row" data-server-key="titan"><code>titan</code></li>
-                      <li class="server-row" data-server-key="tonberry"><code>tonberry</code></li>
-                      <li class="server-row" data-server-key="typhon"><code>typhon</code></li>
-                      <li class="server-row" data-server-key="ultima"><code>ultima</code></li>
-                      <li class="server-row" data-server-key="unicorn"><code>unicorn</code></li>
-                      <li class="server-row" data-server-key="valefor"><code>valefor</code></li>
-                      <li class="server-row" data-server-key="yojimbo"><code>yojimbo</code></li>
-                      <li class="server-row" data-server-key="zeromus"><code>zeromus</code></li>
-                    </ul>
-                    <ul
-                      class="server-list"
-                      data-ffxiv-region-list="oce"
-                      aria-label="Final Fantasy XIV OCE worlds"
- hidden>
-                      <li class="server-row" data-server-key="bismarck"><code>bismarck</code></li>
-                      <li class="server-row" data-server-key="ravana"><code>ravana</code></li>
-                      <li class="server-row" data-server-key="sephirot"><code>sephirot</code></li>
-                      <li class="server-row" data-server-key="sophia"><code>sophia</code></li>
-                      <li class="server-row" data-server-key="zurvan"><code>zurvan</code></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="upcoming" aria-label="Upcoming Changes">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">Upcoming Changes</h1>
-          </div>
-
-          <ul class="steps" aria-label="Upcoming changes list">
-            <li class="upcoming-shipped">
-              <span class="upcoming-badge">Added!</span>
-              <span class="upcoming-shipped__text"
-                ><strong>Multi-region support</strong> for supported games</span
-              >
-            </li>
-            <li><strong>Direct message (DM) alerts</strong>, not limited to server channels</li>
-            <li class="upcoming-shipped">
-              <span class="upcoming-badge">Added!</span>
-              <span class="upcoming-shipped__text"
-                ><strong>Final Fantasy XIV Online</strong> world status alerts</span
-              >
-            </li>
-            <li>
-              <strong>More games</strong>, including <strong>Old School RuneScape</strong> (plus other popular MMOs)
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section" id="changelog" aria-label="Changelog">
-        <div class="container">
-          <div class="section-head">
-            <h1 class="h2">Changelog</h1>
-          </div>
-
-          <article class="changelog">
-            <details class="changelog-entry" open>
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.2</span>
-                <span class="muted">2026-06-04</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Added</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong>Final Fantasy XIV (FFXIV)</strong> — subscribe to world status and check UP/DOWN with
-                      <code>/subscribe</code>, <code>/status</code>, and the other catalog commands when FFXIV is configured for your
-                      server.
-                    </li>
-                    <li>
-                      <strong>FFXIV regions</strong> — pick <code>na</code>, <code>eu</code>, <code>jp</code>, or
-                      <code>oce</code>. Subscriptions show up as <code>ffxiv-na-gilgamesh</code>,
-                      <code>ffxiv-eu-lich</code>, and so on.
-                    </li>
-                    <li>
-                      <strong><code>/regions</code></strong> — for FFXIV, lists <code>na</code>, <code>eu</code>,
-                      <code>jp</code>, and <code>oce</code> when that game is configured.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
-            <details class="changelog-entry">
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.1</span>
-                <span class="muted">2026-05-26</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Added</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong>Multi-region World of Warcraft</strong> — the bot supports realms in
-                      <strong>US, EU, Korea (KR), and Taiwan (TW)</strong>, not only US. You pick a region when subscribing or
-                      checking status so the same realm name in different regions is handled correctly.
-                    </li>
-                    <li>
-                      <strong><code>/regions</code></strong> — list which regions are available for a game (for WoW:
-                      <code>us</code>, <code>eu</code>, <code>kr</code>, <code>tw</code>).
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="changelog-section">
-                  <h4 class="h4">Changed</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong><code>/subscribe</code></strong> — adds a required <strong><code>region</code></strong> option.
-                      Autocomplete order is <strong>game → region → server</strong> (type to search at each step). New
-                      subscriptions are labeled <strong><code>game-region-server</code></strong> (e.g.
-                      <code>wow-eu-kazzak</code>).
-                    </li>
-                    <li>
-                      <strong><code>/unsubscribe</code></strong> — subscription picker and confirmation text use the region-aware
-                      label; autocomplete shows <strong>game</strong>, <strong>region</strong>, and <strong>server</strong> when the
-                      subscription includes a region.
-                    </li>
-                    <li>
-                      <strong><code>/subscriptions</code></strong> — guild list shows region-aware labels (e.g.
-                      <code>wow-us-illidan</code>, <code>wow-eu-kazzak</code>) so you can tell US and EU (and other) realms apart
-                      in the same channel.
-                    </li>
-                    <li>
-                      <strong><code>/status</code> and <code>/servers</code></strong> — require <strong><code>region</code></strong>
-                      like <code>/subscribe</code>; use them to look up or list servers in a specific region.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
-            <details class="changelog-entry">
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.0.3</span>
-                <span class="muted">2026-05-15</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Changed</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong><code>/subscribe</code> and <code>/unsubscribe</code></strong> — only members with
-                      <strong>Manage Channels</strong> or <strong>Administrator</strong> can add or remove subscriptions (ephemeral
-                      message if denied).
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
-            <details class="changelog-entry">
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.0.2</span>
-                <span class="muted">2026-05-15</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Added</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong><code>/servers</code></strong> — lists servers configured for a game (game autocomplete). Long lists link to the
-                      supported games page; for <code>wow</code>, also shows popular US realm names.
-                    </li>
-                    <li>
-                      <strong><code>/status</code></strong> — shows the current UP/DOWN status for a game + server (same autocomplete as
-                      <code>/subscribe</code>).
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="changelog-section">
-                  <h4 class="h4">Changed</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong><code>/status</code></strong> — rate-limited per user and per guild (in-process); repeated checks within a short
-                      window get an ephemeral “slow down” message instead of hitting the database every time.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
-            <details class="changelog-entry">
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.0.1</span>
-                <span class="muted">2026-05-13</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Added</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong><code>/games</code></strong> — lists supported games from the configured server mapping (same source
-                      as <code>/subscribe</code> autocomplete).
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-
-            <details class="changelog-entry">
-              <summary class="changelog-summary">
-                <span class="changelog-version">v1.0.0</span>
-                <span class="muted">2026-05-07</span>
-              </summary>
-
-              <div class="changelog-body">
-                <div class="changelog-section">
-                  <h4 class="h4">Added</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong>Discord subscription workflow</strong>:
-                      <ul>
-                        <li><code>/subscribe</code> with game/server autocomplete and optional role mention</li>
-                        <li><code>/unsubscribe</code> via subscription picker (same entries as <code>/subscriptions</code>)</li>
-                        <li><code>/subscriptions</code> lists subscriptions grouped by channel</li>
-                        <li><code>/help</code> for usage, tips, and documentation link</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <strong>Human-friendly output</strong>:
-                      <ul>
-                        <li>Unsubscribe replies formatted as “Unsubscribed … from <strong>game-server</strong> … in #channel”</li>
-                        <li>Autocomplete options display game/server/role/channel in a readable form</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <strong>Duplicate subscription protection</strong>:
-                      <ul>
-                        <li>Prevents duplicate channel+server+role subscriptions with an “Already subscribed” response</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="changelog-section">
-                  <h4 class="h4">Changed</h4>
-                  <ul class="changelog-list">
-                    <li>
-                      <strong>Discord commands</strong>:
-                      <ul>
-                        <li>
-                          <code>/games</code> and <code>/servers</code> are no longer exposed; discovery happens via
-                          <code>/subscribe</code> autocomplete and <code>/subscriptions</code>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </details>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="support-my-work" aria-label="Support My Work">
-        <div class="container">
-          <div class="support-head">
-            <h1 class="h2">Support My Work</h1>
-
-            <div class="support-row">
-              <img
-                class="support-avatar"
-                src="./assets/armand.png"
-                alt="Armand, creator of ServersUp"
-                width="96"
-                height="96"
-                loading="lazy"
-                decoding="async"
-              />
-
-              <p class="muted support-text">
-                Thanks for checking out ServersUp! If you’d like to learn more about me (Armand), the author, feel
-                free to visit my Ko-fi page. Donations are never required, but they’re genuinely appreciated and go
-                only toward infrastructure costs, helping keep this project (and the others I build) online and well
-                maintained for as long as possible.
-              </p>
-
-              <a class="kofi-button" href="https://ko-fi.com/R6R71Z1SRN" target="_blank" rel="noreferrer">
-                <img
-                  class="kofi-button__img"
-                  height="36"
-                  src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_blue.png"
-                  alt="Support me on Ko-fi"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div class="cta-row">
-            <noscript>
-              <a class="button button-primary" href="https://ko-fi.com/armasndev" target="_blank" rel="noreferrer">
-                Donate on Ko-fi
-              </a>
-            </noscript>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div class="container footer-inner">
-          <span class="muted small">© <span id="year"></span> ServersUp</span>
-          <span class="muted small">Built for GitHub Pages.</span>
-        </div>
-      </footer>
     </main>
 
+    <footer class="site-footer">
+      <p>© <span id="year"></span> ServersUp</p>
+    </footer>
+
+    <script src="./data/games-data.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
