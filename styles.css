@@ -164,12 +164,15 @@ code {
 }
 
 .hero {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
   margin: 0 0 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
+}
+
+.hero-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .hero-logo {
@@ -198,6 +201,42 @@ code {
   font-size: 1.05rem;
   line-height: 1.45;
   color: var(--muted);
+}
+
+.hero-games {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.hero-games__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #fff;
+  text-decoration: none;
+}
+
+.hero-games__link:hover {
+  background: #f8f8f8;
+  text-decoration: none;
+}
+
+.hero-games__logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+  max-width: 6rem;
+  object-fit: contain;
+}
+
+.hero-games__logo--wide {
+  max-width: 7rem;
 }
 
 .doc h2 {
