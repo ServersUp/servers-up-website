@@ -1,6 +1,25 @@
 const DISCORD_OAUTH_URL =
   "https://discord.com/oauth2/authorize?client_id=1497867221106688181";
 
+const GAMES = {
+  wow: {
+    label: "World of Warcraft",
+    short: "WoW",
+    dataUrl: "./data/wow-servers.json",
+    regions: { us: "US", eu: "EU", kr: "KR", tw: "TW" },
+    defaultRegion: "us",
+    unit: "realms",
+  },
+  ffxiv: {
+    label: "Final Fantasy XIV",
+    short: "FFXIV",
+    dataUrl: "./data/ffxiv-servers.json",
+    regions: { na: "NA", eu: "EU", jp: "JP", oce: "OCE" },
+    defaultRegion: "na",
+    unit: "worlds",
+  },
+};
+
 function setYear() {
   const el = document.getElementById("year");
   if (el) el.textContent = String(new Date().getFullYear());
@@ -57,9 +76,8 @@ function setupSmoothScroll() {
 
     e.preventDefault();
     const headerOffset = getHeaderOffset();
-    const targetY = headerOffset + 8;
     const targetTop = target.getBoundingClientRect().top + window.scrollY;
-    const y = Math.max(0, targetTop - targetY);
+    const y = Math.max(0, targetTop - headerOffset - 12);
 
     window.scrollTo({ top: y, behavior: "smooth" });
     history.pushState(null, "", href);
@@ -79,176 +97,147 @@ function hardenExternalLinks() {
   }
 }
 
-function setupServerSearch() {
-  const inputs = Array.from(document.querySelectorAll("[data-server-search]")).filter(
-    (el) => el instanceof HTMLInputElement,
-  );
+async function setupGameBrowser() {
+  const root = document.getElementById("game-browser");
+  if (!(root instanceof HTMLElement)) return;
 
-  for (const input of inputs) {
-    if (input.closest("[data-game-region-panel]")) continue;
+  const gameTabs = root.querySelectorAll("[data-game-tab]");
+  const regionRow = root.querySelector("[data-region-row]");
+  const searchInput = root.querySelector("[data-realm-search]");
+  const listEl = root.querySelector("[data-realm-list]");
+  const countEl = root.querySelector("[data-realm-count]");
+  const statusEl = root.querySelector("[data-realm-status]");
 
-    const key = input.getAttribute("data-server-search") || "";
-    const list = document.querySelector(`[data-server-list="${CSS.escape(key)}"]`);
-    const count = document.querySelector(`[data-server-count="${CSS.escape(key)}"]`);
-    if (!(list instanceof HTMLElement)) continue;
-
-    const rows = Array.from(list.querySelectorAll("[data-server-key]")).filter(
-      (el) => el instanceof HTMLElement,
-    );
-
-    rows.sort((a, b) => {
-      const ak = (a.getAttribute("data-server-key") || "").toLowerCase();
-      const bk = (b.getAttribute("data-server-key") || "").toLowerCase();
-      return ak.localeCompare(bk);
-    });
-    for (const row of rows) list.appendChild(row);
-
-    const all = rows.length;
-
-    const setCount = (visible) => {
-      if (!(count instanceof HTMLElement)) return;
-      count.textContent = `${visible} / ${all}`;
-    };
-
-    const apply = () => {
-      const q = (input.value || "").trim().toLowerCase();
-      let visible = 0;
-      for (const row of rows) {
-        const k = (row.getAttribute("data-server-key") || "").toLowerCase();
-        const show = q.length === 0 || k.includes(q);
-        row.style.display = show ? "" : "none";
-        if (show) visible += 1;
-      }
-      setCount(visible);
-    };
-
-    input.addEventListener("input", apply);
-    input.addEventListener("search", apply);
-    apply();
-  }
-}
-
-/**
- * Region tabs + search for a game panel (WoW, FFXIV, etc.).
- * Panel root uses data-game-region-panel; lists/tabs use the attrs passed in config.
- */
-function setupGameRegionPanel(config) {
-  const panel = document.querySelector(config.panelSelector);
-  if (!(panel instanceof HTMLElement)) return;
-
-  panel.setAttribute("data-game-region-panel", "");
-
-  const lists = Array.from(panel.querySelectorAll(`[${config.regionListAttr}]`)).filter(
-    (el) => el instanceof HTMLElement,
-  );
-  const input = panel.querySelector(`[data-server-search="${CSS.escape(config.searchKey)}"]`);
-  const count = panel.querySelector(`[data-server-count="${CSS.escape(config.countKey)}"]`);
-  const searchLabel = panel.querySelector(config.searchLabelSelector);
-  const tabs = panel.querySelectorAll(`[${config.regionTabAttr}]`);
-
-  let region = panel.getAttribute(config.regionAttr) || config.defaultRegion;
-  let rows = [];
-
-  function listFor(r) {
-    return lists.find((el) => el.getAttribute(config.regionListAttr) === r) ?? null;
+  if (
+    !(regionRow instanceof HTMLElement) ||
+    !(searchInput instanceof HTMLInputElement) ||
+    !(listEl instanceof HTMLElement) ||
+    !(countEl instanceof HTMLElement)
+  ) {
+    return;
   }
 
-  function setActiveTab(next) {
-    region = next;
-    panel.setAttribute(config.regionAttr, next);
-    for (const tab of tabs) {
+  const cache = {};
+  let gameId = "wow";
+  let region = GAMES.wow.defaultRegion;
+  let servers = [];
+
+  async function loadGame(id) {
+    if (cache[id]) return cache[id];
+    const res = await fetch(GAMES[id].dataUrl);
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    cache[id] = data.regions || {};
+    return cache[id];
+  }
+
+  function setGameTabActive(id) {
+    for (const tab of gameTabs) {
       if (!(tab instanceof HTMLButtonElement)) continue;
-      const r = tab.getAttribute(config.regionTabAttr) || "";
-      const active = r === next;
+      const active = tab.getAttribute("data-game-tab") === id;
       tab.classList.toggle("is-active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
     }
   }
 
-  function applyFilter() {
-    const q = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : "";
-    let visible = 0;
-    for (const row of rows) {
-      const k = (row.getAttribute("data-server-key") || "").toLowerCase();
-      const show = q.length === 0 || k.includes(q);
-      row.style.display = show ? "" : "none";
-      if (show) visible += 1;
+  function renderRegionTabs(regions) {
+    regionRow.replaceChildren();
+    const cfg = GAMES[gameId];
+    const keys = Object.keys(cfg.regions);
+    if (!keys.includes(region)) region = cfg.defaultRegion;
+
+    for (const key of keys) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "region-tab rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide";
+      btn.setAttribute("data-region-tab", key);
+      btn.setAttribute("role", "tab");
+      btn.textContent = cfg.regions[key];
+      if (key === region) {
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-selected", "true");
+      } else {
+        btn.setAttribute("aria-selected", "false");
+      }
+      btn.addEventListener("click", () => {
+        if (region === key) return;
+        region = key;
+        renderRegionTabs(regions);
+        applyServers(regions[region] || []);
+      });
+      regionRow.appendChild(btn);
     }
-    if (count instanceof HTMLElement) count.textContent = `${visible} / ${rows.length}`;
   }
 
-  function showRegion(next) {
-    setActiveTab(next);
-    const activeList = listFor(next);
-    for (const list of lists) list.hidden = list !== activeList;
-    rows = activeList
-      ? Array.from(activeList.querySelectorAll("[data-server-key]")).filter((el) => el instanceof HTMLElement)
-      : [];
+  function renderList(filtered) {
+    listEl.replaceChildren();
+    if (filtered.length === 0) {
+      const empty = document.createElement("li");
+      empty.className = "px-3 py-6 text-center text-sm text-white/45";
+      empty.textContent = "No matches.";
+      listEl.appendChild(empty);
+      return;
+    }
+    for (const name of filtered) {
+      const li = document.createElement("li");
+      li.className = "border-b border-white/5 px-3 py-2 text-sm text-white/85 last:border-0";
+      const code = document.createElement("code");
+      code.className = "font-mono text-[13px] text-white/90";
+      code.textContent = name;
+      li.appendChild(code);
+      listEl.appendChild(li);
+    }
+  }
 
-    const label = config.regionLabels[next] || next.toUpperCase();
-    const unit = config.serverUnit || "servers";
-    if (searchLabel instanceof HTMLLabelElement) {
-      searchLabel.setAttribute("aria-label", `Search ${config.gameName} ${label} ${unit}`);
-    }
-    if (input instanceof HTMLInputElement) {
-      const example = rows[0]?.getAttribute("data-server-key") || config.placeholderExample;
-      input.placeholder = `Search ${label} ${unit} (e.g. ${example})`;
-      input.value = "";
-    }
+  function applyFilter() {
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = q.length === 0 ? servers : servers.filter((s) => s.toLowerCase().includes(q));
+    renderList(filtered);
+    countEl.textContent = `${filtered.length} / ${servers.length}`;
+  }
+
+  function applyServers(next) {
+    servers = Array.isArray(next) ? [...next].sort((a, b) => a.localeCompare(b)) : [];
+    searchInput.value = "";
     applyFilter();
   }
 
-  for (const tab of tabs) {
+  async function showGame(id) {
+    gameId = id;
+    region = GAMES[id].defaultRegion;
+    setGameTabActive(id);
+    if (statusEl instanceof HTMLElement) statusEl.textContent = "Loading…";
+
+    try {
+      const regions = await loadGame(id);
+      renderRegionTabs(regions);
+      applyServers(regions[region] || []);
+      if (statusEl instanceof HTMLElement) statusEl.textContent = "";
+    } catch {
+      regionRow.replaceChildren();
+      listEl.replaceChildren();
+      countEl.textContent = "—";
+      if (statusEl instanceof HTMLElement) statusEl.textContent = "Could not load server list.";
+    }
+  }
+
+  for (const tab of gameTabs) {
     tab.addEventListener("click", () => {
       if (!(tab instanceof HTMLButtonElement)) return;
-      const next = tab.getAttribute(config.regionTabAttr);
-      if (!next || next === region) return;
-      showRegion(next);
+      const id = tab.getAttribute("data-game-tab");
+      if (!id || id === gameId || !GAMES[id]) return;
+      showGame(id);
     });
   }
 
-  if (input instanceof HTMLInputElement) {
-    input.addEventListener("input", applyFilter);
-    input.addEventListener("search", applyFilter);
-  }
+  searchInput.addEventListener("input", applyFilter);
+  searchInput.addEventListener("search", applyFilter);
 
-  showRegion(region);
+  showGame(gameId);
 }
-
-const GAME_REGION_PANELS = [
-  {
-    panelSelector: "[data-wow-servers]",
-    regionListAttr: "data-wow-region-list",
-    regionTabAttr: "data-wow-region-tab",
-    regionAttr: "data-wow-region",
-    searchLabelSelector: "[data-wow-search-label]",
-    searchKey: "wow",
-    countKey: "wow",
-    regionLabels: { us: "US", eu: "EU", kr: "KR", tw: "TW" },
-    gameName: "World of Warcraft",
-    serverUnit: "realms",
-    defaultRegion: "us",
-    placeholderExample: "illidan",
-  },
-  {
-    panelSelector: "[data-ffxiv-servers]",
-    regionListAttr: "data-ffxiv-region-list",
-    regionTabAttr: "data-ffxiv-region-tab",
-    regionAttr: "data-ffxiv-region",
-    searchLabelSelector: "[data-ffxiv-search-label]",
-    searchKey: "ffxiv",
-    countKey: "ffxiv",
-    regionLabels: { na: "NA", eu: "EU", jp: "JP", oce: "OCE" },
-    gameName: "Final Fantasy XIV",
-    serverUnit: "worlds",
-    defaultRegion: "na",
-    placeholderExample: "gilgamesh",
-  },
-];
 
 setYear();
 setupMobileNav();
 setupSmoothScroll();
 hardenExternalLinks();
-setupServerSearch();
-for (const config of GAME_REGION_PANELS) setupGameRegionPanel(config);
+setupGameBrowser();
