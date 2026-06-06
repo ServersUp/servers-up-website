@@ -56,12 +56,6 @@ function setupMobileNav() {
 }
 
 function setupSmoothScroll() {
-  function getHeaderOffset() {
-    const header = document.querySelector(".site-header");
-    if (header instanceof HTMLElement) return header.getBoundingClientRect().height;
-    return 0;
-  }
-
   document.addEventListener("click", (e) => {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
@@ -75,11 +69,8 @@ function setupSmoothScroll() {
     if (!(target instanceof HTMLElement)) return;
 
     e.preventDefault();
-    const headerOffset = getHeaderOffset();
     const targetTop = target.getBoundingClientRect().top + window.scrollY;
-    const y = Math.max(0, targetTop - headerOffset - 12);
-
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: Math.max(0, targetTop - 12), behavior: "smooth" });
     history.pushState(null, "", href);
   });
 }
