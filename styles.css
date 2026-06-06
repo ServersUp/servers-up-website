@@ -5,7 +5,7 @@
   --link: #0645ad;
   --discord: #5865f2;
   --discord-hover: #4752c4;
-  --max: 42rem;
+  --max: 52rem;
 }
 
 *,
@@ -255,6 +255,16 @@ code {
   font-size: 1.05rem;
 }
 
+.alert-example {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  height: auto;
+  margin: 0.25rem 0 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
 .doc .muted {
   color: var(--muted);
 }
@@ -416,10 +426,22 @@ code {
   font-size: 0.95rem;
 }
 
+.feedback {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border);
+}
+
 .support {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 2px solid var(--border);
+}
+
+.feedback + .support {
+  margin-top: 2.25rem;
+  padding-top: 0;
+  border-top: none;
 }
 
 .support-kofi img {
