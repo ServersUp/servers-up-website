@@ -101,11 +101,12 @@ code {
 
 .nav-toggle {
   display: block;
-  padding: 0.35rem 0.6rem;
+  padding: 0.5rem 0.85rem;
   border: 1px solid var(--border);
   background: #fff;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
 }
 
 .nav-links {
@@ -124,6 +125,38 @@ code {
 .nav-link {
   color: var(--link);
   text-decoration: none;
+}
+
+@media (max-width: 639px) {
+  .nav-links {
+    gap: 0.65rem;
+    padding-top: 0.85rem;
+    margin-top: 0.15rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: #fff;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .nav-link:hover {
+    background: #f8f8f8;
+    text-decoration: none;
+  }
+
+  .nav-links .btn-discord--sm {
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 .btn-discord {
@@ -255,7 +288,8 @@ code {
   font-size: 1.05rem;
 }
 
-.alert-example {
+.alert-example,
+.demo-gif {
   display: block;
   width: 100%;
   max-width: 36rem;
@@ -263,6 +297,10 @@ code {
   margin: 0.25rem 0 0;
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+}
+
+.demo-gif {
+  max-width: 40rem;
 }
 
 .doc .muted {
@@ -424,6 +462,55 @@ code {
 .changelog-body p {
   margin: 0.5rem 0 0;
   font-size: 0.95rem;
+}
+
+.roadmap {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.roadmap li {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+.roadmap__shipped {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fafafa;
+}
+
+.roadmap__badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.roadmap__shipped-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.roadmap__date {
+  margin-left: auto;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .feedback {

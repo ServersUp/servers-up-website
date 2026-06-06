@@ -63,7 +63,9 @@
         </button>
         <div class="nav-links" id="nav-links">
           <a class="nav-link" href="#install" data-scroll="true">Install</a>
+          <a class="nav-link" href="#features" data-scroll="true">Features</a>
           <a class="nav-link" href="#games" data-scroll="true">Games</a>
+          <a class="nav-link" href="#upcoming" data-scroll="true">Upcoming</a>
           <a class="nav-link" href="#changelog" data-scroll="true">Changelog</a>
           <a class="nav-link" href="#feedback" data-scroll="true">Feedback</a>
           <a class="nav-link" href="#support" data-scroll="true">Support</a>
@@ -125,9 +127,9 @@
         servers in the background, and when something changes, it sends a notification to anybody who has subscribed to
         that game server.
       </p>
-      <p>
-        No refreshing official status pages or waiting on maintenance posts that often arrive late. When server status
-        changes, the alert shows up in the channel your community already watches.
+      <p class="lead">
+        You do not need to keep refreshing official status pages or wait for maintenance posts that often arrive late.
+        When status changes, the alert appears in the channel your community already watches.
       </p>
       <p>
         <img
@@ -152,9 +154,15 @@
         </a>
       </p>
 
+      <h2 id="features">Features</h2>
+      <ul>
+        <li>Notifications within about a minute of a server status change</li>
+        <li>Optional role mentions when you subscribe, so the right people get pinged</li>
+      </ul>
+
       <h2 id="install">How to install</h2>
       <ol>
-        <li>Add the bot to your server.</li>
+        <li>Add the bot to your server using the Add to Discord button above.</li>
         <li>
           Pick or create a channel for updates. Make sure the bot can send messages and read message history in that
           channel.
@@ -164,6 +172,17 @@
           each field with valid values. Updates are sent to the channel where you run the command.
         </li>
       </ol>
+      <p>
+        <img
+          class="demo-gif"
+          src="./assets/serversup-demo.gif"
+          alt="Demo of setting up a ServersUp subscription in Discord"
+          width="1294"
+          height="804"
+          loading="lazy"
+          decoding="async"
+        />
+      </p>
 
       <h2>Commands</h2>
       <ul>
@@ -226,6 +245,23 @@
         </div>
         <ul class="realm-list" data-realm-list aria-live="polite"></ul>
       </div>
+
+      <h2 id="upcoming">Upcoming changes</h2>
+      <ul class="roadmap">
+        <li>Subscribe and get alerts via DM, outside your Discord server</li>
+        <li>A status page on this site to track all games and servers without adding the Discord bot</li>
+        <li>More games, including Old School RuneScape, other Blizzard titles, and popular MOBAs</li>
+        <li class="roadmap__shipped">
+          <span class="roadmap__badge">Added</span>
+          <span class="roadmap__shipped-text">Multi-region WoW support</span>
+          <span class="roadmap__date">2026-05-26</span>
+        </li>
+        <li class="roadmap__shipped">
+          <span class="roadmap__badge">Added</span>
+          <span class="roadmap__shipped-text">Final Fantasy XIV Online support</span>
+          <span class="roadmap__date">2026-06-04</span>
+        </li>
+      </ul>
 
       <h2 id="changelog">Changelog</h2>
       <div class="changelog-list">
