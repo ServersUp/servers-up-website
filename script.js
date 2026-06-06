@@ -97,6 +97,16 @@ function hardenExternalLinks() {
   }
 }
 
+async function loadGameRegions(id) {
+  const bundled = window.SERVERSUP_GAME_DATA?.[id];
+  if (bundled) return bundled;
+
+  const res = await fetch(GAMES[id].dataUrl);
+  if (!res.ok) throw new Error(String(res.status));
+  const data = await res.json();
+  return data.regions || {};
+}
+
 async function setupGameBrowser() {
   const root = document.getElementById("game-browser");
   if (!(root instanceof HTMLElement)) return;
@@ -122,13 +132,11 @@ async function setupGameBrowser() {
   let region = GAMES.wow.defaultRegion;
   let servers = [];
 
-  async function loadGame(id) {
+  async function getRegions(id) {
     if (cache[id]) return cache[id];
-    const res = await fetch(GAMES[id].dataUrl);
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    cache[id] = data.regions || {};
-    return cache[id];
+    const regions = await loadGameRegions(id);
+    cache[id] = regions;
+    return regions;
   }
 
   function setGameTabActive(id) {
@@ -149,7 +157,7 @@ async function setupGameBrowser() {
     for (const key of keys) {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "region-tab rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide";
+      btn.className = "region-tab";
       btn.setAttribute("data-region-tab", key);
       btn.setAttribute("role", "tab");
       btn.textContent = cfg.regions[key];
@@ -173,16 +181,15 @@ async function setupGameBrowser() {
     listEl.replaceChildren();
     if (filtered.length === 0) {
       const empty = document.createElement("li");
-      empty.className = "px-3 py-6 text-center text-sm text-white/45";
+      empty.className = "realm-empty";
       empty.textContent = "No matches.";
       listEl.appendChild(empty);
       return;
     }
     for (const name of filtered) {
       const li = document.createElement("li");
-      li.className = "border-b border-white/5 px-3 py-2 text-sm text-white/85 last:border-0";
+      li.className = "realm-item";
       const code = document.createElement("code");
-      code.className = "font-mono text-[13px] text-white/90";
       code.textContent = name;
       li.appendChild(code);
       listEl.appendChild(li);
@@ -209,7 +216,7 @@ async function setupGameBrowser() {
     if (statusEl instanceof HTMLElement) statusEl.textContent = "Loading…";
 
     try {
-      const regions = await loadGame(id);
+      const regions = await getRegions(id);
       renderRegionTabs(regions);
       applyServers(regions[region] || []);
       if (statusEl instanceof HTMLElement) statusEl.textContent = "";

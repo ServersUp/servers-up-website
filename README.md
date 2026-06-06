@@ -4,17 +4,17 @@ Premium single-page landing site for **ServersUp**.
 
 ### Stack
 
-- Tailwind CSS (CDN) + minimal custom CSS
-- Vanilla JS — game browser loads realms from `data/*.json`
+- Self-contained CSS (no Tailwind CDN — works via `file://` and GitHub Pages)
+- Vanilla JS — game browser uses `data/games-data.js` locally, fetches JSON when served over HTTP
 - GitHub Pages with `.nojekyll`
 
 ### Local preview
 
+Open `index.html` directly in a browser, or run a static server:
+
 ```bash
 python3 -m http.server 5173
 ```
-
-Open `http://localhost:5173` (JSON fetch requires a local server).
 
 ### Data files
 
