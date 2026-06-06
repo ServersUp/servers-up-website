@@ -3,6 +3,8 @@
   --muted: #555;
   --border: #ccc;
   --link: #0645ad;
+  --discord: #5865f2;
+  --discord-hover: #4752c4;
   --max: 42rem;
 }
 
@@ -124,17 +126,78 @@ code {
   text-decoration: none;
 }
 
+.btn-discord {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--discord);
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-discord:hover {
+  background: var(--discord-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-discord--sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.nav-links .btn-discord--sm {
+  color: #fff;
+}
+
 .doc {
   max-width: var(--max);
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
 }
 
-.doc h1 {
-  margin: 0 0 0.75rem;
-  font-size: 1.75rem;
-  font-weight: normal;
-  line-height: 1.25;
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-logo {
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero h1 {
+  margin: 0 0 0.35rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-tagline {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .doc h2 {
@@ -171,11 +234,6 @@ code {
   margin: 0;
 }
 
-.cta-link {
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-weight: 600;
-}
-
 .game-browser {
   margin: 1rem 0;
   border: 1px solid var(--border);
@@ -194,11 +252,27 @@ code {
 
 .game-tab,
 .region-tab {
-  padding: 0.3rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.65rem;
   border: 1px solid var(--border);
   background: #fff;
   font: inherit;
   font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.game-tab__logo {
+  display: block;
+  width: auto;
+  height: 2rem;
+  max-width: 6rem;
+  object-fit: contain;
+}
+
+.game-tab__logo--wide {
+  max-width: 7rem;
 }
 
 .game-tab.is-active,
@@ -309,20 +383,6 @@ code {
   border-top: 2px solid var(--border);
 }
 
-.support-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.support-avatar {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  object-fit: cover;
-}
-
 .support-kofi img {
   display: block;
   height: 2.25rem;
@@ -351,12 +411,4 @@ code {
     gap: 1rem;
   }
 
-  .support-inner {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .support-copy {
-    flex: 1;
-  }
 }

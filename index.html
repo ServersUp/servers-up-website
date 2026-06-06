@@ -12,24 +12,24 @@
     </script>
     <meta
       name="description"
-      content="Discord alerts when game servers go up or down. Subscribe with slash commands."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
     <meta name="google-site-verification" content="3O4IgP7ot535317-PgIAuTH9Vs6JbioPY5-s9xnembQ" />
     <link rel="canonical" href="https://serversup.github.io/" />
-    <title>ServersUp</title>
+    <title>ServersUp | Game Server Alerts - Discord Notifications</title>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ServersUp" />
+    <meta property="og:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
     <meta
       property="og:description"
-      content="Discord alerts when game servers go up or down. Subscribe with slash commands."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
     <meta property="og:url" content="https://serversup.github.io/" />
     <meta property="og:image" content="https://serversup.github.io/assets/serversup-logo.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="ServersUp" />
+    <meta name="twitter:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
     <meta
       name="twitter:description"
-      content="Discord alerts when game servers go up or down. Subscribe with slash commands."
+      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
     />
     <meta name="twitter:image" content="https://serversup.github.io/assets/serversup-logo.png" />
     <script type="application/ld+json">
@@ -37,7 +37,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "ServersUp",
-        "description": "Discord notifications when online game servers go up or down.",
+        "description": "Discord alerts when game servers go up or down. Polls server status and notifies subscribed channels on change.",
         "applicationCategory": "CommunicationApplication",
         "operatingSystem": "Any",
         "url": "https://serversup.github.io/",
@@ -62,12 +62,12 @@
           Menu
         </button>
         <div class="nav-links" id="nav-links">
-          <a class="nav-link" href="#how-it-works" data-scroll="true">How it works</a>
+          <a class="nav-link" href="#install" data-scroll="true">Install</a>
           <a class="nav-link" href="#games" data-scroll="true">Games</a>
           <a class="nav-link" href="#changelog" data-scroll="true">Changelog</a>
           <a class="nav-link" href="#support" data-scroll="true">Support</a>
           <a
-            class="nav-link"
+            class="nav-link btn-discord btn-discord--sm"
             href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
             target="_blank"
             rel="noreferrer"
@@ -79,14 +79,32 @@
     </header>
 
     <main class="doc" id="home">
-      <h1>ServersUp</h1>
+      <header class="hero">
+        <img
+          class="hero-logo"
+          src="./assets/serversup-logo.png"
+          alt=""
+          width="80"
+          height="80"
+          decoding="async"
+        />
+        <div class="hero-copy">
+          <h1>ServersUp</h1>
+          <p class="hero-tagline">Get notified when your community's favorite game servers go up or down.</p>
+        </div>
+      </header>
       <p class="lead">
-        A Discord bot that posts when a game server goes <strong>UP</strong> or <strong>DOWN</strong>. Alerts only on
-        status changes—not on a timer in your channel.
+        ServersUp alerts your Discord community when subscribed game servers go up or down. The bot polls in the
+        background and posts in the channel you configured only when status changes.
       </p>
       <p>
+        No refreshing official status pages or waiting on maintenance posts that often arrive late. When status
+        changes, the alert shows up in the channel your community already watches.
+      </p>
+
+      <p>
         <a
-          class="cta-link"
+          class="btn-discord"
           href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
           target="_blank"
           rel="noreferrer"
@@ -95,21 +113,27 @@
         </a>
       </p>
 
-      <h2 id="how-it-works">How it works</h2>
+      <h2 id="install">How to install</h2>
       <ol>
         <li>Add the bot to your server.</li>
-        <li>Run <code>/subscribe</code> with game, region, and server (autocomplete at each step).</li>
-        <li>When status changes, the bot posts in that channel.</li>
+        <li>
+          Pick or create a channel for updates. Make sure the bot can send messages and read message history in that
+          channel.
+        </li>
+        <li>
+          Run <code>/subscribe</code> in that channel and pick game, region, and server. Autocomplete helps you fill
+          each field with valid values. Updates are sent to the channel where you run the command.
+        </li>
       </ol>
 
       <h2>Commands</h2>
       <ul>
-        <li><code>/subscribe</code> — add a subscription (Manage Channels or Administrator required)</li>
-        <li><code>/unsubscribe</code> — remove one</li>
-        <li><code>/subscriptions</code> — list by channel</li>
-        <li><code>/status</code> — check UP/DOWN now</li>
-        <li><code>/regions</code> and <code>/servers</code> — browse the catalog</li>
-        <li><code>/games</code> and <code>/help</code></li>
+        <li><code>/subscribe</code>: add a subscription (Manage Channels or Administrator required)</li>
+        <li><code>/unsubscribe</code>: remove one (Manage Channels or Administrator required)</li>
+        <li><code>/subscriptions</code>: list by channel</li>
+        <li><code>/status</code>: check UP/DOWN now</li>
+        <li><code>/regions</code>, <code>/servers</code>, and <code>/games</code>: browse the catalog</li>
+        <li><code>/help</code>: explain each command and common pitfalls</li>
       </ul>
 
       <h2 id="games">Supported games</h2>
@@ -118,11 +142,39 @@
 
       <div class="game-browser" id="game-browser">
         <div class="game-tabs" role="tablist" aria-label="Game">
-          <button type="button" class="game-tab is-active" data-game-tab="wow" role="tab" aria-selected="true">
-            World of Warcraft
+          <button
+            type="button"
+            class="game-tab is-active"
+            data-game-tab="wow"
+            role="tab"
+            aria-selected="true"
+            aria-label="World of Warcraft"
+          >
+            <img
+              class="game-tab__logo"
+              src="./assets/wow-logo-small-transparent.png"
+              alt="World of Warcraft"
+              width="96"
+              height="40"
+              decoding="async"
+            />
           </button>
-          <button type="button" class="game-tab" data-game-tab="ffxiv" role="tab" aria-selected="false">
-            Final Fantasy XIV
+          <button
+            type="button"
+            class="game-tab"
+            data-game-tab="ffxiv"
+            role="tab"
+            aria-selected="false"
+            aria-label="Final Fantasy XIV"
+          >
+            <img
+              class="game-tab__logo game-tab__logo--wide"
+              src="./assets/ffxiv-logo-small-transparent.png"
+              alt="Final Fantasy XIV"
+              width="112"
+              height="40"
+              decoding="async"
+            />
           </button>
         </div>
         <div class="region-row" data-region-row role="tablist" aria-label="Region"></div>
@@ -162,7 +214,10 @@
             <span class="changelog-date">2026-05-15</span>
           </summary>
           <div class="changelog-body">
-            <p>Subscribe/unsubscribe requires Manage Channels or Administrator.</p>
+            <p>
+              <code>/subscribe</code> and <code>/unsubscribe</code> now require you to have Manage Channels or
+              Administrator in the server.
+            </p>
           </div>
         </details>
         <details class="changelog-entry">
@@ -196,34 +251,22 @@
 
       <section class="support" id="support" aria-label="Support">
         <h2>Support my work</h2>
-        <div class="support-inner">
-          <img
-            class="support-avatar"
-            src="./assets/armand.png"
-            alt="Armand"
-            width="80"
-            height="80"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="support-copy">
-            <p>
-              I build and host ServersUp in my spare time. Donations are optional—they go toward keeping the bot and
-              this site running. Thanks for using it.
-            </p>
-            <p class="support-kofi">
-              <a href="https://ko-fi.com/R6R71Z1SRN" target="_blank" rel="noreferrer">
-                <img
-                  src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_blue.png"
-                  alt="Support me on Ko-fi"
-                  height="36"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            </p>
-          </div>
-        </div>
+        <p>
+          Thanks for checking out ServersUp. I'm Armand. I build and host this in my spare time. Donations are never
+          required, but they're genuinely appreciated and go toward infrastructure costs to keep the bot and this site
+          running.
+        </p>
+        <p class="support-kofi">
+          <a href="https://ko-fi.com/R6R71Z1SRN" target="_blank" rel="noreferrer">
+            <img
+              src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_blue.png"
+              alt="Support me on Ko-fi"
+              height="36"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </p>
       </section>
     </main>
 
