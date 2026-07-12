@@ -5,7 +5,7 @@ const GAMES = {
   wow: {
     label: "World of Warcraft",
     short: "WoW",
-    dataUrl: "./data/wow-servers.json",
+    dataUrl: "../data/wow-servers.json",
     regions: { us: "US", eu: "EU", kr: "KR", tw: "TW" },
     defaultRegion: "us",
     unit: "realms",
@@ -13,7 +13,7 @@ const GAMES = {
   ffxiv: {
     label: "Final Fantasy XIV",
     short: "FFXIV",
-    dataUrl: "./data/ffxiv-servers.json",
+    dataUrl: "../data/ffxiv-servers.json",
     regions: { na: "NA", eu: "EU", jp: "JP", oce: "OCE" },
     defaultRegion: "na",
     unit: "worlds",
@@ -107,7 +107,7 @@ async function setupGameBrowser() {
   const searchInput = root.querySelector("[data-realm-search]");
   const listEl = root.querySelector("[data-realm-list]");
   const countEl = root.querySelector("[data-realm-count]");
-  const statusEl = root.querySelector("[data-realm-status]");
+  const statusEl = document.querySelector("[data-realm-status]");
 
   if (
     !(regionRow instanceof HTMLElement) ||
