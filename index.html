@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-status">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,352 +12,184 @@
     </script>
     <meta
       name="description"
-      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
+      content="Live World of Warcraft and Final Fantasy XIV server status. UP/DOWN for every region and realm."
     />
     <meta name="google-site-verification" content="3O4IgP7ot535317-PgIAuTH9Vs6JbioPY5-s9xnembQ" />
     <link rel="canonical" href="https://serversup.github.io/" />
-    <title>ServersUp | Game Server Alerts - Discord Notifications</title>
+    <title>ServersUp | Live Game Server Status</title>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
+    <meta property="og:title" content="ServersUp | Live Game Server Status" />
     <meta
       property="og:description"
-      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
+      content="Live World of Warcraft and Final Fantasy XIV server status. UP/DOWN for every region and realm."
     />
     <meta property="og:url" content="https://serversup.github.io/" />
     <meta property="og:image" content="https://serversup.github.io/assets/serversup-logo.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="ServersUp | Game Server Alerts - Discord Notifications" />
+    <meta name="twitter:title" content="ServersUp | Live Game Server Status" />
     <meta
       name="twitter:description"
-      content="ServersUp polls game servers in the background and sends Discord alerts to every subscribed channel when status changes."
+      content="Live World of Warcraft and Final Fantasy XIV server status. UP/DOWN for every region and realm."
     />
     <meta name="twitter:image" content="https://serversup.github.io/assets/serversup-logo.png" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "ServersUp",
-        "description": "Discord alerts when game servers go up or down. Polls server status and notifies subscribed channels on change.",
-        "applicationCategory": "CommunicationApplication",
-        "operatingSystem": "Any",
-        "url": "https://serversup.github.io/",
-        "image": "https://serversup.github.io/assets/serversup-logo.png",
-        "author": { "@type": "Person", "name": "Armand" },
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }
-    </script>
     <link rel="icon" href="./assets/serversup-logo.png" type="image/png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#home">Skip to content</a>
+    <a class="skip-link" href="#status">Skip to status</a>
 
     <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#home" data-scroll="true">
+        <a class="brand" href="./">
           <img src="./assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
           <span>ServersUp</span>
         </a>
-        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
-          Menu
-        </button>
-        <div class="nav-links" id="nav-links">
-          <a class="nav-link" href="#install" data-scroll="true">Install</a>
-          <a class="nav-link" href="#features" data-scroll="true">Features</a>
-          <a class="nav-link" href="#games" data-scroll="true">Games</a>
-          <a class="nav-link" href="#upcoming" data-scroll="true">Upcoming</a>
-          <a class="nav-link" href="#changelog" data-scroll="true">Changelog</a>
-          <a class="nav-link" href="#feedback" data-scroll="true">Feedback</a>
-          <a class="nav-link" href="#support" data-scroll="true">Support</a>
-          <a
-            class="nav-link btn-discord btn-discord--sm"
-            href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Add to Discord
-          </a>
-        </div>
+        <a class="btn-discord btn-discord--sm" href="./install/">Add to Discord</a>
       </nav>
     </header>
 
-    <main class="doc" id="home">
-      <header class="hero">
-        <div class="hero-main">
+    <main class="status-page" id="status">
+      <header class="status-hero">
+        <img
+          class="status-hero__logo"
+          src="./assets/serversup-logo.png"
+          alt=""
+          width="88"
+          height="88"
+          decoding="async"
+        />
+        <p class="status-hero__brand">ServersUp</p>
+        <h1 class="status-hero__title">Live Server Status</h1>
+        <p class="status-hero__lede">
+          Check WoW and FFXIV realms without refreshing official pages.
+        </p>
+        <ul class="status-hero__points" aria-label="How this page works">
+          <li>Status is polled in the background for every listed realm</li>
+          <li>This page shows the latest published snapshot for the game and region you pick</li>
+          <li>Want channel alerts? Click <strong>Add to Discord</strong> at the top right</li>
+        </ul>
+      </header>
+
+      <div class="status-legend" aria-label="Status legend">
+        <span class="status-legend__item"><span class="server-dot server-dot--up" aria-hidden="true"></span> UP</span>
+        <span class="status-legend__item"><span class="server-dot server-dot--down" aria-hidden="true"></span> DOWN</span>
+        <span class="status-legend__item"><span class="server-dot server-dot--unknown" aria-hidden="true"></span> UNKNOWN</span>
+      </div>
+
+      <p class="status-prompt" data-status-sub>Choose a game, then a region.</p>
+
+      <div class="status-pick" data-status-games role="tablist" aria-label="Game">
+        <button
+          type="button"
+          class="status-pick__btn"
+          data-pick-game="wow"
+          role="tab"
+          aria-selected="false"
+          aria-label="World of Warcraft"
+        >
           <img
-            class="hero-logo"
-            src="./assets/serversup-logo.png"
+            class="status-pick__logo"
+            src="./assets/wow-logo-small-transparent.png"
             alt=""
-            width="80"
-            height="80"
+            width="120"
+            height="48"
             decoding="async"
           />
-          <div class="hero-copy">
-            <h1>ServersUp</h1>
-            <p class="hero-tagline">Get notified when your community's favorite game servers go up or down.</p>
-            <div class="hero-games" aria-label="Supported games">
-              <a class="hero-games__link" href="#games" data-scroll="true" title="World of Warcraft">
-                <img
-                  class="hero-games__logo"
-                  src="./assets/wow-logo-small-transparent.png"
-                  alt="World of Warcraft"
-                  width="96"
-                  height="40"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-              <a class="hero-games__link" href="#games" data-scroll="true" title="Final Fantasy XIV">
-                <img
-                  class="hero-games__logo hero-games__logo--wide"
-                  src="./assets/ffxiv-logo-small-transparent.png"
-                  alt="Final Fantasy XIV"
-                  width="112"
-                  height="40"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
+        </button>
+        <button
+          type="button"
+          class="status-pick__btn"
+          data-pick-game="ffxiv"
+          role="tab"
+          aria-selected="false"
+          aria-label="Final Fantasy XIV"
+        >
+          <img
+            class="status-pick__logo status-pick__logo--wide"
+            src="./assets/ffxiv-logo-small-transparent.png"
+            alt=""
+            width="140"
+            height="48"
+            decoding="async"
+          />
+        </button>
+      </div>
+
+      <div class="status-pick status-pick--regions" data-status-regions hidden role="tablist" aria-label="Region"></div>
+
+      <div class="status-panel" data-status-panel>
+        <div class="status-toolbar">
+          <label class="sr-only" for="status-search">Search servers</label>
+          <input
+            id="status-search"
+            class="status-search"
+            type="search"
+            placeholder="Search servers…"
+            data-status-search
+            autocomplete="off"
+            disabled
+          />
+        </div>
+
+        <div class="server-panel">
+          <div class="server-grid" data-status-grid aria-live="polite">
+            <div class="server-placeholder" data-status-placeholder>
+              Select a game and region to view servers.
+            </div>
+          </div>
+
+          <div class="status-foot" data-status-foot>
+            <div class="status-totals" data-status-totals aria-live="polite">
+              <span class="stat stat--up">— UP</span>
+              <span class="stat stat--down">— DOWN</span>
+            </div>
+            <div class="status-meta" data-status-meta aria-live="polite">
+              <div class="status-meta__line">
+                <button
+                  type="button"
+                  class="status-meta__label status-meta__label--hint"
+                  data-tip="When this status feed was last republished. That happens when a watched status changes—not on every poll."
+                  aria-describedby="tip-updated"
+                >
+                  Last Updated At
+                </button>
+                <span data-meta-updated>—</span>
+                <span class="status-tip" id="tip-updated" role="tooltip">
+                  When this status feed was last republished. That happens when a watched status changes—not on every poll.
+                </span>
+              </div>
+              <div class="status-meta__line">
+                <button
+                  type="button"
+                  class="status-meta__label status-meta__label--hint"
+                  data-tip="Most recent UP↔DOWN flip among servers in the game and region you’re viewing—not the last poll time."
+                  aria-describedby="tip-changed"
+                >
+                  Last Changed At
+                </button>
+                <span data-meta-changed>—</span>
+                <span class="status-tip" id="tip-changed" role="tooltip">
+                  Most recent UP↔DOWN flip among servers in the game and region you’re viewing—not the last poll time.
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </header>
-      <p class="lead">
-        ServersUp alerts your Discord community when game servers go up or down. The bot is constantly polling game
-        servers in the background, and when something changes, it sends a notification to anybody who has subscribed to
-        that game server.
-      </p>
-      <p class="lead">
-        You do not need to keep refreshing official status pages or wait for maintenance posts that often arrive late.
-        When status changes, the alert appears in the channel your community already watches.
-      </p>
-      <p>
-        <img
-          class="alert-example"
-          src="./assets/discord-alert-example.png"
-          alt="Example ServersUp Discord alerts for wow-tichondrius going down and back up"
-          width="1280"
-          height="308"
-          loading="lazy"
-          decoding="async"
-        />
-      </p>
 
-      <p>
-        <a
-          class="btn-discord"
-          href="https://discord.com/oauth2/authorize?client_id=1497867221106688181"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Add to Discord
-        </a>
-      </p>
-
-      <h2 id="features">Features</h2>
-      <ul>
-        <li>Notifications within about a minute of a server status change</li>
-        <li>Optional role mentions when you subscribe, so the right people get pinged</li>
-      </ul>
-
-      <h2 id="install">How to install</h2>
-      <ol>
-        <li>Add the bot to your server using the Add to Discord button above.</li>
-        <li>
-          Pick or create a channel for updates. Make sure the bot can send messages and read message history in that
-          channel.
-        </li>
-        <li>
-          Run <code>/subscribe</code> in that channel and pick game, region, and server. Autocomplete helps you fill
-          each field with valid values. Updates are sent to the channel where you run the command.
-        </li>
-      </ol>
-      <p>
-        <img
-          class="demo-gif"
-          src="./assets/serversup-demo.gif"
-          alt="Demo of setting up a ServersUp subscription in Discord"
-          width="1294"
-          height="804"
-          loading="lazy"
-          decoding="async"
-        />
-      </p>
-
-      <h2>Commands</h2>
-      <ul>
-        <li><code>/subscribe</code>: add a subscription (Manage Channels or Administrator required)</li>
-        <li><code>/unsubscribe</code>: remove one (Manage Channels or Administrator required)</li>
-        <li><code>/subscriptions</code>: list by channel</li>
-        <li><code>/status</code>: check UP/DOWN now</li>
-        <li><code>/regions</code>, <code>/servers</code>, and <code>/games</code>: browse the catalog</li>
-        <li><code>/help</code>: explain each command and common pitfalls</li>
-      </ul>
-
-      <h2 id="games">Supported games</h2>
-      <p class="muted">Select a game and region, then search. WoW uses <code>us</code>/<code>eu</code>/<code>kr</code>/<code>tw</code>; FFXIV uses <code>na</code>/<code>eu</code>/<code>jp</code>/<code>oce</code>.</p>
-      <p class="games-status" data-realm-status></p>
-
-      <div class="game-browser" id="game-browser">
-        <div class="game-tabs" role="tablist" aria-label="Game">
-          <button
-            type="button"
-            class="game-tab is-active"
-            data-game-tab="wow"
-            role="tab"
-            aria-selected="true"
-            aria-label="World of Warcraft"
-          >
-            <img
-              class="game-tab__logo"
-              src="./assets/wow-logo-small-transparent.png"
-              alt="World of Warcraft"
-              width="96"
-              height="40"
-              decoding="async"
-            />
-          </button>
-          <button
-            type="button"
-            class="game-tab"
-            data-game-tab="ffxiv"
-            role="tab"
-            aria-selected="false"
-            aria-label="Final Fantasy XIV"
-          >
-            <img
-              class="game-tab__logo game-tab__logo--wide"
-              src="./assets/ffxiv-logo-small-transparent.png"
-              alt="Final Fantasy XIV"
-              width="112"
-              height="40"
-              decoding="async"
-            />
-          </button>
-        </div>
-        <div class="region-row" data-region-row role="tablist" aria-label="Region"></div>
-        <div class="search-row">
-          <label class="search-field">
-            <span class="sr-only">Search your realm</span>
-            <input type="search" placeholder="Search your realm…" data-realm-search autocomplete="off" />
-          </label>
-          <span class="realm-count" data-realm-count>—</span>
-        </div>
-        <ul class="realm-list" data-realm-list aria-live="polite"></ul>
+        <p class="status-inline-msg status-inline-msg--error" data-status-error hidden></p>
+        <p class="status-inline-msg" data-status-loading hidden>Loading statuses…</p>
       </div>
 
-      <h2 id="upcoming">Upcoming changes</h2>
-      <ul class="roadmap">
-        <li>Subscribe and get alerts via DM, outside your Discord server</li>
-        <li>A status page on this site to track all games and servers without adding the Discord bot</li>
-        <li>More games, including Old School RuneScape, other Blizzard titles, and popular MOBAs</li>
-        <li class="roadmap__shipped">
-          <span class="roadmap__badge">Added</span>
-          <span class="roadmap__shipped-text">Multi-region WoW support</span>
-          <span class="roadmap__date">2026-05-26</span>
-        </li>
-        <li class="roadmap__shipped">
-          <span class="roadmap__badge">Added</span>
-          <span class="roadmap__shipped-text">Final Fantasy XIV Online support</span>
-          <span class="roadmap__date">2026-06-04</span>
-        </li>
-      </ul>
-
-      <h2 id="changelog">Changelog</h2>
-      <div class="changelog-list">
-        <details class="changelog-entry" open>
-          <summary>
-            <span>v1.2</span>
-            <span class="changelog-date">2026-06-04</span>
-          </summary>
-          <div class="changelog-body">
-            <p>FFXIV support. Regions: <code>na</code>, <code>eu</code>, <code>jp</code>, <code>oce</code>. Example label: <code>ffxiv-na-gilgamesh</code>.</p>
-          </div>
-        </details>
-        <details class="changelog-entry">
-          <summary>
-            <span>v1.1</span>
-            <span class="changelog-date">2026-05-26</span>
-          </summary>
-          <div class="changelog-body">
-            <p>Multi-region WoW. Required <code>region</code> on subscribe, status, and servers.</p>
-          </div>
-        </details>
-        <details class="changelog-entry">
-          <summary>
-            <span>v1.0.3</span>
-            <span class="changelog-date">2026-05-15</span>
-          </summary>
-          <div class="changelog-body">
-            <p>
-              <code>/subscribe</code> and <code>/unsubscribe</code> now require you to have Manage Channels or
-              Administrator in the server.
-            </p>
-          </div>
-        </details>
-        <details class="changelog-entry">
-          <summary>
-            <span>v1.0.2</span>
-            <span class="changelog-date">2026-05-15</span>
-          </summary>
-          <div class="changelog-body">
-            <p><code>/servers</code> and <code>/status</code>. Rate limits on status.</p>
-          </div>
-        </details>
-        <details class="changelog-entry">
-          <summary>
-            <span>v1.0.1</span>
-            <span class="changelog-date">2026-05-13</span>
-          </summary>
-          <div class="changelog-body">
-            <p><code>/games</code> command.</p>
-          </div>
-        </details>
-        <details class="changelog-entry">
-          <summary>
-            <span>v1.0.0</span>
-            <span class="changelog-date">2026-05-07</span>
-          </summary>
-          <div class="changelog-body">
-            <p>Initial release.</p>
-          </div>
-        </details>
+      <div class="status-cta">
+        <a class="btn-discord btn-discord--lg" href="./install/">Add to Discord</a>
+        <p class="status-cta__hint">Get channel alerts when a subscribed realm flips UP or DOWN.</p>
       </div>
-
-      <section class="feedback" id="feedback" aria-label="Feedback">
-        <h2>Feedback</h2>
-        <p>
-          Have a suggestion, bug report, or question? Email me at
-          <a href="mailto:armasndev@proton.me">armasndev@proton.me</a>.
-        </p>
-      </section>
-
-      <section class="support" id="support" aria-label="Support">
-        <h2>Support my work</h2>
-        <p>
-          Thanks for checking out ServersUp. I'm Armand. I build and host this in my spare time. Donations are never
-          required, but they're genuinely appreciated and go toward infrastructure costs to keep the bot and this site
-          running.
-        </p>
-        <p class="support-kofi">
-          <a href="https://ko-fi.com/R6R71Z1SRN" target="_blank" rel="noreferrer">
-            <img
-              src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_blue.png"
-              alt="Support me on Ko-fi"
-              height="36"
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-        </p>
-      </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> ServersUp</p>
+      <p>© <span id="year"></span> ServersUp · <a href="./install/">Install the Discord bot</a></p>
     </footer>
 
-    <script src="./data/games-data.js"></script>
-    <script src="./script.js"></script>
+    <script src="./status.js"></script>
   </body>
 </html>
