@@ -5,7 +5,8 @@
   --link: #0645ad;
   --discord: #5865f2;
   --discord-hover: #4752c4;
-  --max: 52rem;
+  --max: 58rem;
+  --demo-bleed: 1.5rem;
 }
 
 *,
@@ -288,8 +289,7 @@ code {
   font-size: 1.05rem;
 }
 
-.alert-example,
-.demo-gif {
+.alert-example {
   display: block;
   width: 100%;
   max-width: 36rem;
@@ -299,8 +299,23 @@ code {
   border-radius: 0.5rem;
 }
 
+/* Slightly wider than the column on desktop so Discord UI text stays readable. */
 .demo-gif {
-  max-width: 40rem;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0.25rem 0 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .demo-gif {
+    width: calc(100% + (2 * var(--demo-bleed)));
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .doc .muted {
