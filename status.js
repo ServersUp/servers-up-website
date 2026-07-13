@@ -1,4 +1,11 @@
-const STATUS_URL = "/status/latest.json";
+// Same-origin on the CloudFront host; absolute URL elsewhere (github.io / local)
+// so /status/latest.json is not required on GitHub Pages.
+const CANONICAL_HOST = "serversup.armasn.dev";
+const CANONICAL_STATUS_URL = `https://${CANONICAL_HOST}/status/latest.json`;
+const STATUS_URL =
+  typeof location !== "undefined" && location.hostname === CANONICAL_HOST
+    ? "/status/latest.json"
+    : CANONICAL_STATUS_URL;
 const STATUS_POLL_MS = 15000;
 
 const GAME_META = {
