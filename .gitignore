@@ -1,0 +1,6 @@
+# Local agent / tooling (not published with the site)
+AGENTS.md
+LOG.md
+.cursor/
+.codegraph/
+.DS_Store

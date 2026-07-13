@@ -1,4 +1,4 @@
-const STATUS_URL = "https://d3col07xj7vso1.cloudfront.net/status/latest.json";
+const STATUS_URL = "/status/latest.json";
 const STATUS_POLL_MS = 15000;
 
 const GAME_META = {
