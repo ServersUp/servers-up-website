@@ -16,7 +16,7 @@ Source still lives in this GitHub repo. On push to `main`, [`.github/workflows/p
 python3 -m http.server 5173
 ```
 
-Status fetch uses `/status/latest.json` (needs the CloudFront dual-origin, or temporarily point `STATUS_URL` at the CloudFront URL for local/github.io-only preview).
+Status fetch uses same-origin `/status/latest.json` on `serversup.armasn.dev`; on github.io / local it falls back to `https://serversup.armasn.dev/status/latest.json` (CloudFront CORS `*`).
 
 ### Data
 
