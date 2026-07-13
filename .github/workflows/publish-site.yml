@@ -1,0 +1,57 @@
+name: Publish site to S3 / CloudFront
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  SITE_BUCKET: serversup-site
+  # Set repo variable AWS_ROLE_SITE_PUBLISH to the IAM role ARN from website-cdn output site_publish_role_arn
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_SITE_PUBLISH }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gh-site-publish-${{ github.sha }}
+
+      - name: Sync static site to S3
+        run: |
+          set -euo pipefail
+          aws s3 sync . "s3://${SITE_BUCKET}/" \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".gitignore" \
+            --exclude "AGENTS.md" \
+            --exclude "LOG.md" \
+            --exclude ".cursor/*" \
+            --exclude ".codegraph/*" \
+            --exclude "README.md" \
+            --exclude ".DS_Store"
+
+      - name: Invalidate CloudFront
+        run: |
+          set -euo pipefail
+          if [[ -z "${CLOUDFRONT_DISTRIBUTION_ID}" ]]; then
+            echo "::error::Set repo variable CLOUDFRONT_DISTRIBUTION_ID"
+            exit 1
+          fi
+          aws cloudfront create-invalidation \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
+            --paths "/*"
