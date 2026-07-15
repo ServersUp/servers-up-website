@@ -132,13 +132,7 @@
         </div>
 
         <div class="server-panel">
-          <div class="server-grid" data-status-grid aria-live="polite">
-            <div class="server-placeholder" data-status-placeholder>
-              Select a game and region to view servers.
-            </div>
-          </div>
-
-          <div class="status-foot" data-status-foot>
+          <div class="status-summary" data-status-foot>
             <div class="status-totals" data-status-totals aria-live="polite">
               <span class="stat stat--up">— UP</span>
               <span class="stat stat--down">— DOWN</span>
@@ -152,6 +146,7 @@
                   aria-describedby="tip-updated"
                 >
                   Last Updated At
+                  <span class="status-meta__info" aria-hidden="true">i</span>
                 </button>
                 <span data-meta-updated>—</span>
                 <span class="status-tip" id="tip-updated" role="tooltip">
@@ -166,12 +161,19 @@
                   aria-describedby="tip-changed"
                 >
                   Last Changed At
+                  <span class="status-meta__info" aria-hidden="true">i</span>
                 </button>
                 <span data-meta-changed>—</span>
                 <span class="status-tip" id="tip-changed" role="tooltip">
                   Most recent UP↔DOWN flip among servers in the game and region you’re viewing—not the last poll time.
                 </span>
               </div>
+            </div>
+          </div>
+
+          <div class="server-grid" data-status-grid aria-live="polite">
+            <div class="server-placeholder" data-status-placeholder>
+              Select a game and region to view servers.
             </div>
           </div>
         </div>
