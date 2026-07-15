@@ -20,6 +20,8 @@
   --unknown-dim: rgba(230, 184, 77, 0.14);
   --discord: #5865f2;
   --discord-hover: #4752c4;
+  --cta: #3d8fd1;
+  --cta-hover: #2f7bb8;
   --max: 58rem;
   --max-status: 72rem;
   --demo-bleed: 1.5rem;
@@ -135,7 +137,7 @@ code {
   color: var(--text);
 }
 
-/* —— Header —— */
+/* -- Header -- */
 
 .site-header {
   position: sticky;
@@ -240,44 +242,36 @@ code {
   font-size: 0.85rem;
 }
 
-.nav-install {
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.nav-install:hover {
-  color: var(--text);
-  text-decoration: none;
-}
-
-.btn-secondary {
+.btn-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.55rem 1.1rem;
-  border: 1px solid var(--border-strong);
+  border: none;
   border-radius: 6px;
-  background: var(--bg-elevated);
-  color: var(--text);
+  background: var(--cta);
+  color: #fff;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--ease), border-color var(--ease), color var(--ease);
+  white-space: nowrap;
+  transition: background var(--ease);
 }
 
-.btn-secondary:hover {
-  background: var(--bg-soft);
-  border-color: var(--accent);
-  color: var(--text);
+.btn-cta:hover {
+  background: var(--cta-hover);
+  color: #fff;
   text-decoration: none;
 }
 
-.btn-secondary--lg {
+.btn-cta--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-cta--lg {
   padding: 0.9rem 1.75rem;
   font-size: 1.05rem;
   min-height: 52px;
@@ -316,7 +310,7 @@ code {
   }
 }
 
-/* —— Status page —— */
+/* -- Status page -- */
 
 .status-page {
   max-width: var(--max-status);
@@ -902,7 +896,7 @@ code {
   text-align: center;
 }
 
-/* —— Install / docs page —— */
+/* -- Install / docs page -- */
 
 .doc {
   max-width: var(--max);
