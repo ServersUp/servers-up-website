@@ -20,7 +20,14 @@
   <body>
     <p>
       Redirecting to
-      <a href="https://serversup.armasn.dev/">serversup.armasn.dev</a>…
+      <a id="dest" href="https://serversup.armasn.dev/">serversup.armasn.dev</a>…
     </p>
+    <script>
+      document.getElementById("dest").href =
+        "https://serversup.armasn.dev" +
+        location.pathname +
+        location.search +
+        location.hash;
+    </script>
   </body>
 </html>
