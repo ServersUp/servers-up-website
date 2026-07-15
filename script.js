@@ -214,7 +214,7 @@ async function setupGameBrowser() {
     } catch {
       regionRow.replaceChildren();
       listEl.replaceChildren();
-      countEl.textContent = "—";
+      countEl.textContent = "-";
       if (statusEl instanceof HTMLElement) statusEl.textContent = "Could not load server list.";
     }
   }

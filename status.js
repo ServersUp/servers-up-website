@@ -84,7 +84,7 @@ function sortServers(list) {
   });
 }
 
-/** Max lastUpdatedAt among servers — that field is last status *change*, not last poll. */
+/** Max lastUpdatedAt among servers - that field is last status *change*, not last poll. */
 function latestChangeAt(servers) {
   let max = 0;
   for (const s of servers) {
@@ -164,18 +164,18 @@ function setupStatusPage() {
 
   function resetFoot() {
     totalsEl.replaceChildren();
-    totalsEl.appendChild(makeStat("stat--up", "UP", "—"));
-    totalsEl.appendChild(makeStat("stat--down", "DOWN", "—"));
-    metaUpdatedEl.textContent = "—";
-    metaChangedEl.textContent = "—";
+    totalsEl.appendChild(makeStat("stat--up", "UP", "-"));
+    totalsEl.appendChild(makeStat("stat--down", "DOWN", "-"));
+    metaUpdatedEl.textContent = "-";
+    metaChangedEl.textContent = "-";
   }
 
   function renderMeta(servers) {
     const feedRel = formatRelativeTime(snapshot?.generatedAt);
-    metaUpdatedEl.textContent = feedRel || "—";
+    metaUpdatedEl.textContent = feedRel || "-";
 
     const changeRel = formatRelativeTime(latestChangeAt(servers));
-    metaChangedEl.textContent = changeRel || "—";
+    metaChangedEl.textContent = changeRel || "-";
   }
 
   function currentServers() {

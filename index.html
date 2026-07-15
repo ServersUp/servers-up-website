@@ -44,7 +44,7 @@
           <img src="./assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
           <span>ServersUp</span>
         </a>
-        <a class="nav-install" href="./install/">Installation instructions</a>
+        <a class="btn-cta btn-cta--sm" href="./install/">Installation instructions</a>
       </nav>
     </header>
 
@@ -134,38 +134,38 @@
         <div class="server-panel">
           <div class="status-summary" data-status-foot>
             <div class="status-totals" data-status-totals aria-live="polite">
-              <span class="stat stat--up">— UP</span>
-              <span class="stat stat--down">— DOWN</span>
+              <span class="stat stat--up">- UP</span>
+              <span class="stat stat--down">- DOWN</span>
             </div>
             <div class="status-meta" data-status-meta aria-live="polite">
               <div class="status-meta__line">
                 <button
                   type="button"
                   class="status-meta__label status-meta__label--hint"
-                  data-tip="When this status feed was last republished. That happens when a watched status changes—not on every poll."
+                  data-tip="When this list was last automatically refreshed."
                   aria-describedby="tip-updated"
                 >
                   Last Updated At
                   <span class="status-meta__info" aria-hidden="true">i</span>
                 </button>
-                <span data-meta-updated>—</span>
+                <span data-meta-updated>-</span>
                 <span class="status-tip" id="tip-updated" role="tooltip">
-                  When this status feed was last republished. That happens when a watched status changes—not on every poll.
+                  When this list was last automatically refreshed.
                 </span>
               </div>
               <div class="status-meta__line">
                 <button
                   type="button"
                   class="status-meta__label status-meta__label--hint"
-                  data-tip="Most recent UP↔DOWN flip among servers in the game and region you’re viewing—not the last poll time."
+                  data-tip="When a server in this list went up or down most recently. Instantly updates when a server does go up or down."
                   aria-describedby="tip-changed"
                 >
                   Last Changed At
                   <span class="status-meta__info" aria-hidden="true">i</span>
                 </button>
-                <span data-meta-changed>—</span>
+                <span data-meta-changed>-</span>
                 <span class="status-tip" id="tip-changed" role="tooltip">
-                  Most recent UP↔DOWN flip among servers in the game and region you’re viewing—not the last poll time.
+                  When a server in this list went up or down most recently. Instantly updates when a server does go up or down.
                 </span>
               </div>
             </div>
@@ -183,7 +183,7 @@
       </div>
 
       <div class="status-cta">
-        <a class="btn-secondary btn-secondary--lg" href="./install/">Installation instructions</a>
+        <a class="btn-cta btn-cta--lg" href="./install/">Installation instructions</a>
         <p class="status-cta__hint">How to add the bot and subscribe to realm alerts.</p>
       </div>
     </main>

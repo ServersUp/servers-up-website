@@ -20,10 +20,10 @@ Status fetch uses same-origin `/status/latest.json` on `serversup.armasn.dev`; o
 
 ### Data
 
-- `data/wow-servers.json` and `data/ffxiv-servers.json` — source lists
-- `data/games-data.js` — bundled for offline preview (regenerate when JSON changes)
+- `data/wow-servers.json` and `data/ffxiv-servers.json` - source lists
+- `data/games-data.js` - bundled for offline preview (regenerate when JSON changes)
 
 ### Repo variables (publish workflow)
 
-- `AWS_ROLE_SITE_PUBLISH` — IAM role ARN (`site_publish_role_arn` from `website-cdn`)
-- `CLOUDFRONT_DISTRIBUTION_ID` — distribution id from `website-cdn`
+- `AWS_ROLE_SITE_PUBLISH` - IAM role ARN (`site_publish_role_arn` from `website-cdn`)
+- `CLOUDFRONT_DISTRIBUTION_ID` - distribution id from `website-cdn`
