@@ -2,7 +2,9 @@
 
 Canonical host: **`https://serversup.armasn.dev`** (S3 `serversup-site` + CloudFront; DNS at Cloudflare).
 
-Source still lives in this GitHub repo. On push to `main`, [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) syncs to S3 and invalidates CloudFront (OIDC). GitHub Pages may 301 `serversup.github.io` → the custom domain.
+Source lives in this GitHub repo on **`main`**. On push to `main`, [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) syncs to S3 and invalidates CloudFront (OIDC).
+
+**GitHub Pages:** `serversup.github.io` cannot be fully disabled for an org pages repo. Pages is pointed at the **`pages-offline`** branch (stub that redirects to `serversup.armasn.dev`). Do not point Pages back at `main`.
 
 ### Stack
 
@@ -16,7 +18,7 @@ Source still lives in this GitHub repo. On push to `main`, [`.github/workflows/p
 python3 -m http.server 5173
 ```
 
-Status fetch uses same-origin `/status/latest.json` on `serversup.armasn.dev`; on github.io / local it falls back to `https://serversup.armasn.dev/status/latest.json` (CloudFront CORS `*`).
+Status fetch uses same-origin `/status/latest.json` on `serversup.armasn.dev`; elsewhere (local preview) it falls back to `https://serversup.armasn.dev/status/latest.json` (CloudFront CORS `*`).
 
 ### Data
 
