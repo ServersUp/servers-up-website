@@ -1,0 +1,3 @@
+# GitHub Pages stub only. Canonical site is https://serversup.armasn.dev/
+User-agent: *
+Disallow: /
