@@ -2,9 +2,9 @@
 
 Canonical host: **`https://serversup.armasn.dev`** (S3 `serversup-site` + CloudFront; DNS at Cloudflare).
 
-Source lives in this GitHub repo on **`main`**. On push to `main`, [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) syncs to S3 and invalidates CloudFront (OIDC).
+Source lives in this GitHub repo (`ServersUp/servers-up-website`) on **`main`**. On push to `main`, [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) syncs to S3 and invalidates CloudFront (OIDC).
 
-**GitHub Pages:** `serversup.github.io` cannot be fully disabled for an org pages repo. Pages is pointed at the **`pages-offline`** branch (stub that redirects to `serversup.armasn.dev`). Do not point Pages back at `main`.
+GitHub Pages is **not** used. The repo was renamed away from `serversup.github.io` so `https://serversup.github.io/` is a 404 (by design).
 
 ### Stack
 
