@@ -13,7 +13,7 @@
     <title>Game Server Status Alerts in Discord Without Spam | ServersUp</title>
     <meta
       name="description"
-      content="Why Discord communities mute spammy game-server status bots. Pick which WoW or FFXIV realms to watch and get UP/DOWN alerts only when status changes."
+      content="Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes."
     />
     <link
       rel="canonical"
@@ -23,32 +23,32 @@
     <meta property="og:title" content="Game Server Status Alerts in Discord Without Spam | ServersUp" />
     <meta
       property="og:description"
-      content="Why Discord communities mute spammy game-server status bots. Pick which WoW or FFXIV realms to watch and get UP/DOWN alerts only when status changes."
+      content="Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes."
     />
     <meta
       property="og:url"
       content="https://serversup.armasn.dev/blog/game-server-status-alerts-discord-without-spam/"
     />
-    <meta property="og:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://serversup.armasn.dev/assets/discord-alert-example.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Game Server Status Alerts in Discord Without Spam | ServersUp" />
     <meta
       name="twitter:description"
-      content="Why Discord communities mute spammy game-server status bots. Pick which WoW or FFXIV realms to watch and get UP/DOWN alerts only when status changes."
+      content="Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes."
     />
-    <meta name="twitter:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
-    <link rel="icon" href="../../assets/serversup-logo.png" type="image/png" />
-    <link rel="stylesheet" href="../../styles.css" />
+    <meta name="twitter:image" content="https://serversup.armasn.dev/assets/discord-alert-example.png" />
+    <link rel="icon" href="/assets/serversup-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/styles.css" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Game Server Status Alerts in Discord Without Spam",
-      "description": "Why Discord communities mute spammy game-server status bots. Pick which WoW or FFXIV realms to watch and get UP/DOWN alerts only when status changes.",
+      "description": "Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes.",
       "datePublished": "2026-07-19",
       "dateModified": "2026-07-19",
       "mainEntityOfPage": "https://serversup.armasn.dev/blog/game-server-status-alerts-discord-without-spam/",
-      "image": "https://serversup.armasn.dev/assets/serversup-logo.png",
+      "image": "https://serversup.armasn.dev/assets/discord-alert-example.png",
       "author": { "@type": "Organization", "name": "ServersUp" },
       "publisher": {
         "@type": "Organization",
@@ -89,6 +89,14 @@
             "@type": "Answer",
             "text": "World of Warcraft and Final Fantasy XIV, across the regions listed on the live status board and in the install guide."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a paid app or subscription for game downtime notifications?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You don't need one. ServersUp is free forever. It posts alerts to Discord for the realms you choose, only when status changes, with no per-alert subscription and no signup to check the live status board."
+          }
         }
       ]
     }
@@ -99,89 +107,152 @@
 
     <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="../../">
-          <img src="../../assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
+        <a class="brand" href="/">
+          <img src="/assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
           <span>ServersUp</span>
         </a>
         <div class="nav-links">
-          <a class="nav-link" href="../../">Status</a>
-          <a class="nav-link" href="../">Blog</a>
-          <a class="btn-cta btn-cta--sm" href="../../install/">Installation instructions</a>
+          <a class="nav-link" href="/">Status</a>
+          <a class="nav-link is-current" href="/blog/" aria-current="page">Blog</a>
+          <a class="btn-cta btn-cta--sm" href="/install/">Installation instructions</a>
         </div>
       </nav>
     </header>
 
     <main class="doc" id="article">
-      <article>
-        <header>
+      <article class="article">
+        <a class="article__back" href="/blog/">← All posts</a>
+
+        <header class="article__head">
+          <p class="article__eyebrow">Alerting</p>
           <h1>Game Server Status Alerts in Discord Without Spam</h1>
-          <p class="post-meta">ServersUp team · <time datetime="2026-07-19">July 19, 2026</time></p>
+          <p class="article__meta">
+            <span>ServersUp team</span>
+            <span class="dot" aria-hidden="true">·</span>
+            <time datetime="2026-07-19">July 19, 2026</time>
+            <span class="dot" aria-hidden="true">·</span>
+            <span>3 min read</span>
+          </p>
         </header>
 
-        <p>
-          <strong
-            >Discord communities mute game-server status bots when alerts feel like noise. Useful alerts fire
-            only when a realm flips UP or DOWN, for the servers you chose.</strong
-          >
-          That is the gap ServersUp is built to fill.
-        </p>
+        <div class="article__body">
+          <p class="article__lead">
+            Good game server status alerts in Discord are simple: your community gets one notification when
+            the status of a realm you picked actually changes, not a stream of noise. Most bots fail that
+            test, so people mute them and go back to refreshing status pages. Here is how to get clean
+            downtime notifications instead.
+          </p>
 
-        <h2>Why do game status bots get muted?</h2>
-        <p>
-          Guild and raid Discords care when a WoW or FFXIV realm comes back. People still refresh official
-          status pages, or they add a bot that pings too often. When every rumor or every realm becomes a
-          notification, the channel gets muted. The status feed stops being useful.
-        </p>
-        <p>
-          Official pages stay the source of record (for example
-          <a href="https://worldofwarcraft.blizzard.com/en-us/game/status/us" rel="noopener noreferrer"
-            >Blizzard realm status</a
-          >). The problem is not finding status once. It is getting a clean signal in Discord without
-          babysitting the page.
-        </p>
+          <h2>Why do spammy game status bots get muted?</h2>
+          <p>
+            Guild and raid Discords care when a game server comes back. People still refresh official status
+            pages, or they sit there hammering login until it works, or they add a bot that pings too often.
+            When every rumor or every realm becomes a notification, the channel gets muted and the status feed
+            stops being useful. ServersUp solves all three of these problems. A good alert removes that
+            busywork. You get pinged the moment the server is back, so you can log in when it actually matters
+            instead of babysitting a queue.
+          </p>
+          <p>
+            Official pages stay the source of record (for example
+            <a href="https://worldofwarcraft.blizzard.com/en-us/game/status/us" target="_blank" rel="noopener noreferrer"
+              >Blizzard realm status</a
+            >). The problem is not finding status once. It is getting a clean signal in Discord without
+            babysitting the page.
+          </p>
 
-        <h2>What does “at your convenience and configuration” mean?</h2>
-        <p>
-          ServersUp exists so communities get UP/DOWN when it matters, on their terms. You pick and choose
-          which games and realms to follow. Alerts go where you configure them. You are not subscribed to
-          every realm, every poll, or someone else’s idea of what is important.
-        </p>
-        <p>
-          Check the <a href="../../">live server status board</a> anytime without Discord. When you want
-          channel alerts, install the bot and wire only what your group needs.
-        </p>
+          <figure class="article-figure">
+            <img
+              src="/assets/discord-alert-example.png"
+              alt="ServersUp Discord uptime and downtime alerts: wow-tichondrius going down, then back up"
+              width="1280"
+              height="308"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              Discord uptime and downtime alerts fire only when a realm you picked changes state.
+            </figcaption>
+          </figure>
 
-        <p>
-          Tired of refreshing status pages? ServersUp can post when a realm you watch goes up or down.
-          <a href="../../install/">Set it up in about a minute</a>.
-        </p>
+          <h2>What does “at your convenience and configuration” mean?</h2>
+          <p>
+            ServersUp exists so communities get a free alert when it matters, on their terms. You pick and
+            choose which games and realms to follow. Alerts go where you configure them. You are not
+            subscribed to every realm, every poll, or someone else’s idea of what is important.
+          </p>
+          <p>
+            Check the <a href="/">live server status board</a> anytime without Discord. When you want channel
+            alerts, install the bot and wire only what your group needs. It stays free forever.
+          </p>
 
-        <h2>FAQ</h2>
-        <h3>Do I have to watch every realm?</h3>
-        <p>
-          No. Choose the games and realms your community cares about. Skip the rest so Discord stays quiet
-          until something you configured actually changes.
-        </p>
-        <h3>Do I need Discord just to check server status?</h3>
-        <p>
-          No. The <a href="../../">live status board</a> shows WoW and FFXIV realms without installing
-          anything. Discord is optional when you want channel alerts.
-        </p>
-        <h3>Which games does ServersUp support today?</h3>
-        <p>
-          World of Warcraft and Final Fantasy XIV, across the regions listed on the live board and in the
-          <a href="../../install/">install guide</a>.
-        </p>
+          <h2>Patch days, maintenance, and unplanned downtime</h2>
+          <p>
+            Scheduled maintenance and surprise outages both derail raid nights and static groups. Plenty of
+            people go looking for a paid app or subscription that sends instant downtime notifications, but a
+            service that blasts every event for every server just recreates the noise problem, now with a
+            bill attached.
+          </p>
+          <p>
+            ServersUp takes the opposite approach, and it is free. It polls each supported realm and only
+            fires when its status changes, so your channel hears when maintenance starts and again the moment
+            the server comes back up, with no minute-by-minute pinging in between. You watch
+            <a href="/">live server status</a> today (more games as the board grows), you choose which
+            realms, and alerts land in Discord where your group already coordinates. It works as a lightweight
+            game server monitor for Discord, with no per-alert subscription and no plan to charge later.
+          </p>
+
+          <p class="article__aside">
+            Tired of refreshing status pages? ServersUp can post a free alert when a realm you watch goes up
+            or down.
+            <a href="/install/">Set it up in about a minute</a>.
+          </p>
+        </div>
+
+        <section class="article-faq" aria-label="Frequently asked questions">
+          <h2>FAQ</h2>
+          <details class="faq-item">
+            <summary>Do I have to watch every realm?</summary>
+            <p>
+              No. Choose the games and realms your community cares about. Skip the rest so Discord stays quiet
+              until something you configured actually changes.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Do I need Discord just to check server status?</summary>
+            <p>
+              No. The <a href="/">live status board</a> shows WoW and FFXIV realms without installing anything.
+              Discord is optional when you want channel alerts.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Which games does ServersUp support today?</summary>
+            <p>
+              World of Warcraft and Final Fantasy XIV, across the regions listed on the live board and in the
+              <a href="/install/">install guide</a>.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a paid app or subscription for game downtime notifications?</summary>
+            <p>
+              You don’t need one. ServersUp is free forever. It posts alerts to Discord for the realms you
+              choose, only when status changes, with no per-alert subscription and no signup to check the
+              <a href="/">live status board</a>.
+            </p>
+          </details>
+        </section>
+
+        <aside class="article-cta">
+          <div>
+            <p class="article-cta__title">Get free status alerts in your channel</p>
+            <p class="article-cta__hint">Pick your realms. Alerts only when status actually changes. Free forever.</p>
+          </div>
+          <a class="btn-cta btn-cta--lg" href="/install/">Get Discord alerts</a>
+        </aside>
       </article>
-
-      <div class="status-cta">
-        <a class="btn-cta btn-cta--lg" href="../../install/">Get Discord alerts</a>
-        <p class="status-cta__hint">Pick your realms. Alerts only when status actually changes.</p>
-      </div>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> ServersUp · <a href="../../install/">Install the Discord bot</a></p>
+      <p>© <span id="year"></span> ServersUp · <a href="/install/">Install the Discord bot</a></p>
     </footer>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>

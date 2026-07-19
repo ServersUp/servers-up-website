@@ -31,49 +31,54 @@
       content="ServersUp blog: game server status tips, Discord alert hygiene, and notes for WoW and FFXIV communities."
     />
     <meta name="twitter:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
-    <link rel="icon" href="../assets/serversup-logo.png" type="image/png" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="/assets/serversup-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#blog">Skip to posts</a>
 
     <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="../">
-          <img src="../assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
+        <a class="brand" href="/">
+          <img src="/assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
           <span>ServersUp</span>
         </a>
         <div class="nav-links">
-          <a class="nav-link" href="../">Status</a>
-          <a class="nav-link is-current" href="./" aria-current="page">Blog</a>
-          <a class="btn-cta btn-cta--sm" href="../install/">Installation instructions</a>
+          <a class="nav-link" href="/">Status</a>
+          <a class="nav-link is-current" href="/blog/" aria-current="page">Blog</a>
+          <a class="btn-cta btn-cta--sm" href="/install/">Installation instructions</a>
         </div>
       </nav>
     </header>
 
     <main class="doc" id="blog">
       <header class="blog-index-header">
-        <h1>Blog</h1>
+        <p class="eyebrow">ServersUp blog</p>
+        <h1>Game server status, without the noise</h1>
         <p class="lead">
-          Short notes on game server status and Discord alerts that stay useful.
+          Short, practical notes on WoW and FFXIV server status and keeping Discord alerts useful.
         </p>
       </header>
 
       <ul class="blog-list">
         <li>
-          <a class="blog-list__link" href="./game-server-status-alerts-discord-without-spam/">
-            <span class="blog-list__title">Game Server Status Alerts in Discord Without Spam</span>
-            <time class="blog-list__date" datetime="2026-07-19">July 19, 2026</time>
-            <span class="blog-list__excerpt">
-              Why communities mute noisy status bots, and how pick-and-choose UP/DOWN alerts keep channels useful.
+          <a class="blog-list__link" href="/blog/game-server-status-alerts-discord-without-spam/">
+            <span class="blog-list__meta">
+              <span class="blog-tag">Alerting</span>
+              <time datetime="2026-07-19">July 19, 2026</time>
             </span>
+            <span class="blog-list__title">Game Server Status Alerts in Discord Without Spam</span>
+            <span class="blog-list__excerpt">
+              Why communities mute noisy status bots, and how pick-and-choose alerts keep channels useful.
+            </span>
+            <span class="blog-list__more">Read post →</span>
           </a>
         </li>
       </ul>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> ServersUp · <a href="../install/">Install the Discord bot</a></p>
+      <p>© <span id="year"></span> ServersUp · <a href="/install/">Install the Discord bot</a></p>
     </footer>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>
