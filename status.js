@@ -271,26 +271,33 @@ function setupStatusPage() {
       const active = key === region;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-selected", active ? "true" : "false");
-      btn.addEventListener("click", () => selectRegion(key));
+      btn.addEventListener("click", () => selectRegion(key, true));
       regionsEl.appendChild(btn);
     }
 
     regionsEl.hidden = keys.length === 0;
   }
 
-  function selectRegion(key) {
+  function selectRegion(key, fromUser) {
     if (!gameId) return;
     region = key;
     query = "";
     searchInput.value = "";
+    if (fromUser && typeof gtag === "function") {
+      gtag("event", "status_region_selected", { game: gameId, region: key });
+    }
     renderRegions();
     const label = GAME_META[gameId]?.regionLabels?.[key] || key.toUpperCase();
     setSub(`${GAME_META[gameId]?.short || gameId} · ${label}`);
     renderResults();
   }
 
-  async function selectGame(id) {
+  async function selectGame(id, fromUser) {
     if (!GAME_META[id]) return;
+
+    if (fromUser && typeof gtag === "function") {
+      gtag("event", "status_game_selected", { game: id });
+    }
 
     gameId = id;
     region = null;
@@ -364,7 +371,7 @@ function setupStatusPage() {
       if (!(btn instanceof HTMLButtonElement)) return;
       const id = btn.getAttribute("data-pick-game");
       if (!id) return;
-      selectGame(id);
+      selectGame(id, true);
     });
   }
 

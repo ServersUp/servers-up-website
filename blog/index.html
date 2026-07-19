@@ -10,6 +10,7 @@
       gtag("js", new Date());
       gtag("config", "G-ZQGB78C9LT");
     </script>
+    <script src="/analytics.js"></script>
     <meta
       name="description"
       content="ServersUp blog: game server status tips, Discord alert hygiene, and notes for gaming communities."
@@ -116,7 +117,12 @@
       </nav>
 
       <header class="blog-index-header">
-        <!-- When adding a post: also append to Blog JSON-LD blogPost[] above (headline, url, datePublished, image, author). -->
+        <!--
+          SHIP GATE - every new post under blog/<slug>/index.html MUST also appear in
+          Blog.blogPost[] in the JSON-LD <script> above (headline, url, datePublished, image, author).
+          Updating the HTML list alone is NOT enough. Fail the publish if blogPost[] is stale.
+          Verify: python3 .cursor/skills/seo-aeo/scripts/check_blog_blogpost_sync.py
+        -->
         <p class="eyebrow">ServersUp blog</p>
         <h1>Game server status, without the noise</h1>
         <p class="lead">
@@ -142,7 +148,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> ServersUp · <a href="/install/">Install the Discord bot</a></p>
+      <p>© <span id="year"></span> ServersUp · <a href="/install/">Get Discord alerts</a></p>
     </footer>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>
