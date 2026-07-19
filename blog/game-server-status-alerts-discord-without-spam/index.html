@@ -42,61 +42,92 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Game Server Status Alerts in Discord Without Spam",
-      "description": "Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes.",
-      "datePublished": "2026-07-19",
-      "dateModified": "2026-07-19",
-      "mainEntityOfPage": "https://serversup.armasn.dev/blog/game-server-status-alerts-discord-without-spam/",
-      "image": "https://serversup.armasn.dev/assets/discord-alert-example.png",
-      "author": { "@type": "Organization", "name": "ServersUp" },
-      "publisher": {
-        "@type": "Organization",
-        "name": "ServersUp",
-        "url": "https://serversup.armasn.dev/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://serversup.armasn.dev/assets/serversup-logo.png"
-        }
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "Do I have to watch every realm?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Choose the games and realms your community cares about. Skip the rest so Discord stays quiet until something you configured actually changes."
-          }
+          "@type": "Organization",
+          "@id": "https://serversup.armasn.dev/#organization",
+          "name": "ServersUp",
+          "url": "https://serversup.armasn.dev/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://serversup.armasn.dev/assets/serversup-logo.png"
+          },
+          "sameAs": [
+            "https://github.com/ServersUp",
+            "https://github.com/ServersUp/servers-up-website",
+            "https://ko-fi.com/R6R71Z1SRN"
+          ]
         },
         {
-          "@type": "Question",
-          "name": "Do I need Discord just to check server status?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. The live status board on the ServersUp site shows WoW and FFXIV realms without installing anything. Discord is optional when you want channel alerts."
-          }
+          "@type": "BlogPosting",
+          "headline": "Game Server Status Alerts in Discord Without Spam",
+          "description": "Set up game server status alerts in Discord without the spam. Pick your WoW or FFXIV realms and get downtime notifications only when a realm's status changes.",
+          "datePublished": "2026-07-19",
+          "dateModified": "2026-07-19",
+          "mainEntityOfPage": "https://serversup.armasn.dev/blog/game-server-status-alerts-discord-without-spam/",
+          "image": "https://serversup.armasn.dev/assets/discord-alert-example.png",
+          "author": { "@id": "https://serversup.armasn.dev/#organization" },
+          "publisher": { "@id": "https://serversup.armasn.dev/#organization" }
         },
         {
-          "@type": "Question",
-          "name": "Which games does ServersUp support today?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "World of Warcraft and Final Fantasy XIV, across the regions listed on the live status board and in the install guide."
-          }
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I have to watch every realm?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Choose the games and realms your community cares about. Skip the rest so Discord stays quiet until something you configured actually changes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need Discord just to check server status?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The live status board on the ServersUp site shows WoW and FFXIV realms without installing anything. Discord is optional when you want channel alerts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which games does ServersUp support today?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "World of Warcraft and Final Fantasy XIV, across the regions listed on the live status board and in the install guide."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there a paid app or subscription for game downtime notifications?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You don't need one. ServersUp is free forever. It posts alerts to Discord for the realms you choose, only when status changes, with no per-alert subscription and no signup to check the live status board."
+              }
+            }
+          ]
         },
         {
-          "@type": "Question",
-          "name": "Is there a paid app or subscription for game downtime notifications?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You don't need one. ServersUp is free forever. It posts alerts to Discord for the realms you choose, only when status changes, with no per-alert subscription and no signup to check the live status board."
-          }
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Status",
+              "item": "https://serversup.armasn.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://serversup.armasn.dev/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Game Server Status Alerts in Discord Without Spam",
+              "item": "https://serversup.armasn.dev/blog/game-server-status-alerts-discord-without-spam/"
+            }
+          ]
         }
       ]
     }
@@ -121,7 +152,13 @@
 
     <main class="doc" id="article">
       <article class="article">
-        <a class="article__back" href="/blog/">← All posts</a>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Status</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li aria-current="page">Game Server Status Alerts in Discord Without Spam</li>
+          </ol>
+        </nav>
 
         <header class="article__head">
           <p class="article__eyebrow">Alerting</p>
