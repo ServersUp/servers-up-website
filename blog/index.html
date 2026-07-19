@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" class="page-blog">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQGB78C9LT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-ZQGB78C9LT");
+    </script>
+    <meta
+      name="description"
+      content="ServersUp blog: game server status tips, Discord alert hygiene, and notes for WoW and FFXIV communities."
+    />
+    <link rel="canonical" href="https://serversup.armasn.dev/blog/" />
+    <title>Blog | ServersUp</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog | ServersUp" />
+    <meta
+      property="og:description"
+      content="ServersUp blog: game server status tips, Discord alert hygiene, and notes for WoW and FFXIV communities."
+    />
+    <meta property="og:url" content="https://serversup.armasn.dev/blog/" />
+    <meta property="og:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Blog | ServersUp" />
+    <meta
+      name="twitter:description"
+      content="ServersUp blog: game server status tips, Discord alert hygiene, and notes for WoW and FFXIV communities."
+    />
+    <meta name="twitter:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
+    <link rel="icon" href="../assets/serversup-logo.png" type="image/png" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#blog">Skip to posts</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../">
+          <img src="../assets/serversup-logo.png" alt="" width="24" height="24" decoding="async" />
+          <span>ServersUp</span>
+        </a>
+        <div class="nav-links">
+          <a class="nav-link" href="../">Status</a>
+          <a class="nav-link is-current" href="./" aria-current="page">Blog</a>
+          <a class="btn-cta btn-cta--sm" href="../install/">Installation instructions</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="doc" id="blog">
+      <header class="blog-index-header">
+        <h1>Blog</h1>
+        <p class="lead">
+          Short notes on game server status and Discord alerts that stay useful.
+        </p>
+      </header>
+
+      <ul class="blog-list">
+        <li>
+          <a class="blog-list__link" href="./game-server-status-alerts-discord-without-spam/">
+            <span class="blog-list__title">Game Server Status Alerts in Discord Without Spam</span>
+            <time class="blog-list__date" datetime="2026-07-19">July 19, 2026</time>
+            <span class="blog-list__excerpt">
+              Why communities mute noisy status bots, and how pick-and-choose UP/DOWN alerts keep channels useful.
+            </span>
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> ServersUp · <a href="../install/">Install the Discord bot</a></p>
+    </footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </body>
+</html>
