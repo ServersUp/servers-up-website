@@ -31,6 +31,21 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://serversup.armasn.dev/#organization",
+          "name": "ServersUp",
+          "url": "https://serversup.armasn.dev/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://serversup.armasn.dev/assets/serversup-logo.png"
+          },
+          "sameAs": [
+            "https://github.com/ServersUp",
+            "https://github.com/ServersUp/servers-up-website",
+            "https://ko-fi.com/R6R71Z1SRN"
+          ]
+        },
+        {
           "@type": "SoftwareApplication",
           "name": "ServersUp",
           "applicationCategory": "UtilitiesApplication",
@@ -42,11 +57,7 @@
             "price": "0",
             "priceCurrency": "USD"
           },
-          "publisher": {
-            "@type": "Organization",
-            "name": "ServersUp",
-            "url": "https://serversup.armasn.dev/"
-          }
+          "publisher": { "@id": "https://serversup.armasn.dev/#organization" }
         },
         {
           "@type": "HowTo",
@@ -118,6 +129,23 @@
               }
             }
           ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Status",
+              "item": "https://serversup.armasn.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Install",
+              "item": "https://serversup.armasn.dev/install/"
+            }
+          ]
         }
       ]
     }
@@ -141,7 +169,12 @@
     </header>
 
     <main class="doc" id="home">
-      <a class="install-back" href="/">← Live status</a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Status</a></li>
+          <li aria-current="page">Install</li>
+        </ol>
+      </nav>
 
       <section id="about" aria-labelledby="about-heading">
         <header class="hero">
