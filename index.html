@@ -34,6 +34,31 @@
     <meta name="twitter:image" content="https://serversup.armasn.dev/assets/serversup-logo.png" />
     <link rel="icon" href="/assets/serversup-logo.png" type="image/png" />
     <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://serversup.armasn.dev/#organization",
+          "name": "ServersUp",
+          "url": "https://serversup.armasn.dev/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://serversup.armasn.dev/assets/serversup-logo.png"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://serversup.armasn.dev/#website",
+          "name": "ServersUp",
+          "url": "https://serversup.armasn.dev/",
+          "description": "Live World of Warcraft and Final Fantasy XIV server status, plus free Discord alerts when a realm you watch changes.",
+          "publisher": { "@id": "https://serversup.armasn.dev/#organization" }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#status">Skip to status</a>
@@ -63,9 +88,9 @@
           decoding="async"
         />
         <p class="status-hero__brand">ServersUp</p>
-        <h1 class="status-hero__title">Live Server Status</h1>
+        <h1 class="status-hero__title">Live Game Server Status</h1>
         <p class="status-hero__lede">
-          Check WoW and FFXIV realms without refreshing official pages.
+          Check World of Warcraft and Final Fantasy XIV realms without refreshing official pages.
         </p>
         <ul class="status-hero__points" aria-label="How this page works">
           <li>Status is polled in the background for every listed realm</li>
@@ -73,6 +98,20 @@
           <li>Want channel alerts? Open <strong>Installation instructions</strong> at the top right</li>
         </ul>
       </header>
+
+      <noscript>
+        <p class="status-seo-fallback">
+          ServersUp shows live game server status for World of Warcraft and Final Fantasy XIV across supported
+          regions. Enable JavaScript to browse the interactive board, or
+          <a href="/install/">install the free Discord bot</a> for alerts when a realm you watch goes up or down.
+        </p>
+      </noscript>
+
+      <p class="status-seo-fallback">
+        Live board for <strong>World of Warcraft</strong> and <strong>Final Fantasy XIV</strong> realms. Pick a
+        game and region below to load the latest UP / DOWN snapshot. Prefer Discord?
+        <a href="/install/">Get free status alerts</a>.
+      </p>
 
       <div class="status-legend" aria-label="Status legend">
         <span class="status-legend__item"><span class="server-dot server-dot--up" aria-hidden="true"></span> UP</span>

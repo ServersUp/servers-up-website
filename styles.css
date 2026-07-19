@@ -321,6 +321,27 @@ code {
   line-height: 1.55;
 }
 
+.status-seo-fallback {
+  margin: 1rem auto 0;
+  max-width: 36rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.status-seo-fallback a {
+  color: var(--link);
+}
+
+noscript .status-seo-fallback {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
 .status-hero__points {
   list-style: none;
   margin: 1rem auto 0;
@@ -1269,9 +1290,10 @@ code {
 
 .hero-copy h1 {
   margin: 0;
-  font-size: 1.65rem;
+  font-size: clamp(1.25rem, 2.8vw, 1.65rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .hero-tagline {
