@@ -159,11 +159,6 @@ code {
   margin-inline: auto;
 }
 
-.page-install .nav,
-.page-blog .nav {
-  max-width: calc(var(--max) + 2.5rem);
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -276,39 +271,6 @@ code {
   padding: 0.9rem 1.75rem;
   font-size: 1.05rem;
   min-height: 52px;
-}
-
-.page-status .nav-toggle {
-  display: none;
-}
-
-@media (max-width: 719px) {
-  .page-install .nav-toggle {
-    display: block;
-  }
-
-  .page-install .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.5rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .page-install .nav-links.is-open {
-    display: flex;
-  }
-
-  .page-install .nav-link {
-    display: block;
-    padding: 0.7rem 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-elevated);
-    color: var(--text);
-  }
 }
 
 /* -- Status page -- */
@@ -900,7 +862,7 @@ code {
 /* -- Install / docs page -- */
 
 .doc {
-  max-width: var(--max);
+  max-width: var(--max-status);
   margin-inline: auto;
   padding: 2rem 1.25rem 3rem;
 }
