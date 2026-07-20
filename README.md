@@ -2,15 +2,27 @@
 
 Canonical host: **`https://serversup.armasn.dev`** (S3 `serversup-site` + CloudFront; DNS at Cloudflare).
 
-Source lives in this GitHub repo (`ServersUp/servers-up-website`) on **`main`**. On push to `main`, [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) syncs to S3 and invalidates CloudFront (OIDC).
+GitHub repo: **`ServersUp/serversup.github.io`** (org Pages apex name; same repo ID as the former `servers-up-website` slug).
 
-GitHub Pages is **not** used. The repo was renamed away from `serversup.github.io` so `https://serversup.github.io/` is a 404 (by design).
+### Dual-branch model
+
+| Branch | Role |
+|--------|------|
+| **`main`** | Product site source. Push to `main` runs [`.github/workflows/publish-site.yml`](.github/workflows/publish-site.yml) (OIDC → S3 sync + CloudFront invalidation). |
+| **`pages-offline`** | Legacy `https://serversup.github.io/` only. Exact-path meta-refresh + canonical redirects to matching `serversup.armasn.dev` URLs. Not the product site. |
+
+**Do not** point GitHub Pages at **`main`**. Pages source must stay **`pages-offline` /.** Serving `main` on github.io would duplicate the CDN site and confuse crawlers.
+
+**Do not** add analytics (gtag / GA4) or product HTML to `pages-offline` stubs. Redirects stay minimal; unknown paths stay HTTP 404 (human-only `404.html`, no SEO meta-refresh claim).
+
+Canonical for indexing and links remains **`https://serversup.armasn.dev`**.
 
 ### Stack
 
 - Self-contained CSS + vanilla JS
 - Live status on `/` via same-origin `/status/latest.json`
 - Install/docs on `/install/`
+- Blog on `/blog/`
 
 ### Local preview
 
